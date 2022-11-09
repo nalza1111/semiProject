@@ -1,4 +1,4 @@
-package co.bootjava.palette.shop.command;
+package co.bootjava.palette.product.command;
 
 import java.io.IOException;
 
@@ -10,15 +10,16 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import co.bootjava.palette.common.Command;
 import co.bootjava.palette.product.ProductVO;
-import co.bootjava.palette.shop.service.ShopService;
-import co.bootjava.palette.shop.service.impl.ShopServiceImpl;
+import co.bootjava.palette.product.service.ShopService;
+import co.bootjava.palette.product.service.impl.ProductServiceImpl;
 
 public class AddProduct implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		//상품추가 서블릿
-		String saveDir = request.getServletContext().getRealPath("upload");
+//		String saveDir = request.getServletContext().getRealPath("upload");
+		String saveDir ="C:/Users/82104/git/semiProject/palette/src/main/webapp/img";
 		System.out.println(saveDir);
 		String encoding = "UTF-8";
 		int maxSize = 500 * 1024 * 1024; //500mb로 이미지 크기 제한
@@ -51,10 +52,10 @@ public class AddProduct implements Command {
 											"",//productHits
 											"",//productDate
 											image);
-		ShopService dao = new ShopServiceImpl();
+		ShopService dao = new ProductServiceImpl();
 		int productTest = dao.productInsert(product);
 		System.out.println("AddProductTest"+productTest);
-		return "shop/shopmain";
+		return "product/productMain";
 	}
 
 }

@@ -1,4 +1,4 @@
-package co.bootjava.palette.shop.service.impl;
+package co.bootjava.palette.product.service.impl;
 
 import java.util.List;
 
@@ -6,10 +6,10 @@ import org.apache.ibatis.session.SqlSession;
 
 import co.bootjava.palette.common.DataSource;
 import co.bootjava.palette.product.ProductVO;
+import co.bootjava.palette.product.service.ShopService;
 import co.bootjava.palette.shop.mapper.ShopMapper;
-import co.bootjava.palette.shop.service.ShopService;
 
-public class ShopServiceImpl implements ShopService {
+public class ProductServiceImpl implements ShopService {
 	private SqlSession SqlSession = DataSource.getInstance().openSession(true);
 	private ShopMapper map = SqlSession.getMapper(ShopMapper.class);
 	

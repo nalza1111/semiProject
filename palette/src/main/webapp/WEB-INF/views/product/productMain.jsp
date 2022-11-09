@@ -1,12 +1,28 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="co.bootjava.palette.cart.CartVO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>shopmain</title>
+	<meta charset="UTF-8">
+	<title>shopmain</title>
+	<style>
+		.product-img{
+			width:400px;
+			height:500px;
+		}
+	</style>
 </head>
 <body>
+	<c:if test="${empty session }">
+		<%
+			List<CartVO> cartList = new ArrayList<CartVO>();
+			session.setAttribute("cartList", cartList);
+		%>
+	</c:if>
 	<nav>
 		<form>
 			<select name="categoryCode">
@@ -35,25 +51,33 @@
 			href=#>리뷰순</a>|<a href=#>가격순</a>
 	</div>
 	<hr>
-	<div id="product-template">	<!-- style="display:none; -->
+	
+	<c:forEach var="l" items="${list }">
+	<div id="product-template">
 		<!-- Product image-->
-		<img class="product-img" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+		<a class="product-detail" href="productDetail.do?productNumber=${l.productNumber}"><img class="product-img" src="/palette/img/${l.getImage()}" alt="..." /></a>
 		<!-- Product details-->
 		<div class="product-body">
 			<div class="text">
 				<!-- Product name-->
-				<h5 class="product-cost"><a class="product-detail" href="#">Special Product</a></h5>
+				<h5 class="product-cost"><a class="product-detail" href="productDetail.do?productNumber=${l.productNumber}">${l.getProductName()}</a></h5>
 				<!-- Product price-->
 				<!-- <span class="text-muted">$20.00</span>--><!-- 세일가격 -->
-				58000
+				${l.getProductPrice()}
 			</div>
 		</div>
 		<!-- Product actions-->
 		<div class="product-footer">
 			<div class="text-center">
-				<button class="btnAddBasket">Add to cart</button>
+				<button class="btnAddBasket" value="${l.productNumber}&${l.productPrice}" onclick=fncCart(this.value)>Add to cart</button>
 			</div>
 		</div>
 	</div>
+	</c:forEach>
+	<script>
+		function fncCart(value){
+			console.log(value);
+		}
+	</script>
 </body>
 </html>

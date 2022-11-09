@@ -9,7 +9,7 @@
 <body>
 	<div align="center">
 		<h1>WelCome To My WebSite</h1>
-		<a href="shop.do">샵으로</a>
+		<a href="product.do">샵으로</a>
 	</div>
 </body>
 </html>

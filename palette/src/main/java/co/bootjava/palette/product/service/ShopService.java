@@ -1,4 +1,4 @@
-package co.bootjava.palette.shop.service;
+package co.bootjava.palette.product.service;
 
 import java.util.List;
 
