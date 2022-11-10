@@ -32,9 +32,9 @@
 				type="submit" value="검색">
 		</form>
 		<br>
-		<button class="btnBasket">
+		<button class="btnBasket" onClick="location.href='cartForm.do'">
 			장바구니
-			<span>[ ${cartCountNumber } ] </span>
+			<span id="basket">${cartCountNumber }</span>
 		</button>
 		<button class="btnLog">구매내역</button>
 		<button class="btnAdmin" onClick="location.href='addProductForm.do'">관리자의상품추가</button>
@@ -42,7 +42,6 @@
 	</nav>
 	<hr>
 	<div>
-		<button class="btnCheckBasket">체크박스 장바구니담기</button>
 		[정렬]<a href=#>조회순</a>|<a href=#>출시일순</a>| <a href=#>평점좋은순</a>|<a
 			href=#>리뷰순</a>|<a href=#>가격순</a>
 	</div>
@@ -65,7 +64,7 @@
 		<!-- Product actions-->
 		<div class="product-footer">
 			<div class="text-center">
-				<button class="btnAddBasket" value="productNumber=${l.productNumber}&productPrice=${l.productPrice}" onclick=fncAddCart(this.value)>Add to cart</button>
+				<button class="btnAddBasket" id="btnAddBasket" name="btnAddBasket" value="productNumber=${l.productNumber}&productPrice=${l.productPrice}" onclick=fncAddCart(this.value)>Add to cart</button>
 			</div>
 		</div>
 	</div>
@@ -94,6 +93,7 @@
 	}
 	function testFnc(result){
 		console.log(result);
+		document.getElementById('basket').textContent++;
 	}
 		 
 	</script>

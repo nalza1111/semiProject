@@ -26,10 +26,10 @@ public class Product implements Command {
 		request.setAttribute("list", list);
 		
 		HttpSession session = request.getSession();
-		String account = (String) session.getAttribute("id");
+		String id = (String) session.getAttribute("id");
 		//카트세션용
 		CartService dao2 = new CartServiceImpl();
-		CartVO sessionCart = new CartVO("", "", "", "", account);
+		CartVO sessionCart = new CartVO("", "", "", "", id);
 		List<CartVO> cartList = dao2.cartAccountSelectList(sessionCart);
 		int cartCountNumber = 0;
 		for(CartVO cart: cartList) {

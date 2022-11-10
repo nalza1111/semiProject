@@ -6,19 +6,21 @@
 	</select>
 	
 	<select id="cartAccountSelectList" resultType="co.bootjava.palette.cart.CartVO">
-		SELECT * FROM CART WHERE ACCOUNT = #{account}
+		SELECT * FROM CART WHERE ID = #{id}
 	</select>
 	
 	<select id="cartSelect" resultType="co.bootjava.palette.cart.CartVO">
-		SELECT * FROM CART WHERE PRODUCT_NUMBER = #{productNumber} AND ACCOUNT = #{account}
+		SELECT * FROM CART WHERE PRODUCT_NUMBER = #{productNumber} AND id = #{id}
 	</select>
 	
 	<insert id="cartInsert" >
-		INSERT INTO CART (CART_NUMBER, PRODUCT_NUMBER, PRODUCT_COUNT, PRODUCT_PRICE, ACCOUNT)
-		 VALUES(TEST_SEQ.NEXTVAL,#{productNumber},1,#{productPrice},#{account})
+		INSERT INTO CART (CART_NUMBER, PRODUCT_NUMBER, PRODUCT_COUNT, PRODUCT_PRICE, id)
+		 VALUES(TEST_SEQ.NEXTVAL,#{productNumber},1,#{productPrice},#{id})
 	</insert>
 	
 	<delete id="cartDelete">
+		DELETE CART WHERE PRODUCT_NUMBER = #{productNumber} 
+		 AND ID = #{id}
 	</delete>
 	
 	<update id="cartUpdatePlus">

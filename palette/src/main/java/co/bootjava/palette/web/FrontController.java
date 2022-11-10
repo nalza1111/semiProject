@@ -29,6 +29,9 @@ import co.bootjava.palette.board.command.BoardSelect;
 import co.bootjava.palette.board.command.BoardUpdate;
 import co.bootjava.palette.board.command.BoardUpdateForm;
 import co.bootjava.palette.cart.command.AddCart;
+import co.bootjava.palette.cart.command.AddCartTwo;
+import co.bootjava.palette.cart.command.CartForm;
+import co.bootjava.palette.cart.command.DeleteCart;
 import co.bootjava.palette.common.Command;
 import co.bootjava.palette.exhibit.command.AddExhibitList;
 import co.bootjava.palette.exhibit.command.AddExhibitListForm;
@@ -94,7 +97,10 @@ public class FrontController extends HttpServlet {
 		map.put("/addProduct.do", new AddProduct()); //상품상세출력
 		map.put("/productDetail.do", new ProductDetail());	//테스트용 두(json리스트보내기)
 		map.put("/productTest.do", new ProductTest());	//메인화면장바구니추가
-		map.put("/addCart.do", new AddCart());
+		map.put("/addCart.do", new AddCart());//장바구니추가(버튼)
+		map.put("/cartForm.do", new CartForm());//장바구니버튼
+		map.put("/addCartTwo.do", new AddCartTwo());//장바구니+-버튼
+		map.put("/deleteCart.do", new DeleteCart());//장바구니 삭제 버튼
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
@@ -103,13 +109,6 @@ public class FrontController extends HttpServlet {
 		String uri = request.getRequestURI(); // 요청한 uri를 구함
 		String contextPath = request.getContextPath();// 루트를 구함,context path
 		String page = uri.substring(contextPath.length());// 실제 수행할 요청을 구함.
-
-		System.out.println(page);
-		if(page.startsWith("/WEB_INF")) {
-			page = page.substring(22,38);
-			System.out.println(page);
-		}
-		
 		Command command = map.get(page); // init 메소드에서 수행할 명령을 가져온다.
 		
 		System.out.println(page);
@@ -127,7 +126,7 @@ public class FrontController extends HttpServlet {
 				return;
 			}
 			//타일즈 돌아가는곳	
-			if(!viewPage.endsWith(".tiles")&&!viewPage.startsWith("do!")) {
+			if(!viewPage.endsWith(".tiles")) {
 				viewPage.substring(5);
 				viewPage="/WEB-INF/views/"+viewPage+".jsp";//타일즈 안태움
 			}
