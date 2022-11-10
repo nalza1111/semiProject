@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.bootjava.palette.board.mapper.BoardMapper">
+	<select id="boardSelectList"
+		resultType="co.bootjava.palette.board.vo.BoardVO">
+		SELECT * FROM BOARD
+	</select>
+
+	<select id="boardSelect"
+		resultType="co.bootjava.palette.board.vo.BoardVO">
+		SELECT * FROM BOARD WHERE BOARD_NUMBER=${boardNumber}
+	</select>
+
+	<insert id="boardInsert"
+		parameterType="co.bootjava.palette.board.vo.BoardVO">
+		INSERT INTO BOARD
+		VALUES(BOARD_SEQ.NEXTVAL,'123',#{boardTitle},#{boardContent},'123',SYSDATE,0)
+	</insert>
+
+	<delete id="boardDelete"
+		parameterType="co.bootjava.palette.board.vo.BoardVO">
+
+	</delete>
+
+	<update id="boardUpdate"
+		parameterType="co.bootjava.palette.board.vo.BoardVO">
+		UPDATE BOARD SET BOARD_TITLE = #{boardTitle} AND
+		BOARD_CONTENT=#{boardContent} WHERE BOARD_NUMBER=#{boardNumber}
+	</update>
+
+</mapper>

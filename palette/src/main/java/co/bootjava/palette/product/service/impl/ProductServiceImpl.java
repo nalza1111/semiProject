@@ -6,12 +6,12 @@ import org.apache.ibatis.session.SqlSession;
 
 import co.bootjava.palette.common.DataSource;
 import co.bootjava.palette.product.ProductVO;
-import co.bootjava.palette.product.service.ShopService;
-import co.bootjava.palette.shop.mapper.ShopMapper;
+import co.bootjava.palette.product.mapper.ProductMapper;
+import co.bootjava.palette.product.service.ProductService;
 
-public class ProductServiceImpl implements ShopService {
+public class ProductServiceImpl implements ProductService {
 	private SqlSession SqlSession = DataSource.getInstance().openSession(true);
-	private ShopMapper map = SqlSession.getMapper(ShopMapper.class);
+	private ProductMapper map = SqlSession.getMapper(ProductMapper.class);
 	
 	@Override
 	public List<ProductVO> productSelectList() {

@@ -65,7 +65,7 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				<img class="product-img" src="/palette/img/${product.getImage()}" alt="..." /> 
+				<img class="product-img" src="/palette/image/${product.getImage()}" alt="..." /> 
 			</td>
 		</tr>
 		<tr>

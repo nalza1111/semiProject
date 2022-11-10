@@ -1,3 +1,4 @@
+<%@page import="org.apache.velocity.tools.view.WebappUberspector.GetAttributeExecutor"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="co.bootjava.palette.cart.CartVO"%>
 <%@page import="java.util.List"%>
@@ -17,12 +18,6 @@
 	</style>
 </head>
 <body>
-	<c:if test="${empty session }">
-		<%
-			List<CartVO> cartList = new ArrayList<CartVO>();
-			session.setAttribute("cartList", cartList);
-		%>
-	</c:if>
 	<nav>
 		<form>
 			<select name="categoryCode">
@@ -38,7 +33,8 @@
 		</form>
 		<br>
 		<button class="btnBasket">
-			장바구니<span>[0]</span>
+			장바구니
+			<span>[ ${cartCountNumber } ] </span>
 		</button>
 		<button class="btnLog">구매내역</button>
 		<button class="btnAdmin" onClick="location.href='addProductForm.do'">관리자의상품추가</button>
@@ -55,7 +51,7 @@
 	<c:forEach var="l" items="${list }">
 	<div id="product-template">
 		<!-- Product image-->
-		<a class="product-detail" href="productDetail.do?productNumber=${l.productNumber}"><img class="product-img" src="/palette/img/${l.getImage()}" alt="..." /></a>
+		<a class="product-detail" href="productDetail.do?productNumber=${l.productNumber}"><img class="product-img" src="/palette/image/${l.getImage()}" alt="..." /></a>
 		<!-- Product details-->
 		<div class="product-body">
 			<div class="text">
@@ -69,15 +65,37 @@
 		<!-- Product actions-->
 		<div class="product-footer">
 			<div class="text-center">
-				<button class="btnAddBasket" value="${l.productNumber}&${l.productPrice}" onclick=fncCart(this.value)>Add to cart</button>
+				<button class="btnAddBasket" value="productNumber=${l.productNumber}&productPrice=${l.productPrice}" onclick=fncAddCart(this.value)>Add to cart</button>
 			</div>
 		</div>
 	</div>
 	</c:forEach>
 	<script>
-		function fncCart(value){
-			console.log(value);
-		}
+	document.addEventListener('DOMContentLoaded', function(){
+		/* let url = "productTest.do";
+		fetch(url)
+			.then(result=>result.text())
+			.then(testFnc)
+			.catch(err=>console.log(err))
+		function testFnc(result){
+				console.log(result)
+			} */
+	})
+	function fncAddCart(value){
+		console.log(value);
+		let url = "addCart.do?"+value;
+		
+		fetch(url,{
+			headers: {'Content-type':'application/x-www-form-urlencoded'}
+		})
+			.then(result=>result.json())
+			.then(testFnc)
+			.catch(err=>console.log(err));
+	}
+	function testFnc(result){
+		console.log(result);
+	}
+		 
 	</script>
 </body>
 </html>

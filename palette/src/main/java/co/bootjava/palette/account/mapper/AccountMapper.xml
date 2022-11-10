@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.bootjava.palette.account.mapper.AccountMapper">
+	
+	<select id="isAccountIdCheck" resultType="boolean">
+		SELECT CASE WHEN COUNT(ID) = 1 THEN 0 ELSE 1 END AS ID
+		FROM ACCOUNT WHERE ID = #{id}
+	</select>
+	
+	<select id="accountLogin" resultType="co.bootjava.palette.account.vo.AccountVO">
+		SELECT * FROM ACCOUNT
+		WHERE ID = #{id} AND PASSWORD = #{password}
+	</select>
+	
+	<select id="emailFind" resultType="co.bootjava.palette.account.vo.AccountVO">
+		SELECT PASSWORD, EMAIL FROM ACCOUNT
+		WHERE ID = #{id}
+	</select>
+	
+	<insert id="accountInsert" parameterType="co.bootjava.palette.account.vo.AccountVO">
+		INSERT INTO ACCOUNT
+		VALUES(#{id}, #{password}, #{name}, #{email}, #{address}, 'user', 0, 0, #{school}, #{major})
+	</insert>
+</mapper>
