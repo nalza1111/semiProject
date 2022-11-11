@@ -13,11 +13,11 @@ import co.bootjava.palette.product.ProductVO;
 import co.bootjava.palette.product.service.ProductService;
 import co.bootjava.palette.product.service.impl.ProductServiceImpl;
 
-public class AddProduct implements Command {
+public class UpDelProduct implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		//상품추가 서블릿
+		//상품수정 서블릿
 //		String saveDir = request.getServletContext().getRealPath("upload");
 //집 절대경로		String saveDir ="C:/Users/82104/git/semiProject/palette/src/main/webapp/image";
 		String saveDir ="D:/Dev/semiGit/palette/src/main/webapp/image";
@@ -37,14 +37,14 @@ public class AddProduct implements Command {
 			e.printStackTrace();
 			System.out.println("상품업로드 중 에러 발생");
 		}
-		
+		String productNumber = multipartrequest.getParameter("productNumber");
 		String categoryCode = multipartrequest.getParameter("categoryCode");
 		String productName = multipartrequest.getParameter("productName");
 		String productPrice = multipartrequest.getParameter("productPrice");
 		String productDesc = multipartrequest.getParameter("productDesc");
 		String image = multipartrequest.getFilesystemName("image");
 		//DB입력
-		ProductVO product = new ProductVO("",//productNumber,
+		ProductVO product = new ProductVO(productNumber,
 											categoryCode,
 											productName,
 											productPrice,
@@ -54,7 +54,7 @@ public class AddProduct implements Command {
 											"",//productDate
 											image);
 		ProductService dao = new ProductServiceImpl();
-		int productTest = dao.productInsert(product);
+		int productTest = dao.productUpdate(product);
 		return "product/indexProduct.tiles";
 	}
 

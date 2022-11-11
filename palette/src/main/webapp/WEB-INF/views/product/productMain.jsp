@@ -19,7 +19,7 @@
 </head>
 <body>
 	<nav>
-		<form>
+		<form action="searchProduct.do">
 			<select name="categoryCode">
 				<option value="all">::전체::</option>
 				<option value="europe">북유럽</option>
@@ -28,8 +28,9 @@
 				<option value="mini">미니멀</option>
 				<option value="classic">모던클래식</option>
 				<option value="inder">인더스트리얼</option>
-			</select> 검색<input type="text" id="search" name="search"> <input
-				type="submit" value="검색">
+			</select>
+			검색<input type="text" id="search" name="search">
+			<input type="submit" value="검색">
 		</form>
 		<br>
 		<button class="btnBasket" onClick="location.href='cartForm.do'">
@@ -42,11 +43,12 @@
 	</nav>
 	<hr>
 	<div>
-		[정렬]<a href=#>조회순</a>|<a href=#>출시일순</a>| <a href=#>평점좋은순</a>|<a
-			href=#>리뷰순</a>|<a href=#>가격순</a>
+		[정렬]<a href="product.do?job=search">조회순</a>|
+			 <a href="product.do?job=date">출시일순</a>|
+			 <a href="product.do?job=highPrice">높은가격부터</a>|
+			 <a href="product.do?job=lowPrice">낮은가격부터</a>
 	</div>
 	<hr>
-	
 	<c:forEach var="l" items="${list }">
 	<div id="product-template">
 		<!-- Product image-->
@@ -95,7 +97,7 @@
 		console.log(result);
 		document.getElementById('basket').textContent++;
 	}
-		 
+	
 	</script>
 </body>
 </html>

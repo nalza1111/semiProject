@@ -38,4 +38,20 @@ public class ProductServiceImpl implements ProductService {
 		return map.productUpdate(vo);
 	}
 
+	@Override
+	public int productUpdateHit(ProductVO vo) {
+		return map.productUpdateHit(vo);
+	}
+
+	@Override
+	public List<ProductVO> productSelectSortList(int n) {
+		return map.productSelectSortList(n);
+	}
+
+	@Override
+	public List<ProductVO> productSelectSearchList(ProductVO vo) {
+		return map.productSelectSearchList(vo);
+	}
+
+
 }

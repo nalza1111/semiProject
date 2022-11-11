@@ -15,33 +15,27 @@ import co.bootjava.palette.product.ProductVO;
 import co.bootjava.palette.product.service.ProductService;
 import co.bootjava.palette.product.service.impl.ProductServiceImpl;
 
-public class Product implements Command {
+public class SearchProduct implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
+		String categoryCode = request.getParameter("categoryCode");
+		categoryCode = categoryCode.toLowerCase();
+		String search = request.getParameter("search");
+		System.out.println(categoryCode+" "+search);
+		
 		List<ProductVO> list = new ArrayList<ProductVO>();
 		ProductService dao = new ProductServiceImpl();
-		//제품정렬
-		String job = request.getParameter("job");
-		if(job!=null&&job.equals("search")) {
-			list = dao.productSelectSortList(7);
-			System.out.println(job);
-		} else if (job!=null&&job.equals("date")) {
-			list = dao.productSelectSortList(8);
-			System.out.println(job);
-		} else if (job!=null&&job.equals("lowPrice")) {//낮은가격부터
-			list = dao.productSelectSortList(4);
-			System.out.println(job);
-		} else if (job!=null&&job.equals("highPrice")) {//높은가격부터
-			list = dao.productSelectSortList(41);  //dao.productSelectSortListDesc(4); ==>이것은 필요 없고
-			System.out.println(job);
-		} else { // 정렬 조건 없는 메인화면
-			list = dao.productSelectList();
-		}
+		
+		ProductVO vo = new ProductVO("", categoryCode, search, "", "", "", "", "", "");
+//		if(categoryCode.equals("all")) {
+			list = dao.productSelectSearchList(vo);
+//		} else {
+//			list = dao.productListCategory(vo);
+//		}
+		
 		request.setAttribute("list", list);
-		for(ProductVO vo: list) {
-			System.out.println(vo.getProductName());
-		}
+		
 		//장바구니카운트용
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");

@@ -29,6 +29,7 @@ import co.bootjava.palette.board.command.BoardSelect;
 import co.bootjava.palette.board.command.BoardUpdate;
 import co.bootjava.palette.board.command.BoardUpdateForm;
 import co.bootjava.palette.cart.command.AddCart;
+import co.bootjava.palette.cart.command.AddCartSome;
 import co.bootjava.palette.cart.command.AddCartTwo;
 import co.bootjava.palette.cart.command.CartForm;
 import co.bootjava.palette.cart.command.DeleteCart;
@@ -47,6 +48,8 @@ import co.bootjava.palette.product.command.Product;
 import co.bootjava.palette.product.command.ProductDetail;
 import co.bootjava.palette.product.command.ProductReset;
 import co.bootjava.palette.product.command.ProductTest;
+import co.bootjava.palette.product.command.SearchProduct;
+import co.bootjava.palette.product.command.UpDelProduct;
 
 @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -94,13 +97,17 @@ public class FrontController extends HttpServlet {
 		
 		map.put("/product.do", new Product()); //admin의 상점아이템 추가페이지로 이동.
 		map.put("/addProductForm.do", new AddProductForm()); //상품추가서블릿
-		map.put("/addProduct.do", new AddProduct()); //상품상세출력
-		map.put("/productDetail.do", new ProductDetail());	//테스트용 두(json리스트보내기)
+		map.put("/addProduct.do", new AddProduct()); //상품추가
+		map.put("/productDetail.do", new ProductDetail());	//제품상세페이지
 		map.put("/productTest.do", new ProductTest());	//메인화면장바구니추가
 		map.put("/addCart.do", new AddCart());//장바구니추가(버튼)
 		map.put("/cartForm.do", new CartForm());//장바구니버튼
 		map.put("/addCartTwo.do", new AddCartTwo());//장바구니+-버튼
 		map.put("/deleteCart.do", new DeleteCart());//장바구니 삭제 버튼
+		map.put("/addCartSome.do", new AddCartSome());//제품상세페이지에서 제품추가
+		map.put("/searchProduct.do", new SearchProduct());//제품페이지에서 검색
+		map.put("/upDelProductForm.do", new AddProductForm());//제품수정폼으로 이동
+		map.put("/upDelProduct.do", new UpDelProduct());//제품수정폼으로 이동
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)

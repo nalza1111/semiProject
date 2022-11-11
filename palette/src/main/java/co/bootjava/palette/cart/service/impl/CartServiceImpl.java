@@ -47,5 +47,15 @@ public class CartServiceImpl implements CartService{
 		return map.cartUpdateMinus(vo);
 	}
 
+	@Override
+	public int cartInsertSome(CartVO vo) {
+		return map.cartInsertSome(vo);
+	}
+
+	@Override
+	public int cartUpdatePlusSome(CartVO vo) {
+		return map.cartUpdatePlusSome(vo);
+	}
+
 
 }

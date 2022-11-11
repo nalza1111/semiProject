@@ -45,12 +45,27 @@
 			<tr>
 				<th>image</th>
 				<td>
-					<input type="file" name="image" id="image"> 
+					<img class="product-img" id="product-img" src="" style="width:50px;" alt="..." />
+					<input type="file" name="image" id="image" onchange="readURL(this);"> 
 				</td>
 			</tr>
 		</table>
 		<input type="submit" id="submit" name="submit">
 		<input type="reset">
 	</form>
+	<script>
+	function readURL(input) {
+		document.getElementById('product-img').src = "";
+	  if (input.files && input.files[0]) {
+	    let reader = new FileReader();
+	    reader.onload = function(e) {
+	      document.getElementById('product-img').src = e.target.result;
+	    };
+	    reader.readAsDataURL(input.files[0]);
+	  } else {
+	    document.getElementById('product-img').src = "";
+	  }
+	}
+	</script>
 </body>
 </html>

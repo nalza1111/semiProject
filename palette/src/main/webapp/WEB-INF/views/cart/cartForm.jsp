@@ -38,8 +38,16 @@
 		<c:if test="${cart.productCount >0}">
 			<table border="1">
 				<tr>
-					<td width="100px"><img class="product-img" src="/palette/image/${cart.getImage()}" alt="..." /></td>
-					<td width="100px">${cart.productName}</td>
+					<td width="100px">
+						<a class="product-detail" href="productDetail.do?productNumber=${cart.productNumber}">
+							<img class="product-img" src="/palette/image/${cart.getImage()}" alt="..." />
+						</a>
+					</td>
+					<td width="100px">
+						<a class="product-detail" href="productDetail.do?productNumber=${cart.productNumber}">
+							${cart.productName}
+						</a>
+					</td>
 					<td width="100px" id="${cart.productNumber}" name="${cart.productNumber}">
 						<input type="hidden" value="${cart.productNumber}">
 						<input type="button" onClick=fncCount('m',this) value="-">
@@ -82,16 +90,14 @@
 			if (type == 'm'&&count.value>=1){
 				count.value--;
 				job = 'minus';
-				document.getElementById('total').children[3].textContent
-				 = document.getElementById('total').children[3].textContent-productPrice;
+				document.getElementById('total').children[3].textContent=document.getElementById('total').children[3].textContent-productPrice;
 				if(count.value==0){
 					count.parentNode.parentNode.remove();
 				}
 			} else if(type == 'p'){
 				count.value++;
 				job = 'plus';
-				document.getElementById('total').children[3].textContent
-				=(document.getElementById('total').children[3].textContent-0)+(productPrice-0);
+				document.getElementById('total').children[3].textContent=(document.getElementById('total').children[3].textContent-0)+(productPrice-0);
 			}
 			let data = "productNumber="+productNumber+"&job="+job;
 			let url = "addCartTwo.do?"+data;
@@ -107,6 +113,24 @@
 			console.log(result);
 		}
 		
+		function addCartTwoFnc(result){
+			console.log(result);
+		}
+		document.querySelector('input[type="checkbox"]').addEventListener('change',function(){
+			document.querySelectorAll('input[type="checkbox"]').forEach(function(check){
+				check.checked = document.querySelector('input[type="checkbox"]').checked;
+			})
+		})
+		document.getElementById('del').addEventListener('click', function fncDeleteDo(){
+			document.querySelectorAll('input[type="checkbox"]').forEach(function(check){
+				let del = check.parentNode.parentNode.children[4].children[1];
+				if(check.checked&&del!=null){
+					console.log(del);
+					fncDelete(del);
+				}
+			})
+		})
+	
 		function fncDelete(th){
 			console.log(th.parentNode.children[0].value); //상품번호
 			console.log(th.parentNode.children[2].value); //상품가격
@@ -132,23 +156,6 @@
 			.then()
 			.catch(err=>console.log(err));
 		}
-		function addCartTwoFnc(result){
-			console.log(result);
-		}
-		document.querySelector('input[type="checkbox"]').addEventListener('change',function(){
-			document.querySelectorAll('input[type="checkbox"]').forEach(function(check){
-				check.checked = document.querySelector('input[type="checkbox"]').checked;
-			})
-		})
-		document.getElementById('del').addEventListener('click', function fncDeleteDo(){
-			document.querySelectorAll('input[type="checkbox"]').forEach(function(check){
-				let del = check.parentNode.parentNode.children[4].children[1];
-				if(check.checked&&del!=null){
-					console.log(del);
-					fncDelete(del);
-				}
-			})
-		})
 	</script>
 </body>
 </html>

@@ -14,6 +14,12 @@
 	</style>
 </head>
 <body>
+	<hr>
+		<button class="btnBasket" onClick="location.href='cartForm.do'">
+			장바구니
+			<span id="basket">${cartCountNumber }</span>
+		</button>
+	<hr>
 	<table border="1">
 		<tr>
 			<th>productNumber</th>
@@ -45,13 +51,13 @@
 				${product.productDesc }
 			</td>
 		</tr>
-		<tr>
+<%--재고	<tr>
 			<th>product.productStock</th>
 			<td>
 				${product.productStock }
 			</td>
 		</tr>
-			<tr>
+ --%>			<tr>
 			<th>productHits</th>
 			<td>
 				${product.productHits }
@@ -70,24 +76,45 @@
 		</tr>
 		<tr>
 			<td>
-				<button type="button" onClick=fncCount('p')>+</button>
+				<input type="hidden" value="${product.productNumber }">
+				<button type="button" onClick=fncCount()>+</button>
 				<input type="text" id="cartNumber" name="cartNumber" value="0" readonly>
-				<button type="button" onClick=fncCount('m')>-</button>
 			</td>
 			<td>
-				<button class="btnAddBasket">Add to cart</button>
+				<button class="btnAddBasket" onClick=fucCountAdd()>Add to cart</button>
 			</td>
 		</tr>
+		<tr>
+			<td colspan="2">
+				<button class="btnUpDel" onclick="location.href='upDelProductForm.do?productNumber=${product.productNumber}'">UPDATE/DELETE</button>
+			</td>
+		</tr>
+		
 	</table>
+	 <a href="product.do">뒤로</a>
 	<script>
-		function fncCount(type){
+		function fncCount(){
 			let countBox = document.getElementById('cartNumber');
-			if (type == 'p'){
 				countBox.value++;
-			} else if(type == 'm'&&countBox.value>=1){
-				countBox.value--;
-			}
 		}
+		function fucCountAdd(){
+			let countBoxValue = document.getElementById('cartNumber').value;
+			let productNumber = document.querySelector('input[type="hidden"]').value;
+			console.log(countBoxValue+" "+productNumber);
+			let url =  "addCartSome.do?countBoxValue="+countBoxValue+"&productNumber="+productNumber;
+			console.log(url);
+			fetch(url,{
+				headers: {'Content-type':'application/x-www-form-urlencoded'}
+			})
+				.then(result=>result.json())
+				.then(testFnc)
+				.catch(err=>console.log(err));
+		}
+		function testFnc(result){
+			document.getElementById('basket').textContent=(document.getElementById('basket').textContent-0)+(document.getElementById('cartNumber').value-0);
+			document.getElementById('cartNumber').value="0";
+		}
+		
 	</script>
 </body>
 </html>

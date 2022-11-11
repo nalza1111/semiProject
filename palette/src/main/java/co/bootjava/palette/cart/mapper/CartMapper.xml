@@ -32,4 +32,15 @@
 		UPDATE CART SET PRODUCT_COUNT=PRODUCT_COUNT-1
 		 WHERE CART_NUMBER=#{cartNumber}
 	</update>
+	
+	<insert id="cartInsertSome">
+		INSERT INTO CART (CART_NUMBER, PRODUCT_NUMBER, PRODUCT_COUNT, PRODUCT_PRICE, id)
+		 VALUES(TEST_SEQ.NEXTVAL,#{productNumber},#{productCount},#{productPrice},#{id})
+	</insert>
+	
+	<update id="cartUpdatePlusSome">
+		UPDATE CART SET PRODUCT_COUNT=PRODUCT_COUNT+#{productCount}
+		 WHERE CART_NUMBER=#{cartNumber}
+	</update>
+	
 </mapper>
