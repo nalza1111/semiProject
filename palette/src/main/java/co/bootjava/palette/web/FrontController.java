@@ -66,6 +66,7 @@ import co.bootjava.palette.product.command.ProductTest;
 import co.bootjava.palette.product.command.SearchProduct;
 import co.bootjava.palette.product.command.UpDelProduct;
 import co.bootjava.palette.product.command.UpDelProductForm;
+import co.bootjava.palette.product.command.productSort;
 import co.bootjava.palette.product.vo.ProductVO;
 import co.bootjava.palette.reply.command.ReplyJoin;
 
@@ -121,6 +122,7 @@ public class FrontController extends HttpServlet {
 		
 		//쇼핑몰(허진주)
 		map.put("/product.do", new Product()); //메인
+		map.put("/productSort.do", new productSort()); //서치정렬뿌려주기
 		map.put("/addProductForm.do", new AddProductForm()); //상품추가서블릿
 		map.put("/addProduct.do", new AddProduct()); //상품추가
 		map.put("/productDetail.do", new ProductDetail());	//제품상세페이지
