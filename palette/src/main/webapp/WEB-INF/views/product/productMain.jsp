@@ -18,6 +18,7 @@
 	</style>
 </head>
 <body>
+	<input type="hidden" id="idCheck" value="${id }">
 	<nav>
 		<form action="searchProduct.do">
 			<select name="categoryCode">
@@ -33,11 +34,11 @@
 			<input type="submit" value="검색">
 		</form>
 		<br>
-		<button class="btnBasket" onClick="location.href='cartForm.do'">
+		<button class="btnBasket" onClick="cartFnc()">
 			장바구니
 			<span id="basket">${cartCountNumber }</span>
 		</button>
-		<button class="btnLog" onClick="location.href='orderHistory.do'">구매내역</button>
+		<button class="btnLog" onClick="oderHisFnc()">구매내역</button>
 		<button class="btnAdmin" onClick="location.href='addProductForm.do'">관리자의상품추가</button>
 		<br>
 	</nav>
@@ -83,6 +84,9 @@
 			} */
 	})
 	function fncAddCart(value){
+		//아이디유무체크
+		cartFnc();
+		
 		console.log(value);
 		let url = "addCart.do?"+value;
 		
@@ -97,6 +101,26 @@
 		console.log(result);
 		document.getElementById('basket').textContent++;
 	}
+	function cartFnc() {//아이디체크 없으면 로그인화면으로
+		let checkId = document.getElementById('idCheck').value;
+		console.log(checkId);
+		if(checkId != ''){
+			location.href='cartForm.do';
+		} else {
+			alert('로그인 후 이용해주세요');
+			location.href='accountLoginForm.do';
+		}
+	}
+	function oderHisFnc() {
+		let checkId = document.getElementById('idCheck').value;
+		if(checkId != ''){
+			location.href='orderHistory.do';
+		} else {
+			alert('로그인 후 이용해주세요');
+			location.href='accountLoginForm.do';
+		}
+	}
+	
 	
 	</script>
 </body>

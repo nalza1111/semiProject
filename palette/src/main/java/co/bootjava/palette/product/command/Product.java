@@ -48,9 +48,6 @@ public class Product implements Command {
 		String id = (String) session.getAttribute("id");
 		//카트세션용
 		CartService dao2 = new CartServiceImpl();
-		if(id==null) {
-			id="guest";
-		}
 		CartVO sessionCart = new CartVO("", "", "", "", id);
 		List<CartVO> cartList = dao2.cartAccountSelectList(sessionCart);
 		int cartCountNumber = 0;

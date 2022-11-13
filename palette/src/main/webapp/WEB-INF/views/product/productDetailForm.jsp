@@ -14,6 +14,7 @@
 	</style>
 </head>
 <body>
+	<input type="hidden" id="idCheck" value="${id }">
 	<hr>
 		<button class="btnBasket" onClick="location.href='cartForm.do'">
 			장바구니
@@ -98,6 +99,15 @@
 				countBox.value++;
 		}
 		function fucCountAdd(){
+			//아이디체크
+			let checkId = document.getElementById('idCheck').value;
+			console.log(checkId);
+			if(checkId != ''){
+				location.href='cartForm.do';
+			} else {
+				alert('로그인 후 이용해주세요');
+				location.href='accountLoginForm.do';
+			}
 			let countBoxValue = document.getElementById('cartNumber').value;
 			let productNumber = document.querySelector('input[type="hidden"]').value;
 			console.log(countBoxValue+" "+productNumber);
