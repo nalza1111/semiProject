@@ -6,6 +6,10 @@
 <meta charset="UTF-8">
 <title>BoardUpdate</title>
 </head>
+<script type="text/javascript">
+	
+</script>
+
 <body>
 	<div align="center">
 		<h1>게시물 수정</h1>
@@ -29,11 +33,20 @@
 				<input type="submit" value="저장">&nbsp;&nbsp; <input
 					type="reset" value="취소">
 			</div>
-			
 		</form>
 	</div>
 	
+	<div id="show">
+	
+	</div>
+	
+	<a href="boardList.do">돌아가기</a>
+
 	<script>
+		let table=document.createElemente('table');
+		let show=document.getElementById('show');
+		show.appendChild(table);
+		let tr=document.createElement('tr');
 		
 	</script>
 </body>

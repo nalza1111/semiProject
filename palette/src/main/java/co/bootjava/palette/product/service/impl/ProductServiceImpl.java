@@ -5,9 +5,9 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import co.bootjava.palette.common.DataSource;
-import co.bootjava.palette.product.ProductVO;
 import co.bootjava.palette.product.mapper.ProductMapper;
 import co.bootjava.palette.product.service.ProductService;
+import co.bootjava.palette.product.vo.ProductVO;
 
 public class ProductServiceImpl implements ProductService {
 	private SqlSession SqlSession = DataSource.getInstance().openSession(true);

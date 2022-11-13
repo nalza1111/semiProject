@@ -6,12 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title><tiles:getAsString name="title"/></title>
+<link rel="stylesheet" href="css/styles.css?after">
 </head>
 <body>
 	<div align ="center">
-		<div><tiles:insertAttribute name="header"/></div>
-		<div><tiles:insertAttribute name="body"/></div><hr>
-		<div><tiles:insertAttribute name="footer"/></div>
+		<div style><tiles:insertAttribute name="header"/></div>
+		<div id="bodyTile" style="min-height:850px;margin-top:50px;"><tiles:insertAttribute name="body"/></div>
+		<div id="footerTile"><tiles:insertAttribute name="footer"/></div>
 	</div>
 </body>
 </html>

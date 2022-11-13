@@ -2,7 +2,7 @@ package co.bootjava.palette.cart.mapper;
 
 import java.util.List;
 
-import co.bootjava.palette.cart.CartVO;
+import co.bootjava.palette.cart.vo.CartVO;
 
 public interface CartMapper {
 	List<CartVO> cartSelectList();
@@ -15,4 +15,6 @@ public interface CartMapper {
 	
 	int cartInsertSome(CartVO vo); //첫장바구니 카운트수지정
 	int cartUpdatePlusSome(CartVO vo);//기존장바구니 카운트수추가
+	
+	int cartDeleteOrder(CartVO vo);//결제완료된거 카트목록지우기
 }

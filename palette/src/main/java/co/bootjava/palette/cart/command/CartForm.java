@@ -6,15 +6,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import co.bootjava.palette.cart.CartVO;
-import co.bootjava.palette.cart.UserOrderDetailVO;
-import co.bootjava.palette.cart.service.CartService;
 import co.bootjava.palette.cart.service.UserOrderDetailService;
-import co.bootjava.palette.cart.service.impl.CartServiceImpl;
 import co.bootjava.palette.cart.service.impl.UserOrderDetailServiceImpl;
+import co.bootjava.palette.cart.vo.UserOrderDetailVO;
 import co.bootjava.palette.common.Command;
 
 public class CartForm implements Command {
@@ -29,6 +23,7 @@ public class CartForm implements Command {
 		
 		UserOrderDetailService dao = new UserOrderDetailServiceImpl();
 		List<UserOrderDetailVO> userOrderDetailList = dao.userOrderDetailSelectList(vo);
+		System.out.println("카트로 넘어가면서 장바구니 목록 보임");
 		for(UserOrderDetailVO v:userOrderDetailList) {
 			System.out.println(v.toString());
 		}

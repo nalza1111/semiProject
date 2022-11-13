@@ -14,4 +14,7 @@ public class FeedVO {
 	private String userEmail;
 	private String userSchool;
 	private String userMajor;
+	private String image;
+	private String content;
+	
 }

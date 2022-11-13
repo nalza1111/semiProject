@@ -5,61 +5,68 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/styles.css?after" type="text/css">
 </head>
 <body>
-	<div align="center">
-		<div>
-			<h1>회원 가입</h1>
-		</div>
+	<div id="joinFormContainer">
+
 		<div>
 			<form id="frm" action="accountJoin.do" onsubmit="return formSubmit()"
 				method="post">
+				<div id="joinFormStart">
+				<br><br>
+					<h2>회원 가입</h2>
+					<hr>
+				</div>
 				<div>
-					<table>
+					<table id="accountTbl">
 						<tr>
-							<th width="150">아이디</th>
-							<td><input type="text" id="id" name="id" required="required">&nbsp;&nbsp;
-								<button type="button" id="btn" value="No" onclick="idCheck()">중복체크</button>
-							</td>
+							<th style="width:120px;">> 아이디</th>
+							<td><input type="text" id="id" name="id" required="required">
+								<button class="frmBtn" type="button" id="btn" value="No"
+									onclick="idCheck()">중복체크</button></td>
 						</tr>
 						<tr>
-							<th>패스워드</th>
+							<th>> 패스워드</th>
 							<td><input type="password" id="password" name="password"
 								required="required"></td>
 						</tr>
 						<tr>
-							<th>패스워드확인</th>
+							<th>> 패스워드확인</th>
 							<td><input type="password" id="password1" name="password1"
 								required="required"></td>
 						</tr>
 						<tr>
-							<th>이름</th>
+							<th>> 이름</th>
 							<td><input type="text" id="name" name="name"
 								required="required"></td>
 						</tr>
 						<tr>
-							<th>이메일</th>
+							<th>> 이메일</th>
 							<td><input type="email" id="email" name="email"
 								required="required">
-								<button type="button" id="emailCheck" onclick="emailSend()">인증번호받기</button><button id="saveNum" value="1" hidden></button></td>
+								<button class="frmBtn" type="button" id="emailCheck"
+									onclick="emailSend()">인증번호받기</button>
+								<button id="saveNum" value="1" ></button></td>
 						</tr>
 						<tr>
-							<th>인증번호</th>
+							<th>> 인증번호</th>
 							<td><input type="text" id="certNum" name="certNum"
 								required="required">
-								<button type="button" id="certificationBtn" value="No"
-									onclick="emailCertification()">인증하기</button></td>
+								<button class="frmBtn" type="button" id="certificationBtn"
+									value="No" onclick="emailCertification()" >인증하기</button></td>
 						</tr>
 						<tr>
-							<th>주소</th>
+							<th>> 주소</th>
 							<td><input type="text" id="postcode" name="postcode"
-								placeholder="우편번호"> <input type="button"
-								onclick="sample6_execDaumPostcode()" value="우편번호 찾기"></td>
+								placeholder="우편번호">
+								<button class="frmBtn" type="button"
+									onclick="sample6_execDaumPostcode()">우편번호 찾기</button></td>
 						</tr>
 						<tr>
 							<th></th>
 							<td><input type="text" id="address" name="address"
-								placeholder="주소" style="width: 300px;"></td>
+								placeholder="주소" style="width: 427px;"></td>
 						</tr>
 						<tr>
 							<th></th>
@@ -69,7 +76,7 @@
 								style="width: 117px;"></td>
 						</tr>
 						<tr>
-							<th>학교</th>
+							<th>> 학교</th>
 							<td><select id="school" name="school">
 									<option>=======선택=======</option>
 									<option>경북대학교</option>
@@ -80,7 +87,7 @@
 							</select></td>
 						</tr>
 						<tr>
-							<th>학과</th>
+							<th>> 학과</th>
 							<td><select id="major" name="major">
 									<option>=======선택=======</option>
 									<option>회화과</option>
@@ -93,12 +100,21 @@
 					</table>
 				</div>
 				<br />
-				<div>
-					<input type="submit" value="회원가입">&nbsp;&nbsp; <input
-						type="reset" value="취소">
+
+				<div class="accountSubmitBox">
+					<button type="submit"
+						class="button button--rayen button--border-thin button--text-thick button--text-upper button--size-s"
+						data-text="PALETTE">
+						<span>가입하기</span>
+					</button>
+					<button type="reset"
+						class="button button--rayen button--border-thin button--text-thick button--text-upper button--size-s"
+						data-text="RESET">
+						<span>새로쓰기</span>
+					</button>
 				</div>
+
 			</form>
-			<div><a href="main.do">홈으로</a></div>
 		</div>
 	</div>
 	<script type="text/javascript">
@@ -157,6 +173,7 @@
 				.then(data=>{
 					if(data != null){
 						alert("인증메일이 발송되었습니다");
+						frm.emailCheck.disabled=true;
 						frm.certNum.focus();
 						frm.saveNum.value=data;
 					}else{

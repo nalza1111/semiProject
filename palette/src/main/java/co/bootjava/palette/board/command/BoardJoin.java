@@ -2,6 +2,7 @@ package co.bootjava.palette.board.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import co.bootjava.palette.board.service.BoardService;
 import co.bootjava.palette.board.service.impl.BoardServiceImpl;
@@ -15,6 +16,10 @@ public class BoardJoin implements Command {
 		// 글등록
 		BoardService dao=new BoardServiceImpl();
 		BoardVO vo=new BoardVO();
+		HttpSession session=request.getSession();
+		String id=(String) session.getAttribute("id");
+		vo.setBoardWriter((String)session.getAttribute("name"));
+		vo.setUserId(id);
 		vo.setBoardTitle(request.getParameter("title"));
 		vo.setBoardContent(request.getParameter("content"))	;
 		int n=dao.boardInsert(vo);

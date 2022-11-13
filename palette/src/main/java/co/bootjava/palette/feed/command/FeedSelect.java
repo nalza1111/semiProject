@@ -20,6 +20,10 @@ public class FeedSelect implements Command {
 		FeedVO feed = new FeedVO();
 		int num = Integer.parseInt(request.getParameter("feedNum"));
 		feed = dao.feedSelected(num); //feedNum으로 1건 가져오기
+		
+		
+		
+		
 		request.setAttribute("feed", feed);
 		
 		return "feed/feedSelect.tiles";

@@ -8,20 +8,48 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div align="center">
-		<%-- <ul>
-			<li><a class="menuLink" href="main.do">Home</a></li>
-			<c:if test="${empty id }">
-				<li><a href="accountJoinForm.do">회원가입</a></li>
-			</c:if>
-			<c:if test="${empty id }">
-				<li><a href="accountLoginForm.do">로그인</a></li>
-			</c:if>
-			<c:if test="${not empty id }">
-				<li><a href="logout.do">Logout</a></li>
-				<li>${name }님접속중</li>
-			</c:if>
-		</ul> --%>
+	<div id="mainWrapper" align="center">
+	<section class="main_section01">
+	<div class="section_title">
+			<div class="title2"></div>
+			<div class="title1"></div>
+		</div>
+	</section>
+	<section class="main_section02">
+		<div class="section_title">
+			<div class="title2">PALETTE가 추천하는 인기작품</div>
+			<div class="title1">대중이 직접 선택한 학생들의 작품을 만나보세요</div>
+		</div>
+		<div>
+		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+			ㅎㅇ
+			<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+		</div>
+	</section>
+	<section class="main_section03">
+	<div class="section_title">
+			<div class="title2"></div>
+			<div class="title1"></div>
+		</div>
+	</section>
+	<section class="main_section04">
+	<div class="section_title">
+			<div class="title2">PALETTE가 추천하는 인기작품</div>
+			<div class="title1">대중이 직접 선택한 학생들의 작품을 만나보세요</div>
+		</div>
+	</section>
+	<section class="main_section05">
+	<div class="section_title">
+			<div class="title2">PALETTE가 추천하는 인기작품</div>
+			<div class="title1">대중이 직접 선택한 학생들의 작품을 만나보세요</div>
+		</div>
+	</section>
+	<section class="main_section06">
+	<div class="section_title">
+			<div class="title2">PALETTE가 추천하는 인기작품</div>
+			<div class="title1">대중이 직접 선택한 학생들의 작품을 만나보세요</div>
+		</div>
+	</section>
 	</div>
 </body>
 </html>

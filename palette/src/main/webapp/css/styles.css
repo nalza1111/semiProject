@@ -1,0 +1,527 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600);
+
+body {
+	margin: 0;
+	padding:0;
+}
+
+#footerTile {
+	transform: translateY(0%);
+	width: 100%;
+	background-color: black;
+	padding: 30px;
+	color: white;
+}
+
+*,
+*:after,
+*:before {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.cf:after {
+	clear: both;
+}
+
+.content {
+	padding: 2em 1em 5em;
+	z-index: 1;
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+.accountSubmitBox {
+	margin-left: 70px;
+}
+
+.button {
+	float: left;
+	min-width: 150px;
+	max-width: 250px;
+	display: block;
+	margin: 1em;
+	padding: 1em 2em;
+	border: 1px solid #999999;
+	border-radius: 3px;
+	background: none;
+	font-size: 1em;
+	font-weight: bolder;
+	color: white;
+	position: relative;
+	z-index: 1;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.button:focus {
+	outline: none;
+}
+
+.button>span {
+	vertical-align: middle;
+	color: black;
+}
+
+.button--rayen {
+	overflow: hidden;
+	padding: 0;
+	width: 230px;
+}
+
+.button--rayen.button--inverted {
+	color: #fff;
+}
+
+.button--rayen::before {
+	content: attr(data-text);
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #000000;
+	-webkit-transform: translate3d(-100%, 0, 0);
+	transform: translate3d(-100%, 0, 0);
+}
+
+.button--rayen.button--inverted::before {
+	background: #fff;
+	color: #37474f;
+}
+
+.button--rayen>span {
+	display: block;
+}
+
+.button--rayen::before,
+.button--rayen>span {
+	padding: 1em 2em;
+	-webkit-transition: -webkit-transform 0.3s;
+	transition: transform 0.3s;
+	-webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+	transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+}
+
+.button--rayen:hover::before {
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+}
+
+.button--rayen:hover>span {
+	-webkit-transform: translate3d(0, 100%, 0);
+	transform: translate3d(0, 100%, 0);
+}
+
+#joinFormContainer {
+	margin-top:50px;
+	min-height:1080px;
+	background-image: url('../image/accountForm.jpg');
+}
+
+#frm {
+	width: 35%;
+	text-align: left;
+}
+
+#joinFormStart h2 {
+	font-size: 21px;
+	margin-left: 30px;
+	color: #333;
+}
+
+#accountTbl {
+	padding: 30px;
+}
+
+#accountTbl th {
+	width: 150px;
+	color: #333;
+	font-size: 17px;
+	padding-left: 20px;
+	box-sizing: border-box;
+}
+
+#accountTbl input {
+	height: 50px;
+	border: 1px solid #cfcfcf;
+	width: 300px;
+	font-size: 1em;
+	box-sizing: border-box;
+	border-radius: 5px;
+	margin-right: 10px;
+}
+
+#accountTbl td {
+	display: flex;
+}
+
+#accountTbl .frmBtn {
+	color: #444444;
+	background: #F3F3F3;
+	border: 1px #DADADA solid;
+	padding: 5px 10px;
+	border-radius: 2px;
+	font-weight: bold;
+	font-size: 9pt;
+	outline: none;
+	margin-top: 10px;
+	height: 30px;
+}
+
+#accountTbl .frmBtn:hover {
+	border: 1px #C6C6C6 solid;
+	box-shadow: 1px 1px 1px #EAEAEA;
+	color: #333333;
+	background: #F7F7F7;
+}
+
+#accountTbl .frmBtn:active {
+	box-shadow: inset 1px 1px 1px #DFDFDF;
+}
+
+#accountTbl #saveNum {
+	display: none;
+}
+
+
+select {
+	width: 300px;
+	padding: .8em .5em;
+	font-family: inherit;
+	font-size: 1em;
+	background:
+		url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	border: 1px solid #cfcfcf;
+	border-radius: 5px;
+}
+
+select::-ms-expand {
+	/* for IE 11 */
+	display: none;
+}
+
+
+#accountLoginContainer{
+	background-color: #eaeaea;
+	width:100%;
+	height:850px;
+}
+#loginLogo{
+	position: absolute;
+	top:12%;
+	left:16%;
+	width:800px;
+	opacity:0.6;
+}
+
+#loginBox {
+	position: absolute;
+	padding-top:40px;
+	top:270px;
+	left:64%;
+	width: 400px;
+	height:350px;
+	background-color:white;
+	border-radius: 20px;
+	border: 2px solid #bababa;
+}
+
+#loginFrm {
+	margin: auto;
+	height: 100%;
+}
+
+#loginFrm #loginTbl tbody{
+	text-align: center;
+}
+#loginFrm #loginTbl tr,button {
+	display: block;
+}
+
+#loginFrm #loginTbl th {
+	text-align:left;
+	width: 70px;
+	font-size: 15px;
+	box-sizing: border-box;
+}
+
+#loginFrm #loginTbl input {
+	height: 40px;
+	border: 1px solid #cfcfcf;
+	width: 200px;
+	font-size: 13px;
+	box-sizing: border-box;
+	border-radius: 5px;
+
+}
+
+#loginSubmitBtn {
+	width:200px;
+	background: #F3F3F3;
+	border: 1px #DADADA solid;
+	padding: 5px 10px;
+	border-radius: 10px;
+	font-weight: bold;
+	font-size: 9pt;
+	outline: none;
+	margin-top:10px;
+	margin-left: 60px;
+	height: 40px;
+	color: #444444;
+	
+}
+
+#loginSubmitBtn:hover {
+	border: 1px #C6C6C6 solid;
+	box-shadow: 1px 1px 1px #EAEAEA;
+	color: #333333;
+	background: #F7F7F7;
+}
+
+#loginSubmitBtn:active {
+	box-shadow: inset 1px 1px 1px #DFDFDF;
+}
+
+#loginBox a {
+	text-decoration: none;
+	color: #aaaaaa;
+}
+
+#loginBox #logo a {
+	display: block;
+	width: 500px;
+	height: 300px;
+	margin: 0 auto;
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-image: url("../image/login_logo.png");
+}
+#findPwTbl tr,button{
+	display: block;
+
+}
+
+#findPwTbl th {
+	text-align:left;
+	width: 70px;
+	font-size: 15px;
+	box-sizing: border-box;
+}
+#findPwSendCon{
+	margin-left:55px;	
+}
+.findPwBtn{
+	display: inline-block;
+	border:0;
+	background-color: white;
+	color:#676767;
+	padding:5px;
+}
+#findPwSend{
+	width:100px;
+	background: #F3F3F3;
+	border: 1px #DADADA solid;
+	padding: 5px 10px;
+	border-radius: 15px;
+	font-weight: bold;
+	font-size: 9pt;
+	outline: none;
+	margin-top: 5px;
+	margin-left: 160px;
+	height: 40px;
+	color: #444444;
+}
+
+#findPwSend:hover {
+	border: 1px #C6C6C6 solid;
+	box-shadow: 1px 1px 1px #EAEAEA;
+	color: #333333;
+	background: #F7F7F7;
+}
+
+#findPwSend:active {
+	box-shadow: inset 1px 1px 1px #DFDFDF;
+}
+
+#findPwTbl input {
+	height: 40px;
+	border: 1px solid #cfcfcf;
+	width: 200px;
+	font-size: 13px;
+	box-sizing: border-box;
+	border-radius: 5px;
+}
+
+.loginSuccess a{
+	text-decoration: none;
+	color: #aaaaaa;	
+}
+
+
+/* 메인화면 css */
+#mainWrapper{
+
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    display:block;
+}
+
+.main_section01{
+	background: url("../image/login_logo.png") center no-repeat;
+    background-size: inherit;
+    background-color:black;
+    width:100%;
+}
+
+.main_section01 .section_title{
+	padding-top:130px;
+
+	
+}
+
+.main_section02{
+	background: url("../image/main_back(1).jpg") center no-repeat;
+    background-size: cover;
+
+}
+
+.main_section02 .section_title{
+	padding-top:70px;
+	padding-bottom:50px;
+}
+
+.main_section02 .title2{
+	font-size: 35px;
+	font-weight: 700;
+    line-height: 1.3;
+}
+.main_section02 .title1{
+	font-size: 21px;
+	margin-top: 15px;
+	color: #222;
+    line-height: 1.6;
+
+    font-weight: 400;
+}
+
+.main_section03{
+	margin-top:30px;
+	background: url("../image/feed_main.jpg") center no-repeat;
+    background-size: cover;
+}
+.main_section03 .section_title{
+	padding-top:400px;
+	padding-bottom:500px;
+}
+.main_section04{
+	/* background: url("../image/main_back(1).jpg") center no-repeat; */
+    background-size: cover;
+
+}
+.main_section05{
+	/* background: url("../image/main_back(1).jpg") center no-repeat; */
+    background-size: cover;
+
+}
+.main_section06{
+	/* background: url("../image/main_back(1).jpg") center no-repeat; */
+    background-size: cover;
+
+}
+
+
+
+
+
+
+/* !!! header 영역입니다 하단 고정해주세요 !!! */
+
+#topMenu {
+	
+	position: fixed;
+	top : 0%;
+	height: 50px;
+	width: 100%;
+	color: #333;
+	background-color: #fff;
+	border: 1px solid #cfcfcf;
+}
+
+
+#topMenu ul {
+	position: relative;
+	margin: 0;
+}
+
+#topMenu #logo a {
+	display: block;
+	width: 150px;
+	height: 50px;
+	margin: 0 auto;
+	margin-right: 30px;
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-image: url("../image/logo.jpg");
+}
+
+#topMenu #leftUl li {
+	list-style: none;
+	color: #333;
+	float: left;
+	line-height: 50px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+#topMenu #rightUl {
+	float: right;
+	margin-right: 30px;
+}
+
+#topMenu #rightUl li {
+	list-style: none;
+	color: #333;
+	float: left;
+	line-height: 50px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+#topMenu #rightUl .menuLink {
+	text-decoration: none;
+	color: #333;
+	display: block;
+	width: 100px;
+	height: 48px;
+	font-size: 0.8em;
+	line-height: 50px;
+	font-family: nanumbarungothic, sans-serif;
+}
+
+#topMenu .menuLink {
+	text-decoration: none;
+	color: #333;
+	display: block;
+	width: 100px;
+	height: 50px;
+	font-size: 1em;
+	font-weight: bold;
+	font-family: nanumbarungothic, sans-serif;
+}
+
+#topMenu .menuLink:hover {
+	color: black;
+	background-color: #eeeeee;
+	height: 48px;
+}
+
+#topMenu #logo a:hover {
+	background-color: #ffffff;
+	height: 45px;
+}

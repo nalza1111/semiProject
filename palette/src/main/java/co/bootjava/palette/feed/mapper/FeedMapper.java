@@ -10,7 +10,7 @@ public interface FeedMapper {
 	int feedInsert(FeedVO vo);
 	int feedDelete(FeedVO vo);
 	int feedUpdate(FeedVO vo);
-	FeedVO feedSelected(String feedNum);
+	FeedVO feedSelected(int feedNum);
 	
 	
 }

@@ -19,16 +19,19 @@ public class AccountLogin implements Command {
 		HttpSession session = request.getSession();
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
-		String message = "아이디 또는 패스워드가 틀립니다.";
+		String message = "로그인에 실패하였습니다.. 잘 생각해 보세요";
 		account = dao.accountLogin(id,password);
 		if(account != null) {
 			session.setAttribute("id", account.getId());
 			session.setAttribute("name", account.getName());
 			session.setAttribute("role", account.getRole());
-			message = account.getName() + "님 환영합니다.";
+			message = account.getName() + "님 환영합니다";
+			request.setAttribute("message", message);
+			return "account/accountLogin.tiles";
+			
 		}
 		request.setAttribute("message", message);
-		return "account/accountLogin.tiles";
+		return "account/accountLoginF.tiles";
 	}
 
 }

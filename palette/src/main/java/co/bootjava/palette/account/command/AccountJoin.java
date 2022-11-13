@@ -24,7 +24,7 @@ public class AccountJoin implements Command {
 		vo.setSchool(request.getParameter("school"));
 		vo.setMajor(request.getParameter("major"));
 		dao.AccountInsert(vo);
-		return "account/accountJoin.tiles";
+		return "account/accountLoginForm.tiles";
 	}
 
 }

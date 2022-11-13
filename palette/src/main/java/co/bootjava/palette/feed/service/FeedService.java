@@ -11,6 +11,6 @@ public interface FeedService {
 	int feedInsert(FeedVO vo);
 	int feedDelete(FeedVO vo);
 	int feedUpdate(FeedVO vo);
-	FeedVO feedSelected(String feedNum);
+	
 	
 }

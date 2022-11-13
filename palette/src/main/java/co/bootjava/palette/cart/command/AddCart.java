@@ -9,9 +9,9 @@ import javax.servlet.http.HttpSession;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import co.bootjava.palette.cart.CartVO;
 import co.bootjava.palette.cart.service.CartService;
 import co.bootjava.palette.cart.service.impl.CartServiceImpl;
+import co.bootjava.palette.cart.vo.CartVO;
 import co.bootjava.palette.common.Command;
 
 public class AddCart implements Command {

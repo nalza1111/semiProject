@@ -11,7 +11,7 @@
 		<h1>게시판 메인</h1>
 		<ul>
 			<li style="list-style: none;"><a href="boardMain.do">홈</a></li>
-			<li style="list-style: none;"><a href="boardList.do">게시판</a></li>
+			<li style="list-style: none;"><a href="boardList.do">자유게시판</a></li>
 			<li style="list-style: none;"><a href="main.do">메인</a></li>
 		</ul>
 	</div>

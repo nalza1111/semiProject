@@ -5,9 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/styles.css?ver=1">
 </head>
 <body>
-<div>
+<div align="center">
 	<h1>BootJAVA Copy@write by Sehoon</h1>
 </div>
 </body>

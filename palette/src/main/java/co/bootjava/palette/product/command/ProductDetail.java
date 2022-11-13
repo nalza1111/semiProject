@@ -6,13 +6,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import co.bootjava.palette.cart.CartVO;
 import co.bootjava.palette.cart.service.CartService;
 import co.bootjava.palette.cart.service.impl.CartServiceImpl;
+import co.bootjava.palette.cart.vo.CartVO;
 import co.bootjava.palette.common.Command;
-import co.bootjava.palette.product.ProductVO;
 import co.bootjava.palette.product.service.ProductService;
 import co.bootjava.palette.product.service.impl.ProductServiceImpl;
+import co.bootjava.palette.product.vo.ProductVO;
 
 public class ProductDetail implements Command {
 

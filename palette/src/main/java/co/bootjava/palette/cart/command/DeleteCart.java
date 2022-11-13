@@ -4,9 +4,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import co.bootjava.palette.cart.CartVO;
 import co.bootjava.palette.cart.service.CartService;
 import co.bootjava.palette.cart.service.impl.CartServiceImpl;
+import co.bootjava.palette.cart.vo.CartVO;
 import co.bootjava.palette.common.Command;
 
 public class DeleteCart implements Command {

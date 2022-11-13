@@ -15,13 +15,16 @@ public class BoardSelect implements Command {
 		// 게시판 상세보기 하는 곳.
 		BoardService dao=new BoardServiceImpl();
 		BoardVO vo=new BoardVO();
+		vo.setUserId(request.getParameter("id"));
 		vo.setBoardNumber(Integer.parseInt(request.getParameter("number")));	
 		vo.setBoardTitle(request.getParameter("title"));
 		vo.setBoardContent(request.getParameter("content"));
 		vo.setBoardWriter(request.getParameter("writer"));
-		vo.setViewCnt(Integer.parseInt( request.getParameter("cnt")));
+		vo.setViewCnt(Integer.parseInt(request.getParameter("cnt")));
 		vo.setCreateDate(request.getParameter("date"));
 		dao.boardSelect(vo);
+		dao.boardUpdate(vo);
+		
 		request.setAttribute("board",vo);
 		return "board/boardSelectForm.tiles";
 	}

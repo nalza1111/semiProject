@@ -1,6 +1,6 @@
 <%@page import="org.apache.velocity.tools.view.WebappUberspector.GetAttributeExecutor"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="co.bootjava.palette.cart.CartVO"%>
+<%@page import="co.bootjava.palette.cart.vo.CartVO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -37,14 +37,14 @@
 			장바구니
 			<span id="basket">${cartCountNumber }</span>
 		</button>
-		<button class="btnLog">구매내역</button>
+		<button class="btnLog" onClick="location.href='orderHistory.do'">구매내역</button>
 		<button class="btnAdmin" onClick="location.href='addProductForm.do'">관리자의상품추가</button>
 		<br>
 	</nav>
 	<hr>
 	<div>
 		[정렬]<a href="product.do?job=search">조회순</a>|
-			 <a href="product.do?job=date">출시일순</a>|
+			 <a href="product.do?job=date">예전출시일부터</a>|
 			 <a href="product.do?job=highPrice">높은가격부터</a>|
 			 <a href="product.do?job=lowPrice">낮은가격부터</a>
 	</div>

@@ -18,14 +18,14 @@ public class ExhibitServiceImpl implements ExhibitService {
 		return map.exhibitSelectList();
 	}
 	@Override
-	public ExhibitVO exhibitSelect(ExhibitVO vo) {
+	public List<ExhibitVO> exhibitSelect() {
 		// 현재 전시 리스트
-		return map.exhibitSelect(vo);
+		return map.exhibitSelect();
 	}
 	@Override
-	public ExhibitVO exhibitNumSelect(ExhibitVO vo) {
+	public ExhibitVO exhibitNumSelect(int exhibitNum) {
 		// 해당 전시 목록만 출력
-		return map.exhibitNumSelect(vo);
+		return map.exhibitNumSelect(exhibitNum);
 	}
 	
 	//관리자
@@ -43,6 +43,12 @@ public class ExhibitServiceImpl implements ExhibitService {
 	public int exhibitDelete(ExhibitVO vo) {
 		// 전시 삭제 (관리자)
 		return map.exhibitDelete(vo);
+	}
+	
+	@Override
+	public List<ExhibitVO> exhibitImageList(ExhibitVO vo) {
+		// 해당 전시의 이미지 리스트 출력
+		return map.exhibitImageList(vo);
 	}
 	
 

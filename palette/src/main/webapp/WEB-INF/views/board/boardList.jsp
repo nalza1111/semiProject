@@ -7,17 +7,22 @@
 <head>
 <meta charset="UTF-8">
 <title>게시물 목록화면</title>
+
+</head>
 <script>
+
 	
 </script>
-</head>
+
 <body>
 
 	<div align="center">
-		<h3>게시물 등록</h3>
-			<a href="boardJoinForm.do">등록</a>
+		
+		<h1>자유게시판</h1>	
 		<hr>
-		<h1>게시물 목록보기</h1>
+		<c:if test="${not empty id}">
+		<a href="boardJoinForm.do">글쓰기</a> 
+		</c:if>
 		<div>
 			<table border="1">
 				<tr>
@@ -30,8 +35,8 @@
 				<c:forEach items="${boards}" var="b">
 					<tr>
 						<td>${b.boardNumber}</td>
-						<td><a href="boardSelect.do?date=${b.createDate}&number=${b.boardNumber}&title=${b.boardTitle}&content=${b.boardContent}&writer=${b.boardWriter}&cnt=${b.viewCnt}">${b.boardTitle}</a></td>
-						<td><a href="boardSelect.do?date=${b.createDate}&number=${b.boardNumber}&title=${b.boardTitle}&content=${b.boardContent}&writer=${b.boardWriter}&cnt=${b.viewCnt}">${b.boardContent}</a></td>
+						<td><a href="boardSelect.do?id=${b.userId}&date=${b.createDate}&number=${b.boardNumber}&title=${b.boardTitle}&content=${b.boardContent}&writer=${b.boardWriter}&cnt=${b.viewCnt}">${b.boardTitle}</a></td>
+						<td><a href="boardSelect.do?id=${b.userId}&date=${b.createDate}&number=${b.boardNumber}&title=${b.boardTitle}&content=${b.boardContent}&writer=${b.boardWriter}&cnt=${b.viewCnt}">${b.boardContent}</a></td>
 						<td>${b.boardWriter}</td>
 						<td>${b.viewCnt }</td>
 					</tr>

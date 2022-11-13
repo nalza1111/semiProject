@@ -46,17 +46,29 @@
 				<th>image</th>
 				<td>
 					<img class="product-img" id="product-img" src="" style="width:50px;" alt="..." />
-					<input type="file" name="image" id="image" onchange="readURL(this);"> 
+					<input type="file" name="image" id="image" onchange="readURL(this);"accept="image/*" > 
 				</td>
 			</tr>
 		</table>
 		<input type="submit" id="submit" name="submit">
 		<input type="reset">
 	</form>
+	<a href="product.do">뒤로</a>
 	<script>
 	function readURL(input) {
+		// files 로 해당 파일 정보 얻기.
+		let fileName = input.files[0].name;
+		console.log(fileName);
+		// 정규식으로 확장자 체크
+		if(!/\.(jpg|jpeg|png)$/i.test(fileName)){
+			alert('jpeg, jpg, png 파일만 선택해 주세요.\n\n현재 파일 : ' + fileName);
+			input.outerHTML = input.outerHTML;
+			document.getElementById('product-img').src = "";
+			return false;
+			
+		} 
 		document.getElementById('product-img').src = "";
-	  if (input.files && input.files[0]) {
+		if (input.files && input.files[0]) {
 	    let reader = new FileReader();
 	    reader.onload = function(e) {
 	      document.getElementById('product-img').src = e.target.result;
@@ -66,6 +78,7 @@
 	    document.getElementById('product-img').src = "";
 	  }
 	}
+	
 	</script>
 </body>
 </html>

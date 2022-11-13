@@ -5,15 +5,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/styles.css?after" type="text/css">
 </head>
 <body>
-	<div align="center">
+	<div class = "loginSuccess" align="center">
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 		<div>
-			<h1>${message }</h1>
+			<h1>" ${message } "</h1>
 		</div>
 		<h3>
-			<a href="main.do">홈 가기</a>
+			<a href="main.do">메인화면으로</a>
 		</h3>
+		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	</div>
 </body>
 </html>

@@ -4,9 +4,10 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import co.bootjava.palette.cart.UserOrderDetailVO;
+import co.bootjava.palette.account.vo.AccountVO;
 import co.bootjava.palette.cart.mapper.UserOrderDetailMapper;
 import co.bootjava.palette.cart.service.UserOrderDetailService;
+import co.bootjava.palette.cart.vo.UserOrderDetailVO;
 import co.bootjava.palette.common.DataSource;
 
 public class UserOrderDetailServiceImpl implements UserOrderDetailService {
@@ -36,6 +37,11 @@ public class UserOrderDetailServiceImpl implements UserOrderDetailService {
 	@Override
 	public int userOrderDetailUpdateMinus(UserOrderDetailVO vo) {
 		return map.userOrderDetailUpdateMinus(vo);
+	}
+
+	@Override
+	public AccountVO selectId(String id) {
+		return map.selectId(id);
 	}
 
 }

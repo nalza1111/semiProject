@@ -19,8 +19,6 @@ public class PwSend implements Command {
 		String email = account.getEmail();
 		String password = account.getPassword();
 		
-		
-		
 		String subject = "Palette 비밀번호 찾기";
 		String authMail = "비밀번호는 " + password + "입니다.";
 		

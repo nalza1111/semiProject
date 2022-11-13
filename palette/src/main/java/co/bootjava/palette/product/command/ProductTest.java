@@ -10,9 +10,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import co.bootjava.palette.common.Command;
-import co.bootjava.palette.product.ProductVO;
 import co.bootjava.palette.product.service.ProductService;
 import co.bootjava.palette.product.service.impl.ProductServiceImpl;
+import co.bootjava.palette.product.vo.ProductVO;
 
 public class ProductTest implements Command {
 

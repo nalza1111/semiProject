@@ -2,9 +2,7 @@ package co.bootjava.palette.product.mapper;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-
-import co.bootjava.palette.product.ProductVO;
+import co.bootjava.palette.product.vo.ProductVO;
 
 public interface ProductMapper {
 	List<ProductVO> productSelectList();

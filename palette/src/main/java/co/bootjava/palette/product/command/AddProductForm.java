@@ -9,7 +9,7 @@ public class AddProductForm implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		return "product/productUpDelForm.tiles";
+		return "product/addProductForm.tiles";
 	}
 
 }

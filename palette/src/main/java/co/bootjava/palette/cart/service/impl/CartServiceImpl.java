@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import co.bootjava.palette.cart.CartVO;
 import co.bootjava.palette.cart.mapper.CartMapper;
 import co.bootjava.palette.cart.service.CartService;
+import co.bootjava.palette.cart.vo.CartVO;
 import co.bootjava.palette.common.DataSource;
 
 public class CartServiceImpl implements CartService{
@@ -55,6 +55,11 @@ public class CartServiceImpl implements CartService{
 	@Override
 	public int cartUpdatePlusSome(CartVO vo) {
 		return map.cartUpdatePlusSome(vo);
+	}
+
+	@Override
+	public int cartDeleteOrder(CartVO vo) {
+		return map.cartDeleteOrder(vo);
 	}
 
 

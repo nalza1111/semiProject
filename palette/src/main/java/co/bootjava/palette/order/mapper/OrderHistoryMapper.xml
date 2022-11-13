@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="co.bootjava.palette.order.mapper.OrderHistoryMapper">
+	
+	<insert id="orderHistoryInsert">
+		INSERT INTO ORDER_HISTORY VALUES(TEST_SEQ.NEXTVAL, #{id}, SYSDATE, #{address}, #{name}, #{tel}, 1)
+	</insert>
+	
+	<select id="orderHistorySelectOne" resultType="co.bootjava.palette.order.vo.OrderHistoryVO">
+		SELECT * FROM(SELECT * FROM ORDER_HISTORY WHERE ID=#{id} ORDER BY ORDER_DATE DESC) WHERE ROWNUM=1
+	</select>
+	
+	<!-- 잘못만든거 사용하지말것 -->
+	<update id="orderHistoryUpdate">
+		UPDATE ORDER_HISTORY SET PAY_DO = 0 WHERE ID = #{id}
+	</update>
+	
+	<delete id="orderHistoryDelete">
+		DELETE FROM ORDER_HISTORY WHERE ID = #{id} AND ORDER_NUMBER IS NULL
+	</delete>
+	
+	<update id="orderHistoryUpdateTF">
+		UPDATE ORDER_HISTORY SET PAY_DO = 0
+            WHERE ID=#{id} AND
+            ORDER_DATE=(
+                        SELECT MAX(ORDER_DATE) FROM ORDER_HISTORY
+                        WHERE ID=#{id} )
+	</update>
+	
+	<select id="orderHistoryList" resultType="co.bootjava.palette.order.vo.OrderHistoryVO">
+		SELECT * FROM ORDER_HISTORY
+	</select>
+	
+	<select id="orderHistoryPerList" resultType="co.bootjava.palette.order.vo.OrderHistoryVO">
+		SELECT * FROM ORDER_HISTORY WHERE ID = #{id}
+	</select>
+</mapper>

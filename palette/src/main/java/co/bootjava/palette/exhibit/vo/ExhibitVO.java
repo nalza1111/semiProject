@@ -13,4 +13,8 @@ public class ExhibitVO {
 	private String exhibitSchool;
 	private String exhibitMajor;
 	private String image;
+	private String content;
+	
+	private String filesystemName;
+	private String originalFileName;
 }

@@ -4,7 +4,7 @@
 <mapper namespace="co.bootjava.palette.board.mapper.BoardMapper">
 	<select id="boardSelectList"
 		resultType="co.bootjava.palette.board.vo.BoardVO">
-		SELECT * FROM BOARD
+		SELECT * FROM BOARD order by create_date desc
 	</select>
 
 	<select id="boardSelect"
@@ -15,18 +15,19 @@
 	<insert id="boardInsert"
 		parameterType="co.bootjava.palette.board.vo.BoardVO">
 		INSERT INTO BOARD
-		VALUES(BOARD_SEQ.NEXTVAL,'123',#{boardTitle},#{boardContent},'123',SYSDATE,0)
+		VALUES(BOARD_SEQ.NEXTVAL,#{userId},#{boardTitle},#{boardContent},#{boardWriter},SYSDATE,0)
 	</insert>
 
 	<delete id="boardDelete"
 		parameterType="co.bootjava.palette.board.vo.BoardVO">
-
+		DELETE FROM BOARD WHERE BOARD_NUMBER=${boardNumber}
 	</delete>
 
 	<update id="boardUpdate"
 		parameterType="co.bootjava.palette.board.vo.BoardVO">
-		UPDATE BOARD SET BOARD_TITLE = #{boardTitle} AND
-		BOARD_CONTENT=#{boardContent} WHERE BOARD_NUMBER=#{boardNumber}
+		UPDATE BOARD SET BOARD_TITLE='${boardTitle}'
+		,BOARD_CONTENT='${boardContent}',CREATE_DATE=SYSDATE
+		,VIEW_CNT=VIEW_CNT+1 WHERE USER_ID='${userId}'
 	</update>
 
 </mapper>

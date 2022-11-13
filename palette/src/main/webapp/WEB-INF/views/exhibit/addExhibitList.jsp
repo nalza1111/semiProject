@@ -9,7 +9,7 @@
 <body>
 <div align="center">
 	<div><h1>${message }</h1></div>
-	<h3><a href="main.do">홈 가기</a></h3>
+	<h3><a href="exhibitList.do">목록 가기</a></h3>
 </div>
 </body>
 </html>

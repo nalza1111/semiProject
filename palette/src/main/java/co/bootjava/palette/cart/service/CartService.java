@@ -2,7 +2,7 @@ package co.bootjava.palette.cart.service;
 
 import java.util.List;
 
-import co.bootjava.palette.cart.CartVO;
+import co.bootjava.palette.cart.vo.CartVO;
 
 public interface CartService {
 	List<CartVO> cartSelectList();
@@ -15,4 +15,6 @@ public interface CartService {
 	
 	int cartInsertSome(CartVO vo); //첫장바구니 카운트수지정
 	int cartUpdatePlusSome(CartVO vo);//기존장바구니 카운트수추가
+	
+	int cartDeleteOrder(CartVO vo);
 }

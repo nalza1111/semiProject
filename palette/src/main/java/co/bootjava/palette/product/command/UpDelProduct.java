@@ -9,9 +9,9 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import co.bootjava.palette.common.Command;
-import co.bootjava.palette.product.ProductVO;
 import co.bootjava.palette.product.service.ProductService;
 import co.bootjava.palette.product.service.impl.ProductServiceImpl;
+import co.bootjava.palette.product.vo.ProductVO;
 
 public class UpDelProduct implements Command {
 
@@ -19,8 +19,8 @@ public class UpDelProduct implements Command {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		//상품수정 서블릿
 //		String saveDir = request.getServletContext().getRealPath("upload");
-//집 절대경로		String saveDir ="C:/Users/82104/git/semiProject/palette/src/main/webapp/image";
-		String saveDir ="D:/Dev/semiGit/palette/src/main/webapp/image";
+		String saveDir ="C:/Users/82104/git/semiProject/palette/src/main/webapp/image";
+//		String saveDir ="D:/Dev/semiGit/palette/src/main/webapp/image";
 		System.out.println(saveDir);
 		String encoding = "UTF-8";
 		int maxSize = 500 * 1024 * 1024; //500mb로 이미지 크기 제한

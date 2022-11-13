@@ -13,7 +13,7 @@
 	</select>
 	
 	<select id="feedSelected" resultType="co.bootjava.palette.feed.vo.FeedVO">
-		SELECT * FROM FEED
+		SELECT * FROM FEED 
 		WHERE FEED_NUM = #{feedNum}
 	</select>
 

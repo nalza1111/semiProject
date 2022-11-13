@@ -42,15 +42,11 @@ public class FeedServiceImpl implements FeedService {
 	}
 
 	
-	@Override
-	public FeedVO feedSelected(String feedNum) {
-		return map.feedSelected(feedNum);
-	}
 
 	@Override
 	public FeedVO feedSelected(int feedNum) {
-		// TODO Auto-generated method stub
-		return null;
+		return  map.feedSelected(feedNum);
 	}
+
 
 }
