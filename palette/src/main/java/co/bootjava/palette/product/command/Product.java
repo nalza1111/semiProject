@@ -21,7 +21,7 @@ public class Product implements Command {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		List<ProductVO> list = new ArrayList<ProductVO>();
 		ProductService dao = new ProductServiceImpl();
-		//제품정렬
+		//제품정렬--dead code 정렬조건없는 메인화면 외에는 필요없어짐
 		String job = request.getParameter("job");
 		if(job!=null&&job.equals("search")) {
 			list = dao.productSelectSortList(7);
@@ -40,9 +40,35 @@ public class Product implements Command {
 			list = dao.productSelectSortList(8);
 		}
 		request.setAttribute("list", list);
+		int b01,b02,b03,b04,b05,b06,b07;
+		b01 = b02 = b03 = b04 = b05 = b06 = b07 = 0;
 		for(ProductVO vo: list) {
-			System.out.println(vo.getProductName());
+			if(vo.getCategoryCode().equals("B01")) {
+				b01++;
+			} else if(vo.getCategoryCode().equals("B02")) {
+				b02++;
+			} else if(vo.getCategoryCode().equals("B03")) {
+				b03++;
+			} else if(vo.getCategoryCode().equals("B04")) {
+				b04++;
+			}  else if(vo.getCategoryCode().equals("B05")) {
+				b05++;
+			} else if(vo.getCategoryCode().equals("B06")) {
+				b06++;
+			} else if(vo.getCategoryCode().equals("B07")) {
+				b07++;
+			} else {
+				
+			}
 		}
+		request.setAttribute("allSum", list.size());
+		request.setAttribute("b01", b01);
+		request.setAttribute("b02", b02);
+		request.setAttribute("b03", b03);
+		request.setAttribute("b04", b04);
+		request.setAttribute("b05", b05);
+		request.setAttribute("b06", b06);
+		request.setAttribute("b07", b07);
 		//장바구니카운트용
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");

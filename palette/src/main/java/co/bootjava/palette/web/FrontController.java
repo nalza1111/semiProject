@@ -67,6 +67,7 @@ import co.bootjava.palette.product.command.SearchProduct;
 import co.bootjava.palette.product.command.UpDelProduct;
 import co.bootjava.palette.product.command.UpDelProductForm;
 import co.bootjava.palette.product.command.productSort;
+import co.bootjava.palette.product.commandr.SearchProductBtn;
 import co.bootjava.palette.product.vo.ProductVO;
 import co.bootjava.palette.reply.command.ReplyJoin;
 
@@ -133,6 +134,7 @@ public class FrontController extends HttpServlet {
 		map.put("/deleteCart.do", new DeleteCart());//장바구니 삭제 버튼
 		map.put("/addCartSome.do", new AddCartSome());//제품상세페이지에서 제품추가
 		map.put("/searchProduct.do", new SearchProduct());//제품페이지에서 검색
+		map.put("/searchProductBtn.do", new SearchProductBtn());//제품페이지에서 글누르고 카테고리검색
 		map.put("/upDelProductForm.do", new UpDelProductForm());//제품수정폼으로 이동
 		map.put("/upDelProduct.do", new UpDelProduct());//제품수정
 		map.put("/delProduct.do", new DelProduct());//제품삭제

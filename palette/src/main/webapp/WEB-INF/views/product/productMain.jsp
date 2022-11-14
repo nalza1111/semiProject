@@ -51,6 +51,12 @@
 		.single_product_item:hover  .fa-solid{
 			visibility: visible;
 		}
+		.list li a:hover{
+			cursor: pointer;
+		}
+		.input-group-prepend{
+			cursor: pointer;
+		}
 	</style>
 </head>
 
@@ -64,8 +70,7 @@
             <div class="container" style="display:none;">
                 <form class="d-flex justify-content-between search-inner" >
                     <input type="text" class="form-control" id="search_input" placeholder="Search Here">
-                    <button type="submit" class="btn"></button>
-                    <span class="ti-close" id="close_search" title="Close Search"></span>
+                    <button type="submit" class="btn-33"><span class="ti-close" id="close_search" title="Close Search"></span></button>
                 </form>
             </div>
         </div>
@@ -102,32 +107,36 @@
 						<div class="widgets_inner">
 							<ul class="list">
 								<li>
-									<a href="#">미술작품</a>
-									<span>(250)</span>
+									<a>전체</a>
+									<span>${allSum}</span>
 								</li>
 								<li>
-									<a href="#">조형물</a>
-									<span>(250)</span>
+									<a>미술작품</a>
+									<span>${b01}</span>
 								</li>
 								<li>
-									<a href="#">사진</a>
-									<span>(250)</span>
+									<a>조형물</a>
+									<span>${b02}</span>
 								</li>
 								<li>
-									<a href="#">판화</a>
-									<span>(250)</span>
+									<a>사진</a>
+									<span>${b03}</span>
 								</li>
 								<li>
-									<a href="#">디지털 아트</a>
-									<span>(250)</span>
+									<a>판화</a>
+									<span>${b04}</span>
 								</li>
 								<li>
-									<a href="#">콜라주</a>
-									<span>(250)</span>
+									<a>디지털 아트</a>
+									<span>${b05}</span>
 								</li>
 								<li>
-									<a href="#">섬유예술</a>
-									<span>(250)</span>
+									<a>콜라주</a>
+									<span>${b06}</span>
+								</li>
+								<li>
+									<a>섬유예술</a>
+									<span>${b07}</span>
 								</li>
 							</ul>
 						</div>
@@ -176,7 +185,7 @@
 							</div>
 							<div class="single_product_menu d-flex">
 								<div class="input-group">
-									<input type="text" class="form-control" placeholder="search"
+									<input type="text" class="form-control" name="form-control" id="form-control" placeholder="search"
 										aria-describedby="inputGroupPrepend">
 									<div class="input-group-prepend">
 										<span class="input-group-text" id="inputGroupPrepend"><i class="fa fa-search"></i>
@@ -214,21 +223,6 @@
 
 	
 		<nav>
-			<form action="searchProduct.do">
-				<select name="categoryCode">
-					<option value="all">::전체::</option>
-					<option value="B01">미술작품</option>
-					<option value="B02">조형물</option>
-					<option value="B03">사진</option>
-					<option value="B04">그림</option>
-					<option value="B05">판화</option>
-					<option value="B06">디지털 아트</option>
-					<option value="B07">콜라주</option>
-					<option value="B08">섬유 예술</option>
-				</select> 검색<input type="text" id="search" name="search"> <input
-					type="submit" value="검색">
-			</form>
-			<hr>
 			<button class="btnBasket" onClick="cartFnc()">
 				장바구니 <span id="basket">${cartCountNumber }</span>
 			</button>
@@ -239,13 +233,26 @@
 		<hr>
 	<!--- THE END WORK PAGE PROJECTS --->
 	<script>
-		window.onload =  function aaa() {
-			let url = "productTest.do";
-			fetch(url)
-				.then(result=>result.json())
-				.then(listDo2)
-				.catch(err=>console.log(err))
+		//서치버튼
+		let glass = document.querySelector('.input-group-prepend');
+		glass.addEventListener('click', fncSearch)
+
+		function fncSearch(){
+			let search = document.querySelector('#form-control').value;
+			console.log(search);
+			document.querySelector('.form-control').value='';//왜??
+
+			let url = "searchProduct.do?search=" + search;
+
+			fetch(url, {
+				headers: { 'Content-type': 'application/x-www-form-urlencoded' }
+			})
+				.then(result => result.json())
+				.then(listDo)
+				.catch(err => console.log(err));
 		}
+
+
 		function fncAddCart(value) {
 			//아이디유무체크
 			function cartFnc() {//아이디체크 없으면 로그인화면으로
@@ -258,7 +265,7 @@
 				}
 			}
 			console.log(value);
-			let url = "addCart.do?" + value;
+			let url = "addCart.do?" + value; //???
 
 			fetch(url, {
 				headers: { 'Content-type': 'application/x-www-form-urlencoded' }
@@ -279,7 +286,7 @@
 			} else {
 				alert('로그인 후 이용해주세요');
 				location.href = 'accountLoginForm.do';
-			}
+				}
 		}
 		function oderHisFnc() {
 			let checkId = document.getElementById('idCheck').value;
@@ -291,7 +298,48 @@
 			}
 		}
 	</script>
-		<script>
+	<script>
+		//깔아주기용
+		window.onload =  function aaa() {
+				let url = "productTest.do";
+				fetch(url)
+					.then(result=>result.json())
+					.then(listDo2)
+					.catch(err=>console.log(err))
+			}	
+		//카테고리버튼누름
+		let cateText = document.querySelectorAll('.list>li>a');
+		cateText.forEach(row=>{
+			row.addEventListener('click', cateSearch);
+		})
+		function cateSearch(){
+			txt = this.textContent;
+			console.log(txt);
+			if(txt=='전체'){
+				txt='all';;
+			} if(txt=='미술작품') {
+				txt='B01';;
+			} if(txt=='조형물') {
+				txt='B02';;
+			} if(txt=='사진') {
+				txt='B03';;
+			} if(txt=='판화') {
+				txt='B04';;
+			} if(txt=='디지털 아트') {
+				txt='B05';;
+			}  if(txt=='콜라주') {
+				txt='B06';;
+			} if(txt=='섬유예술') {
+				txt='B07';;
+			}
+			let url = "searchProductBtn.do?job=" + txt;
+			fetch(url)
+				.then(result => result.json())
+				.then(listDo)
+				.catch(err => console.log(err));
+		}
+
+		//셀렉트 조회 펑션
 		function fncList() {
 			let text = document.getElementById('select-option-sort').value;
 			console.log(text);
@@ -301,7 +349,8 @@
 				.then(listDo)
 				.catch(err => console.log(err));
 		}
-		function listDo2(result) { //화면 처음 열 때
+		//화면 처음 열 때
+		function listDo2(result) {
 			console.log(result);
 			console.log(result.length);
 			document.querySelector('.single_product_menu>p>span').textContent=result.length;
@@ -309,8 +358,8 @@
 				makeItemDiv(item);
 			});
 		}
-		
-		function listDo(result) { //조회
+		//셀렉트 조회
+		function listDo(result) { 
 			console.log(result);
 			console.log(result.length);
 			console.log(result);
@@ -348,37 +397,36 @@
 			//good.querySelector('.btnAddBasket').value = 'productNumber=' + item.productNumber + '&productPrice=' + item.productPrice;
 			good.querySelector('.single_product_item').setAttribute('style',"display:'';")
 			allList.append(good);
-
 		}
-		</script>
-		<!-- jquery plugins here-->
-		<script src="js/hjjjs/jquery-1.12.1.min.js"></script>
-		<!-- popper js -->
-		<script src="js/hjjjs/popper.min.js"></script>
-		<!-- bootstrap js -->
-		<script src="js/hjjjs/bootstrap.min.js"></script>
-		<!-- easing js -->
-		<script src="js/hjjjs/jquery.magnific-popup.js"></script>
-		<!-- swiper js -->
-		<script src="js/hjjjs/swiper.min.js"></script>
-		<!-- swiper js -->
-		<script src="js/hjjjs/masonry.pkgd.js"></script>
-		<!-- particles js -->
-		<script src="js/hjjjs/owl.carousel.min.js"></script>
-		<script src="js/hjjjs/jquery.nice-select.min.js"></script>
-		<!-- slick js -->
-		<script src="js/hjjjs/slick.min.js"></script>
-		<script src="js/hjjjs/jquery.counterup.min.js"></script>
-		<script src="js/hjjjs/waypoints.min.js"></script>
-		<script src="js/hjjjs/contact.js"></script>
-		<script src="js/hjjjs/jquery.ajaxchimp.min.js"></script>
-		<script src="js/hjjjs/jquery.form.js"></script>
-		<script src="js/hjjjs/jquery.validate.min.js"></script>
-		<script src="js/hjjjs/mail-script.js"></script>
-		<script src="js/hjjjs/stellar.js"></script>
-		<script src="js/hjjjs/price_rangs.js"></script>
-		<!-- custom js -->
-		<script src="js/hjjjs/custom.js"></script>
+	</script>
+	<!-- jquery plugins here-->
+	<script src="js/hjjjs/jquery-1.12.1.min.js"></script>
+	<!-- popper js -->
+	<script src="js/hjjjs/popper.min.js"></script>
+	<!-- bootstrap js -->
+	<script src="js/hjjjs/bootstrap.min.js"></script>
+	<!-- easing js -->
+	<script src="js/hjjjs/jquery.magnific-popup.js"></script>
+	<!-- swiper js -->
+	<script src="js/hjjjs/swiper.min.js"></script>
+	<!-- swiper js -->
+	<script src="js/hjjjs/masonry.pkgd.js"></script>
+	<!-- particles js -->
+	<script src="js/hjjjs/owl.carousel.min.js"></script>
+	<script src="js/hjjjs/jquery.nice-select.min.js"></script>
+	<!-- slick js -->
+	<script src="js/hjjjs/slick.min.js"></script>
+	<script src="js/hjjjs/jquery.counterup.min.js"></script>
+	<script src="js/hjjjs/waypoints.min.js"></script>
+	<script src="js/hjjjs/contact.js"></script>
+	<script src="js/hjjjs/jquery.ajaxchimp.min.js"></script>
+	<script src="js/hjjjs/jquery.form.js"></script>
+	<script src="js/hjjjs/jquery.validate.min.js"></script>
+	<script src="js/hjjjs/mail-script.js"></script>
+	<script src="js/hjjjs/stellar.js"></script>
+	<script src="js/hjjjs/price_rangs.js"></script>
+	<!-- custom js -->
+	<script src="js/hjjjs/custom.js"></script>
 </body>
 
 </html>
