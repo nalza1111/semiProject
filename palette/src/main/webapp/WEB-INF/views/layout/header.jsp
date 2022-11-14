@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="css/styles.css?ver=1">
 </head>
 <body>
-	<nav id="topMenu">
+	<nav id="topMenu" style="z-index:9999;">
 		<ul id="leftUl">
 			<li id="logo"><a class="menuLink" href="main.do"></a></li>
 			<li><a class="menuLink" href="feedList.do">작가</a></li>

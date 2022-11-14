@@ -10,8 +10,8 @@
 </head>
 <body>
 	<div align ="center">
-		<div style><tiles:insertAttribute name="header"/></div>
-		<div id="bodyTile" style="min-height:850px;margin-top:50px;"><tiles:insertAttribute name="body"/></div>
+		<div><tiles:insertAttribute name="header"/></div>
+		<div id="bodyTile" style="min-height:850px;margin-top:50px;z-index:90;"><tiles:insertAttribute name="body"/></div>
 		<div id="footerTile"><tiles:insertAttribute name="footer"/></div>
 	</div>
 </body>
