@@ -9,37 +9,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="icon" href="img/favicon.png">
+	<link rel="icon" href="image/img/favicon.png">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/hjjcss/bootstrap.min.css">
     <!-- animate CSS -->
-    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/hjjcss/animate.css">
     <!-- owl carousel CSS -->
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/hjjcss/owl.carousel.min.css">
     <!-- nice select CSS -->
-    <link rel="stylesheet" href="css/nice-select.css">
+    <link rel="stylesheet" href="css/hjjcss/nice-select.css">
     <!-- font awesome CSS -->
-    <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="css/hjjcss/all.css">
     <!-- flaticon CSS -->
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/themify-icons.css">
+    <link rel="stylesheet" href="css/hjjcss/flaticon.css">
+    <link rel="stylesheet" href="css/hjjcss/themify-icons.css">
     <!-- font awesome CSS -->
-    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/hjjcss/magnific-popup.css">
     <!-- swiper CSS -->
-    <link rel="stylesheet" href="css/slick.css">
-    <link rel="stylesheet" href="css/price_rangs.css">
+    <link rel="stylesheet" href="css/hjjcss/slick.css">
+    <link rel="stylesheet" href="css/hjjcss/price_rangs.css">
     <!-- style CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/hjjcss/style.css">
+    <!-- 어썸폰트 -->
+    <script src="https://kit.fontawesome.com/0695eff491.js" crossorigin="anonymous"></script>
 	<style>
 		.product-img{
 			height: 223.56px;
 			width: 210px;
+		}
+		 .product-priceprice{
+			visibility: hidden ;
+			display: inline;
+		}
+		.fa-solid{
+			visibility: hidden ;
+		}
+		.single_product_item:hover  .product-priceprice{
+			transition: 10s;
+			visibility: visible;
+		}
+		.single_product_item:hover  .fa-solid{
+			visibility: visible;
 		}
 	</style>
 </head>
 
 <body>
 	<!--여기시작-->
+	<input type="hidden" id="idCheck" value="${id }">
     <!--::header part start::-->
     <header class="main_menu home_menu">
         
@@ -63,8 +80,8 @@
                 <div class="col-lg-8">
                     <div class="breadcrumb_iner">
                         <div class="breadcrumb_iner_item">
-                            <h2>Shop Category</h2>
-                            <p>Home <span>-</span> Shop Category</p>
+                            <h2>Shop Palette</h2>
+                            <p>Art <span>-</span>Gallery Shop</p>
                         </div>
                     </div>
                 </div>
@@ -85,31 +102,31 @@
 						<div class="widgets_inner">
 							<ul class="list">
 								<li>
-									<a href="#">Frozen Fish</a>
+									<a href="#">미술작품</a>
 									<span>(250)</span>
 								</li>
 								<li>
-									<a href="#">Dried Fish</a>
+									<a href="#">조형물</a>
 									<span>(250)</span>
 								</li>
 								<li>
-									<a href="#">Fresh Fish</a>
+									<a href="#">사진</a>
 									<span>(250)</span>
 								</li>
 								<li>
-									<a href="#">Meat Alternatives</a>
+									<a href="#">판화</a>
 									<span>(250)</span>
 								</li>
 								<li>
-									<a href="#">Fresh Fish</a>
+									<a href="#">디지털 아트</a>
 									<span>(250)</span>
 								</li>
 								<li>
-									<a href="#">Meat Alternatives</a>
+									<a href="#">콜라주</a>
 									<span>(250)</span>
 								</li>
 								<li>
-									<a href="#">Meat</a>
+									<a href="#">섬유예술</a>
 									<span>(250)</span>
 								</li>
 							</ul>
@@ -145,33 +162,24 @@
 					<div class="col-lg-12">
 						<div class="product_top_bar d-flex justify-content-between align-items-center">
 							<div class="single_product_menu">
-								<p><span>10000 </span> Prodict Found</p>
+								<p><span>loading... </span> Prodict Found</p>
 							</div>
 							<div class="single_product_menu d-flex">
 								<h5>short by : </h5>
-								<select>
-									<option data-display="Select">name</option>
-									<option value="1">price</option>
-									<option value="2">product</option>
+								<select  onchange="fncList()" id="select-option-sort">
+									<option data-display="Select">Select</option>
+									<option value="search">조회순</option>
+									<option value="date">출시일</option>
+									<option value="highPrice">고가격순</option>
+									<option value="lowPrice">저가격순</option>
 								</select>
-							</div>
-							<div class="single_product_menu d-flex">
-								<h5></h5>
-								<div class="top_pageniation">
-									<ul>
-										<li></li>
-										<li></li>
-										<li></li>
-									</ul>
-								</div>
 							</div>
 							<div class="single_product_menu d-flex">
 								<div class="input-group">
 									<input type="text" class="form-control" placeholder="search"
 										aria-describedby="inputGroupPrepend">
 									<div class="input-group-prepend">
-										<span class="input-group-text" id="inputGroupPrepend"><i
-												class="ti-search"></i></span>
+										<span class="input-group-text" id="inputGroupPrepend"><i class="fa fa-search"></i>
 									</div>
 								</div>
 							</div>
@@ -180,19 +188,22 @@
 				</div>
 
 				<div class="row align-items-center latest_product_inner" id="All-list">
-					<div class="col-lg-4 col-sm-6">
-						<div class="single_product_item" style="display:none;">
-							<img src="" alt="" class="product-img">
-							<div class="single_product_text">
-								<a href="" class="product-detail">
-									<h4 class="product-namename"></h4>
-								</a>
-								<h3 class="product-priceprice"></h3>
-								<a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
-							</div>
+					
+				</div>
+				<!--뿌리기용-->
+				<div class="col-lg-4 col-sm-6" id="copyList">
+					<div class="single_product_item" style="display:none;">
+						<img src="" alt="" class="product-img">
+						<div class="single_product_text">
+							<a href="" class="product-detail">
+								<h4 class="product-namename"></h4>
+							</a>
+							<i class="fa-solid fa-coins"></i> <h3 class="product-priceprice"></h3>
+							<a href="#" class="add_cart">+ add to cart<i class="fa-solid fa-cart-shopping"></i></a>
 						</div>
 					</div>
 				</div>
+				<!--뿌리기용-->
 			</div>
 		</div>
 	</div>
@@ -201,47 +212,31 @@
 
 	<!--- THE END HERO HEADER (이전)--->
 
-		<!-- <input type="hidden" id="idCheck" value="${id }">
+	
 		<nav>
 			<form action="searchProduct.do">
 				<select name="categoryCode">
 					<option value="all">::전체::</option>
-					<option value="europe">북유럽</option>
-					<option value="modern">모던시크</option>
-					<option value="vintage">빈티지</option>
-					<option value="mini">미니멀</option>
-					<option value="classic">모던클래식</option>
-					<option value="inder">인더스트리얼</option>
+					<option value="B01">미술작품</option>
+					<option value="B02">조형물</option>
+					<option value="B03">사진</option>
+					<option value="B04">그림</option>
+					<option value="B05">판화</option>
+					<option value="B06">디지털 아트</option>
+					<option value="B07">콜라주</option>
+					<option value="B08">섬유 예술</option>
 				</select> 검색<input type="text" id="search" name="search"> <input
 					type="submit" value="검색">
 			</form>
-			<br>
+			<hr>
 			<button class="btnBasket" onClick="cartFnc()">
 				장바구니 <span id="basket">${cartCountNumber }</span>
 			</button>
 			<button class="btnLog" onClick="oderHisFnc()">구매내역</button>
 			<button class="btnAdmin" onClick="location.href='addProductForm.do'">관리자의상품추가</button>
-			<br>
+			<hr>
 		</nav>
-		<hr>-->
-		<div>
-			<button class="btnO" id="btnO" name="btnO"
-				onclick="fncList('search')">조회순</button>
-			<button class="btnO" id="btnO" name="dateBtn"
-				onclick="fncList('date')">출시일</button>
-			<button class="btnO" id="btnO" name="highPriceBtn"
-				onclick="fncList('highPrice')">높은가격</button>
-			<button class="btnO" id="btnO" name="lowPriceBtn"
-				onclick="fncList('lowPrice')">낮은가격</button>
-		</div>
-		<!--<hr>
-		<div class="All-list">-->
-
-			<!--- WORK PAGE PROJECTS --->
-
-		</div>
-		<!--- THE END WORK PAGE PROJECTS --->
-	
+		<hr>
 	<!--- THE END WORK PAGE PROJECTS --->
 	<script>
 		window.onload =  function aaa() {
@@ -297,7 +292,9 @@
 		}
 	</script>
 		<script>
-		function fncList(text) {
+		function fncList() {
+			let text = document.getElementById('select-option-sort').value;
+			console.log(text);
 			let url = "productSort.do?job=" + text;
 			fetch(url)
 				.then(result => result.json())
@@ -306,6 +303,8 @@
 		}
 		function listDo2(result) { //화면 처음 열 때
 			console.log(result);
+			console.log(result.length);
+			document.querySelector('.single_product_menu>p>span').textContent=result.length;
 			result.forEach(item => {
 				makeItemDiv(item);
 			});
@@ -313,9 +312,13 @@
 		
 		function listDo(result) { //조회
 			console.log(result);
+			console.log(result.length);
+			console.log(result);
+			console.log(result.length);
+			document.querySelector('.single_product_menu>p>span').textContent=result.length;
 			//먼저 있던거 지우기
-			let allList = document.querySelector('.col-lg-4');
-			while (allList.children.hasChildNodes()) {
+			let allList = document.querySelector('#All-list');
+			while (allList.hasChildNodes()) {
 				allList.removeChild(allList.firstChild);
 			}
 			result.forEach(item => {
@@ -323,15 +326,16 @@
 			});
 		}
 		function makeItemDiv(item = {}) {
-			let allList = document.querySelector('.col-lg-4');
+			let allList = document.querySelector('#All-list');
+			console.log(allList);
 
-			let template = document.querySelector('.single_product_item');
+			let template = document.querySelector('#copyList');
 			let good = template.cloneNode(true);
 			//이미지링크
 			let imgLink = good.querySelector('.single_product_item>img');
 			imgLink.setAttribute('href', 'productDetail.do?productNumber=' + item.productNumber);
 			//이미지
-			good.querySelector('.product-img').src = '/palette/image/' + item.image;
+			good.querySelector('.product-img').src = '/palette/image/product/' + item.image;
 			//링크
 			
 			let link = good.querySelector('.product-detail');
@@ -339,42 +343,42 @@
 			//제목
 			good.querySelector('.product-namename').textContent = item.productName;
 			//가격
-			good.querySelector('.product-priceprice').textContent = item.productPrice + '￦';
+			good.querySelector('.product-priceprice').textContent = item.productPrice ;
 			//애드카트
 			//good.querySelector('.btnAddBasket').value = 'productNumber=' + item.productNumber + '&productPrice=' + item.productPrice;
-			good.setAttribute('style',"display:'';")
+			good.querySelector('.single_product_item').setAttribute('style',"display:'';")
 			allList.append(good);
 
 		}
 		</script>
 		<!-- jquery plugins here-->
-		<script src="js/jquery-1.12.1.min.js"></script>
+		<script src="js/hjjjs/jquery-1.12.1.min.js"></script>
 		<!-- popper js -->
-		<script src="js/popper.min.js"></script>
+		<script src="js/hjjjs/popper.min.js"></script>
 		<!-- bootstrap js -->
-		<script src="js/bootstrap.min.js"></script>
+		<script src="js/hjjjs/bootstrap.min.js"></script>
 		<!-- easing js -->
-		<script src="js/jquery.magnific-popup.js"></script>
+		<script src="js/hjjjs/jquery.magnific-popup.js"></script>
 		<!-- swiper js -->
-		<script src="js/swiper.min.js"></script>
+		<script src="js/hjjjs/swiper.min.js"></script>
 		<!-- swiper js -->
-		<script src="js/masonry.pkgd.js"></script>
+		<script src="js/hjjjs/masonry.pkgd.js"></script>
 		<!-- particles js -->
-		<script src="js/owl.carousel.min.js"></script>
-		<script src="js/jquery.nice-select.min.js"></script>
+		<script src="js/hjjjs/owl.carousel.min.js"></script>
+		<script src="js/hjjjs/jquery.nice-select.min.js"></script>
 		<!-- slick js -->
-		<script src="js/slick.min.js"></script>
-		<script src="js/jquery.counterup.min.js"></script>
-		<script src="js/waypoints.min.js"></script>
-		<script src="js/contact.js"></script>
-		<script src="js/jquery.ajaxchimp.min.js"></script>
-		<script src="js/jquery.form.js"></script>
-		<script src="js/jquery.validate.min.js"></script>
-		<script src="js/mail-script.js"></script>
-		<script src="js/stellar.js"></script>
-		<script src="js/price_rangs.js"></script>
+		<script src="js/hjjjs/slick.min.js"></script>
+		<script src="js/hjjjs/jquery.counterup.min.js"></script>
+		<script src="js/hjjjs/waypoints.min.js"></script>
+		<script src="js/hjjjs/contact.js"></script>
+		<script src="js/hjjjs/jquery.ajaxchimp.min.js"></script>
+		<script src="js/hjjjs/jquery.form.js"></script>
+		<script src="js/hjjjs/jquery.validate.min.js"></script>
+		<script src="js/hjjjs/mail-script.js"></script>
+		<script src="js/hjjjs/stellar.js"></script>
+		<script src="js/hjjjs/price_rangs.js"></script>
 		<!-- custom js -->
-		<script src="js/custom.js"></script>
+		<script src="js/hjjjs/custom.js"></script>
 </body>
 
 </html>

@@ -3,7 +3,6 @@
 body {
 	margin: 0;
 	padding:0;
-
 }
 
 #footerTile {
@@ -363,7 +362,7 @@ select::-ms-expand {
 }
 
 
-/* 硫붿씤�솕硫� css */
+/* 메인화면 css */
 #mainWrapper{
 
     left: 0;
@@ -440,14 +439,13 @@ select::-ms-expand {
 
 
 
-/* !!! header �쁺�뿭�엯�땲�떎 �븯�떒 怨좎젙�빐二쇱꽭�슂 !!! */
+/* !!! header 영역입니다 하단 고정해주세요 !!! */
 
 #topMenu {
 	
 	position: fixed;
 	top : 0%;
 	height: 50px;
-
 	width: 100%;
 	color: #333;
 	background-color: #fff;
