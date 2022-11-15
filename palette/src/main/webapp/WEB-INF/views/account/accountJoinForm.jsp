@@ -11,7 +11,7 @@
 	<div id="joinFormContainer">
 
 		<div>
-			<form id="frm" action="accountJoin.do" onsubmit="return formSubmit()"
+			<form id="frm" action="accountJoin.do" enctype="multipart/form-data" onsubmit="return formSubmit()"
 				method="post">
 				<div id="joinFormStart">
 				<br><br>
@@ -97,6 +97,10 @@
 									<option>금속주얼리디자인과</option>
 							</select></td>
 						</tr>
+						<tr>
+							<th>> 파일</th>
+							<td><input type="file" id="image" name="image"></td>
+						</tr>
 					</table>
 				</div>
 				<br />
@@ -171,7 +175,8 @@
 			fetch(url)
 				.then(response => response.text())
 				.then(data=>{
-					if(data != null){
+					if(data != "failed"){
+						console.log(data);
 						alert("인증메일이 발송되었습니다");
 						frm.emailCheck.disabled=true;
 						frm.certNum.focus();

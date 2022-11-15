@@ -32,7 +32,7 @@ public class UpdateFollow implements Command {
 			String follow = "follow";
 			request.setAttribute("follow", follow);
 			
-			// unfollow 누르면 -1 감소.
+		// unfollow 누르면 -1 감소.
 		} else {
 			int newCnt = feed.getUserFollower();
 			newCnt = newCnt - 1;

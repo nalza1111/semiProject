@@ -15,7 +15,7 @@ public class Logout implements Command {
 		message = message.concat("님 안녕히 가세요.");
 		request.setAttribute("message", message);
 		session.invalidate(); //invalidate - 세션을 완전히 삭제. 
-		return "main/main.tiles";
+		return "main.do";
 	}
 
 }

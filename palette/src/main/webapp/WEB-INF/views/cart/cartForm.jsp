@@ -6,115 +6,187 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<style>
-.product-img {
-	width: 50px;
-	height: 80px;
-}
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>aranaz</title>
+	<link rel="icon" href="image/hjjimg/favicon.png">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="css/hjjcss/bootstrap.min.css">
+	<!-- animate CSS -->
+	<link rel="stylesheet" href="css/hjjcss/animate.css">
+	<!-- owl carousel CSS -->
+	<link rel="stylesheet" href="css/hjjcss/owl.carousel.min.css">
+	<!-- nice select CSS -->
+	<link rel="stylesheet" href="css/hjjcss/nice-select.css">
+	<!-- font awesome CSS -->
+	<link rel="stylesheet" href="css/hjjcss/all.css">
+	<!-- flaticon CSS -->
+	<link rel="stylesheet" href="css/hjjcss/flaticon.css">
+	<link rel="stylesheet" href="css/hjjcss/themify-icons.css">
+	<!-- font awesome CSS -->
+	<link rel="stylesheet" href="css/hjjcss/magnific-popup.css">
+	<!-- swiper CSS -->
+	<link rel="stylesheet" href="css/hjjcss/slick.css">
+	<link rel="stylesheet" href="css/hjjcss/price_rangs.css">
+	<!-- style CSS -->
+	<link rel="stylesheet" href="css/hjjcss/style.css">
+	<script src="https://kit.fontawesome.com/0695eff491.js" crossorigin="anonymous"></script>
+	<style>
+	.product-img {
+		width: 50px;
+		height: 80px;
+	}
 
-.product-img-pay {
-	width: 25px;
-	height: 25px;
-}
+	.product-img-pay {
+		width: 25px;
+		height: 25px;
+	}
 
-table {
-	text-align: center;
-}
+	table {
+		text-align: center;
+	}
 
-.foot {
-	width: 650px;
-}
+	.foot {
+		width: 650px;
+	}
 
-.modal {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	display: none;
-	background-color: rgba(0, 0, 0, 0.4);
-	mix-blend-mode: normal;
-}
+	.modal {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		display: none;
+		background-color: rgba(0, 0, 0, 0.4);
+		mix-blend-mode: normal;
+	}
 
-.modal.show {
-	display: block;
-}
+	.modal.show {
+		display: block;
+	}
 
-.modal_body {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	width: 800px;
-	height: 600px;
-	padding: 40px;
-	text-align: center;
-	/* font-size: 22px; */
-	background-color: #d6cfc7;
-	border-radius: 10px;
-	box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 1);
-	transform: translateX(-50%) translateY(-50%);
-	z-index: 2;
-}
-</style>
+	.modal_body {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 800px;
+		height: 600px;
+		padding: 40px;
+		text-align: center;
+		/* font-size: 22px; */
+		background-color: #d6cfc7;
+		border-radius: 10px;
+		box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 1);
+		transform: translateX(-50%) translateY(-50%);
+		z-index: 2;
+	}
+	</style>
 </head>
 <body>
-	<h3>장바구니폼</h3>
-	<table border="1">
-		<tr>
-			<td width="100px">제품</td>
-			<td width="100px">productName</td>
-			<td width="100px">productCount</td>
-			<td width="100px">productPrice</td>
-			<td width="100px">delete</td>
-			<td width="100px"><input type="checkbox" id="check" checked></td>
-		</tr>
-	</table>
-	<c:set var="sum" value="0" />
-	<c:forEach var="cart" items="${userOrderDetailList}">
-		<c:set var="sum" value="${sum+(cart.productCount*cart.productPrice)}" />
-		<c:if test="${cart.productCount >0}">
-			<table id="cart" class="cart" border="1">
-				<tr>
-					<td width="100px"><a class="product-detail"
-						href="productDetail.do?productNumber=${cart.productNumber}"> <img
-							class="product-img" src="/palette/image/${cart.getImage()}"
-							alt="..." />
-					</a></td>
-					<td width="100px"><a class="product-detail"
-						href="productDetail.do?productNumber=${cart.productNumber}">
-							${cart.productName} </a></td>
-					<td width="100px" id="${cart.productNumber}"
-						name="${cart.productNumber}"><input type="hidden"
-						value="${cart.productNumber}"> <input type="button"
-						onClick="fncCount('m', this)" value="-"> <input
-						type="text" value="${cart.productCount}" readonly
-						style="width: 25px;"> <input type="button"
-						onClick="fncCount('p', this)" value="+"> <input
-						type="hidden" value="${cart.productPrice}"></td>
-					<td width="100px">${cart.productPrice}</td>
-					<td width="100px"><input type="hidden"
-						value="${cart.productNumber}"> <input type="button"
-						value="삭제" onClick="fncDelete(this)"> <input type="hidden"
-						value="${cart.productPrice}"> <input type="hidden"
-						value="${cart.productCount}"></td>
-					<td width="100px"><input type="checkbox" checked></td>
-				</tr>
-			</table>
-		</c:if>
-	</c:forEach>
+	<!--================Home Banner Area =================-->
+	<!-- breadcrumb start-->
+	<section class="breadcrumb breadcrumb_bg">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-8">
+					<div class="breadcrumb_iner">
+						<div class="breadcrumb_iner_item">
+							<h2>Cart Products</h2>
+							<p>Home <span>-</span>Cart Products</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	<!-- breadcrumb start-->
+ <!--================Cart Area =================-->
+ <section class="cart_area padding_top">
+    <div class="container">
+      <div class="cart_inner">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total</th>
+				<th><input type="checkbox" id="check" checked value="noChk"></th>
+              </tr>
+            </thead>
+            <tbody>
+				<div class="podo" style="display:none;">
+		<!--여기시작-->
+				<c:set var="sum" value="0" />
+				<c:forEach var="cart" items="${userOrderDetailList}">
+				<c:set var="sum" value="${sum+(cart.productCount*cart.productPrice)}" />
+				<c:if test="${cart.productCount >0}">
+		<!--계산을 위한 곳-->
+					<tr>
+						<td>
+						<div class="media">
+							<div class="d-flex">
+								<a class="product-detail" href="productDetail.do?productNumber=${cart.productNumber}">
+									<img class="product-img" src="/palette/image/product/${cart.getImage()}"alt="..." />
+								</a>
+							</div>
+							<div class="media-body">
+							<p><a class="product-detail"href="productDetail.do?productNumber=${cart.productNumber}">
+									${cart.productName}
+								</a>
+							</p>
+							</div>
+						</div>
+						</td>
+						<td>
+						<h5>${cart.productPrice}</h5>
+						</td>
+						<td>
+						<div class="product_count"><input type="hidden" id="ppn" value="${cart.productNumber}"><span class="input-number-decrement" onclick="fncCount('m',this)"><i class="fa-solid fa-caret-down"></i></span><input class="input-number" type="text" value="${cart.productCount}" readonly min="0" max="10" ><span class="input-number-increment" onclick="fncCount('p',this)"><i class="fa-solid fa-caret-up"></i></span><input type="hidden" name="ppm" value="${cart.productPrice}"></div>
+						</td>
+						<td>
+						<h5>${cart.productPrice*cart.productCount}</h5>
+						</td>
+						<td>
+							<input type="checkbox" checked>
+						</td>
+					</tr>
+				</c:if>
+				</c:forEach>
+				</div>
+		<!--여기 끝-->
+              <tr class="bottom_button">
+				<td><a class="btn_1" id="delCart">선택삭제</a></td>
+				<td></td>
+                <td>
+				  <a class="btn_1" onclick=fncPay() id="btn-open-popup">선택결제</a>
+				</td>
+                <td></td>
+                <td>
+                  <div class="cupon_text float-right">
+                    <a class="btn_1"id="btn-open-popup" onclick=fncPayAll()>모두결제</a>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td>
+                  <h5>Subtotal</h5>
+                </td>
+                <td>
+                  <h5 id="totalCartForm"><c:out value="${sum }" /></h5>
+                </td>
+				<td>
+				</td>
+              </tr>
+            </table>
+
 	<br>
-	<div class="foot" id="totalCartForm" style="border: 1px solid black;">
-		<input type="button" id="btn-open-popup" value="체크상품 결제하기"
-			onclick=fncPay()> <input type="button" id="btn-open-popup"
-			value="모두 결제하기" onclick=fncPayAll()> <input type="button"
-			value="선택삭제" id="del">
-		<h3>총 금액</h3>
-		<h4>
-			<c:out value="${sum }" />
-		</h4>
-	</div>
 
 	<!-- 결제 모달 -->
 	<div class="modal">
@@ -177,27 +249,35 @@ table {
 	</div>
 	<script>
 		function fncCount(type, cn){
-			console.log(cn.parentNode.children[0].value); //상품번호
-
-			let productNumber = cn.parentNode.children[0].value;
-			let productPrice = cn.parentNode.children[4].value;
-			console.log(productPrice);
+			let productNumber = cn.parentNode.firstChild.value; //상품번호
+			let productPrice = cn.parentNode.lastChild.value; //상품가격
 			let job = '';
-
-			let count = cn.parentNode.children[2];
-			
-			console.log(document.getElementById('totalCartForm').children[4]);
-			if (type == 'm'&&count.value>=1){
-				count.value--;
+			console.log('상품번호'+productNumber);
+			console.log('상품가격'+productPrice);
+			let count = cn.parentNode.children[2].value;
+			console.log(count);
+			if (type == 'm'&&count>=1){
+				cn.parentNode.children[2].value=cn.parentNode.children[2].value-1;
+			} else if(type == 'p'){
+				cn.parentNode.children[2].value=(cn.parentNode.children[2].value-0)+(1-0);
+			}
+			console.log('input-number'+count);
+			let subTo = cn.parentNode.parentNode.parentNode.children[3];//서브토탈
+			let mainTo = document.getElementById('totalCartForm');//토탈
+			if (type == 'm'){
 				job = 'minus';
-				document.getElementById('totalCartForm').children[4].textContent=document.getElementById('totalCartForm').children[4].textContent-productPrice;
-				if(count.value==0){
-					count.parentNode.parentNode.remove();
+				console.log(productPrice);
+				mainTo.textContent=mainTo.textContent-productPrice;
+				subTo.textContent = subTo.textContent-productPrice;
+				if(cn.parentNode.children[2].value==0){
+					cn.parentNode.parentNode.parentNode.remove();
 				}
 			} else if(type == 'p'){
 				count.value++;
 				job = 'plus';
-				document.getElementById('totalCartForm').children[4].textContent=(document.getElementById('totalCartForm').children[4].textContent-0)+(productPrice-0);
+				mainTo.textContent =(mainTo.textContent-0)+(productPrice-0);
+				subTo.textContent = (subTo.textContent-0)+(productPrice-0);
+				
 			}
 			let data = "productNumber="+productNumber+"&job="+job;
 			let url = "addCartTwo.do?"+data;
@@ -221,30 +301,32 @@ table {
 				check.checked = document.querySelector('input[type="checkbox"]').checked;
 			})
 		})
-		document.getElementById('del').addEventListener('click', function fncDeleteDo(){
-			document.querySelectorAll('input[type="checkbox"]').forEach(function(check){
-				let del = check.parentNode.parentNode.children[4].children[1];
-				if(check.checked&&del!=null){
-					console.log(del);
-					fncDelete(del);
+		document.getElementById('delCart').addEventListener('click', function fncDeleteDo(){
+			let arr = document.querySelectorAll('input[type="checkbox"]');
+			console.log(arr);
+			console.log(arr.length);
+			for (let check = 1; check < arr.length; check++) {//체크박스 한개빼고 체크된거 지우기
+				console.log(check);
+				if(arr[check].checked){
+					arr[check].parentNode.parentNode.remove();
+					fncDelete(arr[check]);
 				}
-			})
+			}
 		})
 	
 		function fncDelete(th){
-			console.log(th.parentNode.children[0].value); //상품번호
-			console.log(th.parentNode.children[2].value); //상품가격
-			console.log(th.parentNode.children[3].value); //상품개수
-			let productNumber = th.parentNode.children[0].value;
-			let productPrice = th.parentNode.children[2].value;
-			let productCount = th.parentNode.children[3].value; 
+			console.log(th);
+			console.log(th.parentNode.parentNode.children[2].children[0].children[0].value); //상품번호
+			console.log(th.parentNode.parentNode.children[2].children[0].children[2].value); //상품개수
+			console.log(th.parentNode.parentNode.children[2].children[0].children[4].value); //상품가격
+			let productNumber = th.parentNode.parentNode.children[2].children[0].children[0].value;
+			let productPrice = th.parentNode.parentNode.children[2].children[0].children[2].value;
+			let productCount = th.parentNode.parentNode.children[2].children[0].children[4].value; 
 			
 			let totalPrice = productPrice*productCount;//빼야할 금액
 			
-			th.parentNode.parentNode.parentNode.remove();
-			
-			console.log(document.getElementById('totalCartForm').children[4]); //총금액에서 딜리트금액빼주기
-			document.getElementById('totalCartForm').children[4].textContent = document.getElementById('totalCartForm').children[4].textContent-totalPrice;
+			let mainTo = document.getElementById('totalCartForm'); //총금액에서 딜리트금액빼주기
+			mainTo.textContent = mainTo.textContent-totalPrice;
 			
 			let data = "productNumber="+productNumber;
 			let url = "deleteCart.do?"+data;
@@ -510,6 +592,7 @@ table {
 	    }
 	</script>
 	<script
-		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js">
+	</script>
 </body>
 </html>

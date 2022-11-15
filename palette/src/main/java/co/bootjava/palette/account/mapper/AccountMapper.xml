@@ -19,6 +19,18 @@
 	
 	<insert id="accountInsert" parameterType="co.bootjava.palette.account.vo.AccountVO">
 		INSERT INTO ACCOUNT
-		VALUES(#{id}, #{password}, #{name}, #{email}, #{address}, 'user', 0, 0, #{school}, #{major})
+		VALUES(#{id}, #{password}, #{name}, #{email}, #{address}, 'user', 0, 0, #{school}, #{major},  #{image})
 	</insert>
+	
+	<select id="accountList" resultType="co.bootjava.palette.account.vo.AccountVO">
+	SELECT * FROM ACCOUNT ORDER BY FOLLOWER DESC
+	</select>
+	
+	<select id="accountSelected" resultType="co.bootjava.palette.account.vo.AccountVO">
+	SELECT * FROM ACCOUNT WHERE ID = #{id}
+	</select>
+	
+	<select id="mainAccountList" resultType="co.bootjava.palette.account.vo.AccountVO">
+	SELECT * FROM (SELECT * FROM ACCOUNT ORDER BY FOLLOWER DESC) WHERE ROWNUM <![CDATA[<=]]> 3
+	</select>
 </mapper>

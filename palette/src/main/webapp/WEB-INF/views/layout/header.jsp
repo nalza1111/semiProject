@@ -9,21 +9,21 @@
 <link rel="stylesheet" href="css/styles.css?ver=1">
 </head>
 <body>
-	<nav id="topMenu" style="z-index:9999;">
+	<nav id="topMenu">
 		<ul id="leftUl">
 			<li id="logo"><a class="menuLink" href="main.do"></a></li>
-			<li><a class="menuLink" href="feedList.do">작가</a></li>
-			<li><a class="menuLink" href="exhibitList.do">전시회</a></li>
-			<li><a class="menuLink" href="product.do">샵으로</a></li>
-			<li><a class="menuLink" href="boardList.do">게시판</a></li>
+			<li class="navHover"><a class="menuLink" href="feedList.do"><span>작가</span></a></li>
+			<li class="navHover"><a class="menuLink" href="exhibitList.do"><span>전시회</span></a></li>
+			<li class="navHover"><a class="menuLink" href="product.do"><span>샵으로</span></a></li>
+			<li class="navHover"><a class="menuLink" href="boardList.do"><span>게시판</span></a></li>
 		</ul>
 		<ul id="rightUl">
 			<c:if test="${empty id }">
-				<li><a class="menuLink" href="accountLoginForm.do">로그인</a></li>
+				<li class="navHover"><a class="menuLink" href="accountLoginForm.do"><span>로그인</span></a></li>
 			</c:if>
 			<c:if test="${not empty id }">
-				<li><a class="menuLink" href="logout.do">Logout</a></li>
-				<li>${name }님접속중</li>
+				<li class="navHover"><a class="menuLink" href="logout.do"><span>Logout</span></a></li>
+				<li>${name }님 접속중</li>
 			</c:if>
 		</ul>
 	</nav>

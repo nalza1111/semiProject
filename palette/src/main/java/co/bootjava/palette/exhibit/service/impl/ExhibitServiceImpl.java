@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import co.bootjava.palette.common.DataSource;
 import co.bootjava.palette.exhibit.mapper.ExhibitMapper;
 import co.bootjava.palette.exhibit.service.ExhibitService;
+import co.bootjava.palette.exhibit.vo.ExhibitImagesVO;
 import co.bootjava.palette.exhibit.vo.ExhibitVO;
 
 public class ExhibitServiceImpl implements ExhibitService {
@@ -46,9 +47,25 @@ public class ExhibitServiceImpl implements ExhibitService {
 	}
 	
 	@Override
-	public List<ExhibitVO> exhibitImageList(ExhibitVO vo) {
-		// 해당 전시의 이미지 리스트 출력
-		return map.exhibitImageList(vo);
+	public int exhibitNum() {
+		// 시퀀스 찾기
+		return map.exhibitNum();
+	}
+	@Override
+	public int exhibitImageInsert(ExhibitImagesVO io) {
+		// 상세이미지 저장
+		return map.exhibitImageInsert(io);
+
+	}
+	@Override
+	public List<ExhibitImagesVO> exhibitNumImageSelect(int exhibitNum) {
+		// 해당 전시의 상세 이미지 출력
+		return map.exhibitNumImageSelect(exhibitNum);
+	}
+	@Override
+	public int exhibitImageUpdate(ExhibitImagesVO io) {
+		// 이미지 수정
+		return map.exhibitImageUpdate(io);
 	}
 	
 

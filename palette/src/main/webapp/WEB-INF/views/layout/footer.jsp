@@ -9,6 +9,7 @@
 </head>
 <body>
 <div align="center">
+	<div id="footerLogo"></div>
 	<h1>BootJAVA Copy@write by Sehoon</h1>
 </div>
 </body>

@@ -9,12 +9,12 @@ public class FeedVO {
 	private int feedNum;
 	private String userId;
 	private int userFollower;
-	private String userArt;
 	private String userName;
 	private String userEmail;
 	private String userSchool;
 	private String userMajor;
-	private String image;
-	private String content;
-	
+	private String feedImage;
+	private String feedContent;
+	private String filesystemName;
+	private String originalFileName;
 }

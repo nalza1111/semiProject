@@ -1,5 +1,8 @@
 package co.bootjava.palette.product.command;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,14 +24,14 @@ public class ProductDetail implements Command {
 		String productNumber = (String) request.getParameter("productNumber");
 		ProductService dao = new ProductServiceImpl();
 		ProductVO product = new ProductVO(productNumber, null, null, null, null, null, null, null, null);
-		
+		System.out.println("0");
 
 		//조회수올리기
 		dao.productUpdateHit(product);		
 		//상세서치
 		product = dao.productSelect(product);
 		request.setAttribute("product", product);
-
+		System.out.println("1");
 		//장바구니카운트용
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");
@@ -46,7 +49,16 @@ public class ProductDetail implements Command {
 		}
 		session.setAttribute("cartCountNumber", cartCountNumber);
 		//장바구니카운트용
-		
+		//샘플뿌려주기용 조회수 탑5
+		List<ProductVO> list = new ArrayList<ProductVO>();
+		ProductService dao3 = new ProductServiceImpl();
+		list = dao.productSelectSortList(7);
+		List<ProductVO> topFivelist = new ArrayList<ProductVO>();
+		for(int i=0; i<5; i++) {
+			topFivelist.add(list.get(i));
+			System.out.println(list.get(i));
+		}
+		request.setAttribute("topFivelist", topFivelist);
 		return "product/productDetailForm.tiles";
 	}
 

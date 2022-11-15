@@ -2379,7 +2379,7 @@ var $range = $(".js-range-slider"),
     instance,
     min = 0,
     max = 1000,
-    from = 10,
+    from = $inputFrom.value,
     to = 100;
 
 $range.ionRangeSlider({

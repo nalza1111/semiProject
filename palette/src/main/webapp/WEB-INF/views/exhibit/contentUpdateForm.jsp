@@ -5,36 +5,38 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>update Exhibition</title>
+<link rel="stylesheet" href="css/styles.css?after" type="text/css">
 </head>
 <body>
-	<div align="center">
-		<div>
-			<h1>글 수정</h1>
+	<div id="updateExhibitContainer" style="margin-top:50px;min-height:1080px;">
+		<div id="joinFormStart">
+			<br><br><h2>EDIT EXHIBITION</h2><hr>
+			<h4><span style="font-weight: bold; color: red;">주의!</span> 수정시, 상세 이미지들이 사라집니다. 상세이미지 수정을 원하시면 삭제 후 전시를 새로 추가해주세요!</h4>
 		</div>
 		<div>
 			<form id="frm" action="contentUpdate.do" method="post" enctype="multipart/form-data">
 				<div>
-					<table border="1">
+					<table id="accountTbl" style="text-align:center">
 						<tr>
 							<th width="150">전시명</th>
-							<td width="270"><input type="text" id="exhibitName"
+							<td width="320"><input type="text" id="exhibitName" style="text-align:center;"
 								name="exhibitName" value="${exhibit.exhibitName }"></td>
 						</tr>
 						<tr>
 							<th width="150">전시일자</th>
-							<td width="270"><input type="date" id="startDate"
+							<td width="320"><input type="date" id="startDate" style="text-align:center;"
 								name="startDate" value=${exhibit.startDate }></td>
 						</tr>
 						<tr>
 							<th width="150">전시마감</th>
-							<td width="270"><input type="date" id="endDate"
+							<td width="320"><input type="date" id="endDate" style="text-align:center;"
 								name="endDate" value=${exhibit.endDate }></td>
 						</tr>
 						<tr>
 							<th>학교</th>
 							<td><select id="exhibitSchool" name="exhibitSchool">
-									<option>=======선택=======</option>
+									<option>=========선택=========</option>
 									<option value="경북대학교" <c:if test="${exhibit.exhibitSchool eq '경북대학교' }">selected</c:if>>경북대학교</option>
 									<option value="계명대학교" <c:if test="${exhibit.exhibitSchool eq '계명대학교' }">selected</c:if>>계명대학교</option>
 									<option value="영남대학교" <c:if test="${exhibit.exhibitSchool eq '영남대학교' }">selected</c:if>>영남대학교</option>
@@ -48,7 +50,7 @@
 						<tr>
 							<th>학과</th>
 							<td><select id="exhibitMajor" name="exhibitMajor">
-									<option>=======선택=======</option>
+									<option>=========선택=========</option>
 									<option value="회화과" <c:if test="${exhibit.exhibitMajor eq '회화과' }">selected</c:if>>회화과</option>
 									<option value="환경조각과" <c:if test="${exhibit.exhibitMajor eq '환경조각과' }">selected</c:if>>환경조각과</option>
 									<option value="패션디자인과" <c:if test="${exhibit.exhibitMajor eq '패션디자인과' }">selected</c:if>>패션디자인과</option>
@@ -61,19 +63,29 @@
 						</tr>
 						<tr>
 							<th width="150">전시소개</th>
-							<td width="270">
-							<textarea id="content" name="content" rows="8" cols="50" placeholder="500자 미만으로 입력해주세요"><c:if test="${exhibit.content != null}">${exhibit.content }</c:if></textarea>
+							<td width="313">
+							<textarea id="content" name="content" rows="8" cols="50" placeholder="500자 미만으로 입력해주세요"
+							style="border: 1px solid #cfcfcf;font-size: 1.2em;border-radius: 5px; margin-right: 10px;"><c:if test="${exhibit.content != null}">${exhibit.content }</c:if></textarea>
 							</td>
 						</tr>
 					</table>
 				</div>
-				<br />
-				<div>
+				<div id="imageAddAlign" style="text-align:center;line-height:30px;">
 					<!-- 대표 이미지 추가 -->
-					<input type="file" name="image"><br/>
+					<span style="width: 150px;color: #333;font-size: 17px;padding-right: 10px;font-weight:bold;text-align:center;">대표 이미지 </span><input type="file" name="image" accept="image/*" style="text-align:center;"/><br/><br/>
+					
 					<input type="hidden" name="exhibitNum" value="${exhibit.exhibitNum }">
-					<input type="submit" value="등록">&nbsp;&nbsp; 
-					<input type="reset" value="취소">
+					
+					<div class="accountSubmitBox">
+						<button type="submit" 
+						class="button button--rayen button--border-thin button--text-thick button--text-upper button--size-s"
+						data-text="UPDATE"><span>수정</span>
+						</button>
+						<button type="reset"
+						class="button button--rayen button--border-thin button--text-thick button--text-upper button--size-s"
+						data-text="RESET"><span>취소</span>
+						</button>
+					</div>
 				</div>
 			</form>
 		</div>

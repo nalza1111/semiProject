@@ -21,6 +21,9 @@ import co.bootjava.palette.account.command.EmailSend;
 import co.bootjava.palette.account.command.FindPwForm;
 import co.bootjava.palette.account.command.Logout;
 import co.bootjava.palette.account.command.PwSend;
+import co.bootjava.palette.art.command.ArtInsert;
+import co.bootjava.palette.art.command.ArtInsertForm;
+import co.bootjava.palette.art.command.ViewCntPlus;
 import co.bootjava.palette.board.command.BoardDelete;
 import co.bootjava.palette.board.command.BoardJoin;
 import co.bootjava.palette.board.command.BoardJoinForm;
@@ -48,15 +51,18 @@ import co.bootjava.palette.exhibit.command.DeleteContentForm;
 import co.bootjava.palette.exhibit.command.ExhibitContent;
 import co.bootjava.palette.exhibit.command.ExhibitList;
 import co.bootjava.palette.exhibit.command.IngList;
+import co.bootjava.palette.feed.command.FeedAddListForm;
 import co.bootjava.palette.feed.command.FeedList;
 import co.bootjava.palette.feed.command.FeedSelect;
+import co.bootjava.palette.feed.command.IsFeedExist;
+import co.bootjava.palette.feed.command.MyFeed;
 import co.bootjava.palette.feed.command.UpdateFollow;
 import co.bootjava.palette.main.MainCommand;
+import co.bootjava.palette.order.command.OrderComplete;
 import co.bootjava.palette.order.command.OrderDelete;
+import co.bootjava.palette.order.command.OrderHistory;
 import co.bootjava.palette.order.command.OrderHistoryInsertSearch;
 import co.bootjava.palette.order.command.OrderHistoryInsertSearch2;
-import co.bootjava.palette.order.command.OrderComplete;
-import co.bootjava.palette.order.command.OrderHistory;
 import co.bootjava.palette.product.command.AddProduct;
 import co.bootjava.palette.product.command.AddProductForm;
 import co.bootjava.palette.product.command.DelProduct;
@@ -82,8 +88,10 @@ public class FrontController extends HttpServlet {
 	}
 
 	public void init(ServletConfig config) throws ServletException {
-		//회원가입,로그인(천세훈)
+		
 		map.put("/main.do", new MainCommand());// 처음 보여줄 페이지 명령
+		
+		//회원가입,로그인(천세훈)
 		map.put("/accountJoinForm.do", new AccountJoinForm()); //회원가입
 		map.put("/ajaxIdCheck.do", new AjaxIdCheck());	//아이디 중복 확인
 		map.put("/emailSend.do", new EmailSend()); //이메일 전송
@@ -98,6 +106,12 @@ public class FrontController extends HttpServlet {
 		map.put("/feedList.do", new FeedList()); // 피드 목록보기.
 		map.put("/feedSelect.do", new FeedSelect()); // 피드 상세보기.
 		map.put("/updateFollow.do", new UpdateFollow()); //팔로우 +1 증가.
+		map.put("/feedAddListForm.do", new FeedAddListForm()); // 리스트에 피드 추가폼
+		map.put("/isFeedExist.do", new IsFeedExist()); //피드 유무 체크
+		map.put("/myFeed.do", new MyFeed());	//내 피드가기
+		map.put("/artInsertForm.do", new ArtInsertForm()); //내 작품 추가 화면
+		map.put("/artInsert.do", new ArtInsert()); //내 작품 추가
+		map.put("/viewCntPlus.do", new ViewCntPlus()); //작품 조회수 추가
 		
 		//게시판(이재원)
 		map.put("/boardList.do", new BoardList());
@@ -162,6 +176,8 @@ public class FrontController extends HttpServlet {
 //		Command command=new MainCommand();
 
 		String viewPage = command.exec(request, response);// 명령을 수행하고 결과를 돌려받음.
+		//전체상품리스트불러옴
+		List<ProductVO> list = (List<ProductVO>) request.getAttribute("list");
 		//viewResolve 파트
 		if(!viewPage.endsWith(".do")&&viewPage!=null) {
 			//ajax 처리		
