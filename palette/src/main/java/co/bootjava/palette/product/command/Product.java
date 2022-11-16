@@ -45,36 +45,40 @@ public class Product implements Command {
 		
 		int b01,b02,b03,b04,b05,b06,b07;
 		b01 = b02 = b03 = b04 = b05 = b06 = b07 = 0;
-		int lowPrice, highPrice;
-		lowPrice = Integer.parseInt(list.get(0).getProductPrice());
-		highPrice = 0;		
-		for(ProductVO vo: list) {
-			if( lowPrice >= Integer.parseInt(vo.getProductPrice()) ) {
-				lowPrice =  Integer.parseInt(vo.getProductPrice());
-			}
-			if( highPrice <= Integer.parseInt(vo.getProductPrice())) {
-				highPrice =  Integer.parseInt(vo.getProductPrice());
-			}
-			if(vo.getCategoryCode().equals("미술작품")) {
-				b01++;
-			} else if(vo.getCategoryCode().equals("조형물")) {
-				b02++;
-			} else if(vo.getCategoryCode().equals("사진")) {
-				b03++;
-			} else if(vo.getCategoryCode().equals("판화")) {
-				b04++;
-			}  else if(vo.getCategoryCode().equals("디지털 아트")) {
-				b05++;
-			} else if(vo.getCategoryCode().equals("콜라주")) {
-				b06++;
-			} else if(vo.getCategoryCode().equals("섬유 예술")) {
-				b07++;
-			} else {
-				
+		if(list.size()!=0) {
+
+			int lowPrice, highPrice;
+			lowPrice = Integer.parseInt(list.get(0).getProductPrice());
+			highPrice = 0;
+			for(ProductVO vo: list) {
+				if( lowPrice >= Integer.parseInt(vo.getProductPrice()) ) {
+					lowPrice =  Integer.parseInt(vo.getProductPrice());
+				}
+				if( highPrice <= Integer.parseInt(vo.getProductPrice())) {
+					highPrice =  Integer.parseInt(vo.getProductPrice());
+				}
+				if(vo.getCategoryCode().equals("미술작품")) {
+					b01++;
+				} else if(vo.getCategoryCode().equals("조형물")) {
+					b02++;
+				} else if(vo.getCategoryCode().equals("사진")) {
+					b03++;
+				} else if(vo.getCategoryCode().equals("판화")) {
+					b04++;
+				}  else if(vo.getCategoryCode().equals("디지털 아트")) {
+					b05++;
+				} else if(vo.getCategoryCode().equals("콜라주")) {
+					b06++;
+				} else if(vo.getCategoryCode().equals("섬유 예술")) {
+					b07++;
+				} else {
+					
+				}
+
+				request.setAttribute("lowPrice", lowPrice);
+				request.setAttribute("highPrice", highPrice);
 			}
 		}
-		request.setAttribute("lowPrice", lowPrice);
-		request.setAttribute("highPrice", highPrice);
 		request.setAttribute("allSum", list.size());
 		request.setAttribute("b01", b01);
 		request.setAttribute("b02", b02);

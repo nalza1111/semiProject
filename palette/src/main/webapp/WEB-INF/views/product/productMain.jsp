@@ -66,6 +66,13 @@
     		background: #fff;
 			margin: 5px;
 		}
+		#navi{
+			position: fixed;
+			bottom:120px;
+			right:50px;
+			border: none;
+		}
+		
 	</style>
 </head>
 
@@ -135,16 +142,7 @@
 								</ul>
 							</div>
 							<div>
-								<!--- THE END HERO HEADER (이전)--->
-								<nav>
-									<button class="btnBasket" onClick="cartFnc()">
-										<i class="fas fa-shopping-basket"></i> <span id="basket">${cartCountNumber }</span>
-									</button>
-									<button class="btnLog" onClick="oderHisFnc()">구매내역</button>
-									<button class="btnAdmin" onClick="location.href='addProductForm.do'">상품추가</button>
-									<hr>
-								</nav>
-								<!--- THE END WORK PAGE PROJECTS --->
+								
 							</div>
 						</aside>
 					</div>
@@ -205,10 +203,21 @@
 			</div>
 		</div>
 	</div>
-</section>
-<!--================End Category Product Area =================-->
-
-	
+	<!--- THE END HERO HEADER (이전)--->
+	<nav id="navi">
+		<hr>
+		<button class="btnBasket" onClick="cartFnc()">
+			<i class="fas fa-shopping-basket"></i> <span id="basket">${cartCountNumber }</span>
+		</button>
+		<hr>		
+		<button class="btnLog" onClick="oderHisFnc()">구매내역</button>
+		<hr>
+		<button class="btnAdmin" onClick="location.href='addProductForm.do'">상품추가</button>
+		<hr>
+	</nav>
+	<!--- THE END WORK PAGE PROJECTS --->
+	</section>
+	<!--================End Category Product Area =================-->
 	<script>
 		//서치버튼
 		let glass = document.querySelector('.input-group-prepend');

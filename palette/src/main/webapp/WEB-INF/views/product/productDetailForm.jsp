@@ -63,10 +63,10 @@
 			margin: 5px;
 		}
 		.imsi{
-			float: right;
-			position: absolute;
-			top: 700px;
-			right: 100px;
+			right:50px;
+			position: fixed;
+			bottom:120px;
+		}
 		}
 		.col-lg-7 .col-xl-7{
 			padding-top: 100px;
@@ -214,12 +214,14 @@
 
 
 	<div class="imsi">
+		<hr>
 		<button class="btnBasket" onClick="location.href='cartForm.do'">
 			<i class="fas fa-shopping-basket"></i>
 			<span id="basket">${cartCountNumber }</span>
 		</button>
-		<button class="btnUpDel" onclick="location.href='upDelProductForm.do?productNumber=${product.productNumber}'">UPDATE/DELETE</button>
+		<button class="btnUpDel" onclick="location.href='upDelProductForm.do?productNumber=${product.productNumber}'">UP/DEL</button>
 		<a href="product.do">뒤로</a>
+		<hr>
 	</div>
 	<script>
 		function fucCountAdd(){

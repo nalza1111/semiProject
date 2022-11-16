@@ -77,8 +77,9 @@ public class CartPayForm implements Command {
 		
 		
 		return "ajax:"+ lists;
+		} else {
+			return "ajax:"+ "";
 		}
-		return "ajax:"+ "";
 	}
 
 }

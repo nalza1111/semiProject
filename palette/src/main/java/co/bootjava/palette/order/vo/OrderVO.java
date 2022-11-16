@@ -16,11 +16,4 @@ public class OrderVO { //주문완료시 오더넘버 받아와서 여기에 주
 	private String productPrice;
 	private String id;
 	private String payDo;
-	private String categoryCode;
-	private String productName;
-	private String productDesc;
-	private String productStock;
-	private String productHits;
-	private String productDate;
-	private String image;
 }

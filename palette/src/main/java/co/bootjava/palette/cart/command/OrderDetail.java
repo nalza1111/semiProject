@@ -1,7 +1,9 @@
 package co.bootjava.palette.cart.command;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -38,16 +40,35 @@ public class OrderDetail implements Command {
 		vo.setOrderNumber(orderNumber);
 		
 		List<OrderVO> list = dao.selectOrderOne(vo);
-		
-		request.setAttribute("list", list);
 		//프로덕트 상세
 		List<ProductVO> orderProductList = new ArrayList<>();
 		for(OrderVO v : list) {
+			System.out.println(v.toString());
 			ProductVO product = new ProductVO();
 			product.setProductNumber(v.getProductNumber());
+			System.out.println(v.getProductNumber());
+			System.out.println(product.toString());
 			ProductService dao3 = new ProductServiceImpl();
-			orderProductList.add(dao3.productSelect(product));
+			product = dao3.productSelect(product);
+			System.out.println(product.toString());
+			orderProductList.add(product);
 		}
+		List<Object> FinalList = new ArrayList<>();
+		for(int i=0; i<list.size(); i++) {
+			Map<String, String> map = new HashMap();
+			map.put("orderNumber", list.get(i).getOrderNumber());
+			map.put("productNumber", list.get(i).getProductNumber());
+			map.put("productCount", list.get(i).getProductCount());
+			map.put("productPrice", list.get(i).getProductPrice());
+			map.put("image", orderProductList.get(i).getImage());
+			map.put("productName", orderProductList.get(i).getProductName());
+			FinalList.add(map);
+		}
+		
+		//맵에 담아 이걸 사용
+		request.setAttribute("FinalList", FinalList);
+		//아래는 사용이 불편함
+		request.setAttribute("list", list);
 		request.setAttribute("orderProductList", orderProductList);
 		return "order/orderDetail.tiles";
 	}
