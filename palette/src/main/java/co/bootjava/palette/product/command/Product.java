@@ -41,7 +41,8 @@ public class Product implements Command {
 			//list = dao.productSelectList();
 			list = dao.productSelectSortList(8);
 		}
-		request.setAttribute("list", list);
+		String categoryCode="all";
+		
 		int b01,b02,b03,b04,b05,b06,b07;
 		b01 = b02 = b03 = b04 = b05 = b06 = b07 = 0;
 		int lowPrice, highPrice;
@@ -82,6 +83,20 @@ public class Product implements Command {
 		request.setAttribute("b05", b05);
 		request.setAttribute("b06", b06);
 		request.setAttribute("b07", b07);
+		
+		//제품디테일에서 다시 카테고리검색함
+		categoryCode=request.getParameter("categoryCode");
+		System.out.println(categoryCode);
+		if(categoryCode!=null&&!categoryCode.equals("all")) {
+			categoryCode = request.getParameter("categoryCode");
+			System.out.println(categoryCode);
+			ProductVO vo = new ProductVO();
+			vo.setCategoryCode(categoryCode);
+			list = dao.productSelectSearchList(vo);
+		}
+		
+		request.setAttribute("list", list);
+		
 		//장바구니카운트용
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");

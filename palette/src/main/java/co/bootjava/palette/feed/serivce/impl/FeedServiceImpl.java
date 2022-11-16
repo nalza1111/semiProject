@@ -47,6 +47,21 @@ public class FeedServiceImpl implements FeedService {
 	public FeedVO feedSelected(int feedNum) {
 		return  map.feedSelected(feedNum);
 	}
+	
+	@Override
+	public boolean userIdCheck(String userId) {
+		return map.userIdCheck(userId);
+	}
+	
+	@Override
+	public List<FeedVO> mainfeedList() {
+		return map.mainFeedList();
+	}
+
+	@Override
+	public int isFeedExist(String id) {
+		return map.isFeedExist(id);
+	}
 
 
 }

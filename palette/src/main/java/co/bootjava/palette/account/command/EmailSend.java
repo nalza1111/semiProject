@@ -16,23 +16,27 @@ public class EmailSend implements Command {
 		AccountService dao = new AccountServiceImpl();
 		String email = request.getParameter("email");
 
-		
-		//인증번호 생성
+		// 인증번호 생성
 		Random random = new Random();
 		int createNum = 0;
 		String ranNum = "";
 		int letter = 6;
 		String resultNum = "";
-		
-		for(int i=0; i<letter; i++) {
+
+		for (int i = 0; i < letter; i++) {
 			createNum = random.nextInt(9);
 			ranNum = Integer.toString(createNum);
-			resultNum += ranNum;	
+			resultNum += ranNum;
 		}
-		
+
 		String subject = "Palette 회원가입 인증번호";
 		String authMail = "인증번호는 " + resultNum + "입니다.";
 		dao.sendMail(email, subject, authMail);
+		String result = dao.sendMail(email, subject, authMail);
+
+		if (result == "Fail") {
+			return "failed";
+		}
 		return "ajax:" + resultNum;
 	}
 

@@ -71,8 +71,8 @@
 		.col-lg-7 .col-xl-7{
 			padding-top: 100px;
 		}
-		.single_product_item{
-			
+		.single_product_item, .btn_3{
+			cursor: pointer;
 		}
 		.sumImg {
 			height: 187px;
@@ -123,11 +123,11 @@
             <i class="fa-solid fa-coins"></i><h2 class="pPrice"> ${product.getProductPrice()}</h2>
             <ul class="list">
               <li>
-                <a class="active" href="#">
+                <a class="active" href="product.do?categoryCode=${product.getCategoryCode()}">
                   <span>Category</span> : ${product.getCategoryCode()}</a>
               </li>
               <li>
-                <a href="#"> <span>Availibility</span> : In Stock</a>
+                <a> <span>Availibility</span> : In Stock</a>
               </li>
             </ul>
             <p>
@@ -198,7 +198,7 @@
 				<div class="best_product_slider owl-carousel">
 					<c:forEach var="topFive" items="${topFivelist }">
 						<div class="single_product_item">
-							<a href="productDetail.do?productNumber="${topFive.getProductNumber()}><img src="/palette/image/product/${topFive.getImage()}" alt="" class="sumImg"></a>
+							<a href="productDetail.do?productNumber=${topFive.getProductNumber()}"><img src="/palette/image/product/${topFive.getImage()}" alt="" class="sumImg"></a>
 								<div class="single_product_text">
 									<h4>${topFive.getProductName()}</h4>
 									<h3>${topFive.getProductPrice()}</h3>
@@ -215,7 +215,7 @@
 
 	<div class="imsi">
 		<button class="btnBasket" onClick="location.href='cartForm.do'">
-			장바구니
+			<i class="fas fa-shopping-basket"></i>
 			<span id="basket">${cartCountNumber }</span>
 		</button>
 		<button class="btnUpDel" onclick="location.href='upDelProductForm.do?productNumber=${product.productNumber}'">UPDATE/DELETE</button>

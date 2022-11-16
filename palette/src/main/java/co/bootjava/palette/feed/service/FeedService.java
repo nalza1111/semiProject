@@ -11,6 +11,9 @@ public interface FeedService {
 	int feedInsert(FeedVO vo);
 	int feedDelete(FeedVO vo);
 	int feedUpdate(FeedVO vo);
+	boolean userIdCheck(String userId);
+	List<FeedVO> mainfeedList(); //메인화면 피드
+	int isFeedExist(String id);
 	
 	
 }

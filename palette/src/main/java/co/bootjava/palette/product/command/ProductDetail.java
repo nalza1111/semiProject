@@ -24,14 +24,14 @@ public class ProductDetail implements Command {
 		String productNumber = (String) request.getParameter("productNumber");
 		ProductService dao = new ProductServiceImpl();
 		ProductVO product = new ProductVO(productNumber, null, null, null, null, null, null, null, null);
-		
+		System.out.println("0");
 
 		//조회수올리기
 		dao.productUpdateHit(product);		
 		//상세서치
 		product = dao.productSelect(product);
 		request.setAttribute("product", product);
-		System.out.println(product.getProductDate());
+		System.out.println("1");
 		//장바구니카운트용
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");

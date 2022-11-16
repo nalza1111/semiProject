@@ -14,6 +14,7 @@ public class AccountVO {
 	private String role;
 	private String school;
 	private String major;
+	private String image;
 	private int follower;
 	private int ban;
 	

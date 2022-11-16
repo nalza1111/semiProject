@@ -72,21 +72,6 @@
 <body>
 	<!--여기시작-->
 	<input type="hidden" id="idCheck" value="${id }">
-    <!--::header part start::-->
-    <header class="main_menu home_menu">
-        
-        <div class="search_input" id="search_input_box">
-            <div class="container" style="display:none;">
-                <form class="d-flex justify-content-between search-inner" >
-                    <input type="text" class="form-control" id="search_input" placeholder="Search Here">
-                    <button type="submit" class="btn-33"><span class="ti-close" id="close_search" title="Close Search"></span></button>
-                </form>
-            </div>
-        </div>
-    </header>
-    <!-- Header part end-->
-
-    <!--================Home Banner Area =================-->
     <!-- breadcrumb start-->
     <section class="breadcrumb breadcrumb_bg">
         <div class="container">
@@ -153,7 +138,7 @@
 								<!--- THE END HERO HEADER (이전)--->
 								<nav>
 									<button class="btnBasket" onClick="cartFnc()">
-										장바구니 <span id="basket">${cartCountNumber }</span>
+										<i class="fas fa-shopping-basket"></i> <span id="basket">${cartCountNumber }</span>
 									</button>
 									<button class="btnLog" onClick="oderHisFnc()">구매내역</button>
 									<button class="btnAdmin" onClick="location.href='addProductForm.do'">상품추가</button>

@@ -1,8 +1,10 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600);
+@import
+	url(https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600)
+	;
 
 body {
 	margin: 0;
-	padding:0;
+	padding: 0;
 }
 
 #footerTile {
@@ -13,9 +15,7 @@ body {
 	color: white;
 }
 
-*,
-*:after,
-*:before {
+*, *:after, *:before {
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 }
@@ -93,8 +93,7 @@ body {
 	display: block;
 }
 
-.button--rayen::before,
-.button--rayen>span {
+.button--rayen::before, .button--rayen>span {
 	padding: 1em 2em;
 	-webkit-transition: -webkit-transform 0.3s;
 	transition: transform 0.3s;
@@ -113,8 +112,8 @@ body {
 }
 
 #joinFormContainer {
-	margin-top:50px;
-	min-height:1080px;
+	margin-top: 50px;
+	min-height: 1080px;
 	background-image: url('../image/accountForm.jpg');
 }
 
@@ -183,14 +182,14 @@ body {
 	display: none;
 }
 
-
 select {
 	width: 300px;
 	padding: .8em .5em;
 	font-family: inherit;
 	font-size: 1em;
 	background:
-		url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg) no-repeat 95% 50%;
+		url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg)
+		no-repeat 95% 50%;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
@@ -203,28 +202,29 @@ select::-ms-expand {
 	display: none;
 }
 
-
-#accountLoginContainer{
+#accountLoginContainer {
 	background-color: #eaeaea;
-	width:100%;
-	height:850px;
+	width: 100%;
+	height: 850px;
 }
-#loginLogo{
+
+#loginLogo {
+	z-index: 1;
 	position: absolute;
-	top:12%;
-	left:16%;
-	width:800px;
-	opacity:0.6;
+	top: 12%;
+	left: 16%;
+	width: 800px;
+	opacity: 0.6;
 }
 
 #loginBox {
 	position: absolute;
-	padding-top:40px;
-	top:270px;
-	left:64%;
+	padding-top: 40px;
+	top: 270px;
+	left: 64%;
 	width: 400px;
-	height:350px;
-	background-color:white;
+	height: 350px;
+	background-color: white;
 	border-radius: 20px;
 	border: 2px solid #bababa;
 }
@@ -234,15 +234,16 @@ select::-ms-expand {
 	height: 100%;
 }
 
-#loginFrm #loginTbl tbody{
+#loginFrm #loginTbl tbody {
 	text-align: center;
 }
-#loginFrm #loginTbl tr,button {
+
+#loginFrm #loginTbl tr, button {
 	display: block;
 }
 
 #loginFrm #loginTbl th {
-	text-align:left;
+	text-align: left;
 	width: 70px;
 	font-size: 15px;
 	box-sizing: border-box;
@@ -255,11 +256,10 @@ select::-ms-expand {
 	font-size: 13px;
 	box-sizing: border-box;
 	border-radius: 5px;
-
 }
 
 #loginSubmitBtn {
-	width:200px;
+	width: 200px;
 	background: #F3F3F3;
 	border: 1px #DADADA solid;
 	padding: 5px 10px;
@@ -267,11 +267,10 @@ select::-ms-expand {
 	font-weight: bold;
 	font-size: 9pt;
 	outline: none;
-	margin-top:10px;
+	margin-top: 10px;
 	margin-left: 60px;
 	height: 40px;
 	color: #444444;
-	
 }
 
 #loginSubmitBtn:hover {
@@ -300,29 +299,32 @@ select::-ms-expand {
 	background-repeat: no-repeat;
 	background-image: url("../image/login_logo.png");
 }
-#findPwTbl tr,button{
-	display: block;
 
+#findPwTbl tr, button {
+	display: block;
 }
 
 #findPwTbl th {
-	text-align:left;
+	text-align: left;
 	width: 70px;
 	font-size: 15px;
 	box-sizing: border-box;
 }
-#findPwSendCon{
-	margin-left:55px;	
+
+#findPwSendCon {
+	margin-left: 55px;
 }
-.findPwBtn{
+
+.findPwBtn {
 	display: inline-block;
-	border:0;
+	border: 0;
 	background-color: white;
-	color:#676767;
-	padding:5px;
+	color: #676767;
+	padding: 5px;
 }
-#findPwSend{
-	width:100px;
+
+#findPwSend {
+	width: 100px;
 	background: #F3F3F3;
 	border: 1px #DADADA solid;
 	padding: 5px 10px;
@@ -356,118 +358,241 @@ select::-ms-expand {
 	border-radius: 5px;
 }
 
-.loginSuccess a{
+.loginSuccess a {
 	text-decoration: none;
-	color: #aaaaaa;	
+	color: #aaaaaa;
 }
-
 
 /* 메인화면 css */
-#mainWrapper{
-
-    left: 0;
-    top: 0;
-    overflow: hidden;
-    display:block;
+#mainWrapper {
+	left: 0;
+	top: 0;
+	overflow: hidden;
+	display: block;
 }
 
-.main_section01{
+.main_section01 {
 	background: url("../image/login_logo.png") center no-repeat;
-    background-size: inherit;
-    background-color:black;
-    width:100%;
+	background-size: inherit;
+	background-color: black;
+	width: 100%;
 }
 
-.main_section01 .section_title{
-	padding-top:130px;
+.main_section01 .section_title {
+	padding-top: 130px;
+}
 
+.main_section02 {
+	background: url("https://www.art1.com/images/main/main_keyword_bg.jpg")
+		center no-repeat;
+	width: 1920px;
+	height: 1105px;
+	background-size: cover;
+	text-shadow: 1px 1px 1px rgb(0 0 0/ 30%);
+}
+
+.main_section02 .section_title {
+	padding-top: 70px;
+	padding-bottom: 50px;
+}
+
+.main_section02 .title2 {
+	font-size: 35px;
+	color: #444;
+	font-weight: 700;
+	line-height: 1.3;
+}
+
+.main_section02 .title1 {
+	font-size: 21px;
+	margin-top: 15px;
+	color: #888;
+	line-height: 1.6;
+	font-weight: 400;
+}
+
+.main_section02 #mainArtUl {
+	padding: 0 230px;
+	list-style: none;
+}
+
+.main_section02 #mainArtUl li {
+	float: left;
+	width: 400px;
+	margin:0 40px;
+	margin-bottom:60px;
+	height:350px;
+	overflow: hidden;
+	position: relative;
+	box-shadow: 5px 5px 5px 0 rgb(0 0 0/ 30%);
+	border: 1px solid #888;
+	display: flex;  
+	flex-wrap: wrap;
+	cursor:pointer;
+}
+
+.main_section02 #mainArtUl img {
+	width: 100%;
+	max-height: 350px;
+}
+
+.main_section02 #hoverArtText {
+	color: #fff;
+	position: absolute;
+	font-size: 19px;
+	font-weight: 700;
+	line-height: 1.5;
+	left: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.8);
+	width: 100%;
+	height:100%;
+	padding-top: 50px;
+	box-sizing: border-box;
+	opacity: 0;
+	transition: opacity 0.35s ease-in-out;
+}
+
+
+.main_section02 #mainArtUl li:hover #hoverArtText{
+	opacity: 1;
+}
+
+.main_section03 {
+	background: url("https://www.art1.com/images/main/main_curator_bg.jpg")
+		center no-repeat;
+	width: 1920px;
+	height: 900px;
+	background-size: cover;
+	text-shadow: 1px 1px 1px rgb(0 0 0/ 50%);
+}
+
+.main_section03 .section_title {
+	padding-top: 70px;
+	padding-bottom: 50px;
+}
+
+.main_section03 .title2 {
+	font-size: 35px;
+	font-weight: 700;
+	line-height: 1.3;
+}
+
+.main_section03 #mainAccountUl {
+	padding: 0 230px;
+	list-style: none;
+	padding-top: 50px;
+}
+
+.main_section03 #mainAccountUl li {
+	background-color: white;
+	float: left;
+	width: 400px;
+	margin: 0 40px;
+	margin-bottom: 20px;
+	overflow: hidden;
+	position: relative;
+	box-shadow: 5px 5px 5px 5px rgb(0 0 0/ 20%);
+	border: 1px solid #b0b0b0;
+	padding: 20px;
+	transition: background 0.35s ease-in-out;
+	cursor:pointer;
+}
+
+.main_section03 #mainAccountUl img {
+	width: 100%;
+	height: 400px;
 	
 }
 
-.main_section02{
-	background: url("../image/main_back(1).jpg") center no-repeat;
-    background-size: cover;
-
+.main_section03 #mainAccountUl p {
+	text-shadow: none;
+	transition: color 0.35s ease-in-out;
+	font-size:17px;
+	font-weight: bold;
 }
 
-.main_section02 .section_title{
-	padding-top:70px;
-	padding-bottom:50px;
+.main_section03 #mainAccountUl #accountItem:hover{
+	opacity:1;
+	background-color: black;
+	color:white;
 }
 
-.main_section02 .title2{
+
+.main_section04 {
+	width: 1920px;
+	height: 900px;
+	background-size: cover;
+	text-shadow: 1px 1px 1px rgb(0 0 0/ 50%);
+}
+
+.main_section04 .section_title {
+	padding-bottom: 50px;
+}
+
+.main_section04 .title2 {
 	font-size: 35px;
 	font-weight: 700;
-    line-height: 1.3;
+	line-height: 1.3;
 }
-.main_section02 .title1{
+
+.main_section04 .title1 {
 	font-size: 21px;
 	margin-top: 15px;
 	color: #222;
-    line-height: 1.6;
-
-    font-weight: 400;
+	line-height: 1.6;
+	font-weight: 400;
 }
 
-.main_section03{
-	margin-top:30px;
-	background: url("../image/feed_main.jpg") center no-repeat;
-    background-size: cover;
+.main_section05 {
+	background: url("https://www.art1.com/images/main/main_hash_bg.jpg")
+		center no-repeat;
+	width: 1920px;
+	height: 980px;
+	background-size: cover;
+	text-shadow: 1px 1px 1px rgb(0 0 0/ 50%);
 }
-.main_section03 .section_title{
-	padding-top:400px;
-	padding-bottom:500px;
+
+.main_section05 .section_title {
+	padding-top: 70px;
+	padding-bottom: 50px;
+	padding-right: 400px;
 }
-.main_section04{
+
+.main_section05 .title2 {
+	font-size: 35px;
+	font-weight: 700;
+	line-height: 1.3;
+}
+
+.main_section05 .title1 {
+	font-size: 21px;
+	margin-top: 15px;
+	color: #222;
+	line-height: 1.6;
+	font-weight: 400;
+}
+
+.main_section06 {
 	/* background: url("../image/main_back(1).jpg") center no-repeat; */
-    background-size: cover;
-
+	background-size: cover;
 }
-.main_section05{
+
+.main_section07 {
 	/* background: url("../image/main_back(1).jpg") center no-repeat; */
-    background-size: cover;
-
+	background-size: cover;
 }
-.main_section06{
-	/* background: url("../image/main_back(1).jpg") center no-repeat; */
-    background-size: cover;
-
-}
-
-
-
-
-
 
 /* !!! header 영역입니다 하단 고정해주세요 !!! */
-
 #topMenu {
-	
+	z-index: 1;
 	position: fixed;
-	top : 0%;
+	top: 0%;
 	height: 50px;
 	width: 100%;
 	color: #333;
 	background-color: #fff;
 	border: 1px solid #cfcfcf;
-}
-
-
-#topMenu ul {
-	position: relative;
-	margin: 0;
-}
-
-#topMenu #logo a {
-	display: block;
-	width: 150px;
-	height: 50px;
-	margin: 0 auto;
-	margin-right: 30px;
-	background-size: contain;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-image: url("../image/logo.jpg");
 }
 
 #topMenu #leftUl li {
@@ -498,7 +623,7 @@ select::-ms-expand {
 	color: #333;
 	display: block;
 	width: 100px;
-	height: 48px;
+	height: 40px;
 	font-size: 0.8em;
 	line-height: 50px;
 	font-family: nanumbarungothic, sans-serif;
@@ -509,19 +634,62 @@ select::-ms-expand {
 	color: #333;
 	display: block;
 	width: 100px;
-	height: 50px;
+	height: 43px;
 	font-size: 1em;
 	font-weight: bold;
 	font-family: nanumbarungothic, sans-serif;
+	transition: all .3s ease;
 }
 
 #topMenu .menuLink:hover {
-	color: black;
-	background-color: #eeeeee;
 	height: 48px;
+	color: #39d9c8;
+	transition: all .3s ease;
 }
 
-#topMenu #logo a:hover {
-	background-color: #ffffff;
-	height: 45px;
+.menuLink>span {
+	position: relative
+}
+
+.menuLink>span::after {
+	content: '';
+	width: 0%;
+	left: 50%;
+	height: 1px;
+	display: block;
+	position: absolute;
+	margin-top: -15px;
+	border-bottom: 2px solid #39d9c8;
+	transition: all .3s ease;
+}
+
+.menuLink:hover>span::after {
+	content: '';
+	width: 100%;
+	left: 0px;
+	height: 1px;
+	display: block;
+	position: absolute;
+	margin-top: -10px;
+	border-bottom: 2px solid #39d9c8;
+	transition: all .3s ease;
+}
+
+#topMenu ul {
+	position: relative;
+	margin: 0;
+	list-style: none;
+	cursor: pointer
+}
+
+#topMenu #logo a {
+	display: block;
+	width: 150px;
+	height: 50px;
+	margin: 0 auto;
+	margin-right: 30px;
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-image: url("../image/logo.jpg");
 }

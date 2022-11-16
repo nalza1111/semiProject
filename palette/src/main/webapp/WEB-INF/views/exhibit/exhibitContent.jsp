@@ -6,76 +6,107 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<style>
-button {
-	padding: 10px;
-	width: 100px;
-	border-radius: 30px;
-	border: 1px solid gray;
-	font-weight: bold;
-}
-li{
-	list-style: none;
-}
-#detail-content{
-	width: 500px;
-}
-a{
-	text-decoration: none;
-}
-.bold-text{
-	font-weight: bold;
-}	
-</style>
+<!-- Mobile Specific Meta -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Favicon-->
+		<link rel="shortcut icon" href="img/fav.png">
+		<!-- Author Meta -->
+		<meta name="author" content="codepixer">
+		<!-- Meta Description -->
+		<meta name="description" content="">
+		<!-- Meta Keyword -->
+		<meta name="keywords" content="">
+		<!-- meta character set -->
+		<meta charset="UTF-8">
+<title>About Exhibition</title>
+<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
+			<!--
+			CSS
+			============================================= -->
+			<link rel="stylesheet" href="css/jhkcss/linearicons.css">
+			<link rel="stylesheet" href="css/jhkcss/font-awesome.min.css">
+			<link rel="stylesheet" href="css/jhkcss/bootstrap.css">
+			<link rel="stylesheet" href="css/jhkcss/magnific-popup.css">
+			<link rel="stylesheet" href="css/jhkcss/nice-select.css">					
+			<link rel="stylesheet" href="css/jhkcss/animate.min.css">
+			<link rel="stylesheet" href="css/jhkcss/owl.carousel.css">
+			<link rel="stylesheet" href="css/jhkcss/main.css">
 </head>
 <body>
-	<div align="center">
-		<div>
-			<h1>상세페이지</h1>
-		</div>
-		<div>
-			<div>
+	<!-- start banner Area -->
+		<section class="banner-area relative" id="home">	
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row d-flex align-items-center justify-content-center">
+						<div class="about-content col-lg-12">
+							<h1 class="text-white">
+								상세페이지				
+							</h1>	
+							<p class="text-white link-nav"><a href="exhibitList.do">Exhibition </a>  ➮  <a href="#"> About Exhibition</a></p>
+						</div>											
+					</div>
+				</div>
+		</section>
+	<!-- End banner Area -->
+			<div class="button-group-area mt-40">
 				<!-- 버튼 두개는 관리자만 보이게 -->
 				<c:if test="${role eq 'admin' }">
-					<button type="button" id="editBtn" onclick="location.href='contentUpdateForm.do?exhibitNum=${exhibit.exhibitNum }'">수정</button>
-					<button type="button" id="delBtn" onclick="location.href='deleteContentForm.do?exhibitNum=${exhibit.exhibitNum}'">삭제</button>
+					<button type="button" id="editBtn" class="genric-btn default circle" style="position: fixed; top: 20%; right: 2.5%; z-index: 100;"
+					onclick="location.href='contentUpdateForm.do?exhibitNum=${exhibit.exhibitNum }'">EDIT</button>
+					<button type="button" id="delBtn" class="genric-btn danger circle" style="position: fixed; top: 25%; right: 3%; z-index: 100;"
+					onclick="location.href='deleteContentForm.do?exhibitNum=${exhibit.exhibitNum}'">DELETE</button>
 				</c:if>
 			</div>
-			<div>
-				<ul>
-					<li><span class="bold-text">전시명:</span> ${exhibit.exhibitName }</li>
-					<li><span class="bold-text">전시일정:</span> <c:out value="${fn:substring(exhibit.startDate,0,10) }"/></li><li> ~ <c:out value="${fn:substring(exhibit.endDate,0,10) }"/></li>
-					<li><span class="bold-text">학교명:</span> ${exhibit.exhibitSchool }</li>
-					<li><span class="bold-text">전공명:</span> ${exhibit.exhibitMajor }</li>
-				</ul>
-			</div>
-			<div>
-				<!-- 전시 대표 이미지 -->
-				<img src="${exhibit.image }" width="600" height="400">
-			</div>
-			<div id="detail-content">
-				<p><span class="bold-text">전시 소개</span></p>
-				<p>${exhibit.content }</p>
-			</div>
+	<!-- Start cat-top Area -->
+			<section class="cat-top-area section-gap">
+				<div class="container">
+					<div class="row align-items-center">
+						<div class="col-lg-6 cat-top-left">
+							<h1>${exhibit.exhibitName }</h1>
+							<p style="font-size: 20px;line-height: 40px;">
+								<span style="font-weight: bold">Exhibit Date :</span> <c:out value="${fn:substring(exhibit.startDate,0,10) }"/> ~ <c:out value="${fn:substring(exhibit.endDate,0,10) }"/><br/>
+								<span style="font-weight: bold">College :</span> ${exhibit.exhibitSchool }<br/>
+								<span style="font-weight: bold">Major :</span> ${exhibit.exhibitMajor }
+							</p>
+						</div>
+						<!-- 전시 대표 이미지 -->
+						<div class="col-lg-6 cat-top-right">
+							<img class="img-fluid" src="${exhibit.image }" alt="">
+						</div>
+					</div>
+				</div>	
+			</section>
+	<!-- End cat-top Area -->	
+	
+	<!-- Start recent-worl Area -->
+			<section class="recent-work-area section-gap">
+				<div class="container">
+					<div class="row d-flex justify-content-center">
+						<div class="menu-content pb-70 col-lg-8">
+							<div class="title text-center">
+								<h1 class="mb-10">About Exhibition</h1>
+								<p>${exhibit.content }</p>
+							</div>
+						</div>
+					</div>						
+					<div class="row">
+					<c:forEach items="${exhibitImages }" var="e">
+						<div class="col-lg-6 single-recent-work">
+							<a class="recent-project">
+								<img class="img-fluid" src="${e.fileImage }" width="200" height="300">
+							</a>	
+						</div>
+					</c:forEach>
+					</div>
+				</div>	
+			</section>
+	<!-- End recent-worl Area -->
+		<div class="button-group-area mt-40" style="margin:10px;font-size:15px;">
+					<button type="button" class="genric-btn default circle arrow"
+							onclick="location.href='main.do'">HOME</button>
+					<button type="button" class="genric-btn default circle arrow"
+							onclick="location.href='exhibitList.do'">BACK</button>
 		</div>
-		<div>
-			<!-- 전시 이미지들 -->
-			<c:forEach items="${exhibits }" var="e">
-				<img src="${e.image }" width="200" height="300">
-			</c:forEach>
-			
-			<img src="./image/poster2.jpg" width="200" height="300">
-			<img src="./image/poster3.jpg" width="200" height="300">
-			<img src="./image/poster4.png" width="200" height="300">
-		</div>
-		<h3>
-			<a href="main.do">홈 가기</a>
-		</h3>
-		<h3>
-			<a href="exhibitList.do">목록 보기</a>
-		</h3>
-	</div>
+
 </body>
 </html>
