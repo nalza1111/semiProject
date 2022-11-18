@@ -2,12 +2,11 @@ package co.bootjava.palette.feed.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import co.bootjava.palette.account.service.AccountService;
+import co.bootjava.palette.account.service.impl.AccountServiceImpl;
+import co.bootjava.palette.account.vo.AccountVO;
 import co.bootjava.palette.common.Command;
-import co.bootjava.palette.feed.serivce.impl.FeedServiceImpl;
-import co.bootjava.palette.feed.service.FeedService;
-import co.bootjava.palette.feed.vo.FeedVO;
 
 public class UpdateFollow implements Command {
 
@@ -15,30 +14,32 @@ public class UpdateFollow implements Command {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("updateFollow 도착!!!");
 		
-		int num = Integer.parseInt(request.getParameter("feedNum"));
-		FeedService dao = new FeedServiceImpl();
-		FeedVO feed = new FeedVO();
+		AccountService dao = new AccountServiceImpl();
+		AccountVO account = new AccountVO();
 		
-		feed = dao.feedSelected(num);
+		String id = request.getParameter("id");
 		String job = request.getParameter("job");
 		
+		account = dao.AccountSelected(id);
+		
+
 		// follow 누르면 +1 증가.
 		if(job.equals("follow")) {
-			int newCnt = feed.getUserFollower();
+			int newCnt = account.getFollower();
 			newCnt = newCnt + 1;
-			feed.setUserFollower(newCnt);
+			account.setFollower(newCnt);
 			
-			dao.feedUpdate(feed);
+			dao.updateAccountFollower(account);
 			String follow = "follow";
 			request.setAttribute("follow", follow);
 			
 		// unfollow 누르면 -1 감소.
 		} else {
-			int newCnt = feed.getUserFollower();
+			int newCnt = account.getFollower();
 			newCnt = newCnt - 1;
-			feed.setUserFollower(newCnt);
+			account.setFollower(newCnt);
 			
-			dao.feedUpdate(feed);
+			dao.updateAccountFollower(account);
 			String follow = "unfollow";
 			request.setAttribute("follow", follow);
 		}

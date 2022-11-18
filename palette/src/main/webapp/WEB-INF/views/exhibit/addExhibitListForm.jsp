@@ -56,9 +56,10 @@
 						<tr>
 							<th width="150">전시소개</th>
 							<td width="313">
-							<textarea id="content" name="content" rows="8" cols="50" placeholder="500자 미만으로 입력해주세요"
+							<textarea id="content" name="content" rows="8" cols="50" onkeyup= "counter();" maxlength="500" placeholder="500자 미만으로 입력해주세요"
 							style="border: 1px solid #cfcfcf;font-size: 1em;border-radius: 5px; margin-right: 10px;"></textarea>
 							</td>
+							<td style="float:right;font-size:15px;"><span id="count">(0/500)</span>&nbsp;&nbsp;&nbsp;</td>
 						</tr>
 					</table>
 				</div>
@@ -90,5 +91,27 @@
 			</form>
 		</div>
 	</div>
+	<script>
+	// counter라는 함수 정의
+	function counter() {
+		// content 변수 지정
+	    // getElementById(id입력)
+	    // -> 특정 id를 가진 DOM(textarea, span 과 같은 특정 객체를 의미함)을 가져옴  
+	    // .value를 붙이면 그 안의 내용을 가져옴
+	    var content = document.getElementById('content').value;
+	
+		//count 라는 id를 가진 객체 내용 (0/500) 을 가져온 후 현재 글자수 넣어주기
+
+		document.getElementById('count').innerHTML = '(' + content.length + ' / 500)';
+
+	
+		// 글자수 500초과 시 500자리까지만 표시
+		if (content.length > 500){ 
+			document.getElementById('content').value = content.substring(0, 500);
+		}
+	}
+	
+	counter() //counter 함수 실행
+</script>
 </body>
 </html>

@@ -9,9 +9,7 @@ public class BoardJoinForm implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		
-		return "board/boardJoinForm.tiles";
-		
+		//게시물 등록으로 가는화면
+		return "board/boardJoinForm.tiles";		
 	}
-
 }

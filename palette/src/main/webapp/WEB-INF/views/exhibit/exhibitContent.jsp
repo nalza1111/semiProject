@@ -19,6 +19,11 @@
 		<!-- meta character set -->
 		<meta charset="UTF-8">
 <title>About Exhibition</title>
+<style>
+#logo{
+	padding-left: 40px;
+}
+</style>
 <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
 			<!--
 			CSS
@@ -34,13 +39,15 @@
 </head>
 <body>
 	<!-- start banner Area -->
-		<section class="banner-area relative" id="home">	
+		<section class="banner-area relative" id="home">
+			<div class="overlay overlay-bg" style="background : url(image//detailart3.jpg); background-repeat: no-repeat; background-size: cover;">
 				<div class="overlay overlay-bg"></div>
+			</div>	
 				<div class="container">
 					<div class="row d-flex align-items-center justify-content-center">
 						<div class="about-content col-lg-12">
 							<h1 class="text-white">
-								상세페이지				
+								PALETTE			
 							</h1>	
 							<p class="text-white link-nav"><a href="exhibitList.do">Exhibition </a>  ➮  <a href="#"> About Exhibition</a></p>
 						</div>											

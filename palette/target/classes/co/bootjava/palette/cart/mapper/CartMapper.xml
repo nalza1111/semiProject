@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.bootjava.palette.cart.mapper.CartMapper">
+	<select id="cartSelectList" resultType="co.bootjava.palette.cart.vo.CartVO">
+		SELECT * FROM CART
+	</select>
+	
+	<select id="cartAccountSelectList" resultType="co.bootjava.palette.cart.vo.CartVO">
+		SELECT * FROM CART WHERE ID = #{id}
+	</select>
+	
+	<select id="cartSelect" resultType="co.bootjava.palette.cart.vo.CartVO">
+		SELECT * FROM CART WHERE PRODUCT_NUMBER = #{productNumber} AND id = #{id}
+	</select>
+	
+	<insert id="cartInsert" >
+		INSERT INTO CART (CART_NUMBER, PRODUCT_NUMBER, PRODUCT_COUNT, PRODUCT_PRICE, id)
+		 VALUES(TEST_SEQ.NEXTVAL,#{productNumber},1,#{productPrice},#{id})
+	</insert>
+	
+	<delete id="cartDelete">
+		DELETE CART WHERE PRODUCT_NUMBER = #{productNumber} 
+		 AND ID = #{id}
+	</delete>
+	
+	<update id="cartUpdatePlus">
+		UPDATE CART SET PRODUCT_COUNT=PRODUCT_COUNT+1
+		 WHERE CART_NUMBER=#{cartNumber}
+	</update>
+	
+	<update id="cartUpdateMinus">
+		UPDATE CART SET PRODUCT_COUNT=PRODUCT_COUNT-1
+		 WHERE CART_NUMBER=#{cartNumber}
+	</update>
+	
+	<insert id="cartInsertSome">
+		INSERT INTO CART (CART_NUMBER, PRODUCT_NUMBER, PRODUCT_COUNT, PRODUCT_PRICE, id)
+		 VALUES(TEST_SEQ.NEXTVAL,#{productNumber},#{productCount},#{productPrice},#{id})
+	</insert>
+	
+	<update id="cartUpdatePlusSome">
+		UPDATE CART SET PRODUCT_COUNT=PRODUCT_COUNT+#{productCount}
+		 WHERE CART_NUMBER=#{cartNumber}
+	</update>
+	
+	<delete id="cartDeleteOrder">
+		DELETE FROM CART WHERE ID=#{id} AND PRODUCT_NUMBER IN(SELECT PRODUCT_NUMBER FROM ORDER_COMPLETE WHERE ID=#{id})
+	</delete>
+	
+</mapper>

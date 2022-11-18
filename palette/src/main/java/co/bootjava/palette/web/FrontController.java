@@ -2,7 +2,6 @@ package co.bootjava.palette.web;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -12,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.bootjava.palette.account.command.AccountDelete;
 import co.bootjava.palette.account.command.AccountJoin;
 import co.bootjava.palette.account.command.AccountJoinForm;
 import co.bootjava.palette.account.command.AccountLogin;
@@ -20,18 +20,24 @@ import co.bootjava.palette.account.command.AjaxIdCheck;
 import co.bootjava.palette.account.command.EmailSend;
 import co.bootjava.palette.account.command.FindPwForm;
 import co.bootjava.palette.account.command.Logout;
+import co.bootjava.palette.account.command.ManageSite;
 import co.bootjava.palette.account.command.PwSend;
+import co.bootjava.palette.art.command.ArtDelete;
 import co.bootjava.palette.art.command.ArtInsert;
 import co.bootjava.palette.art.command.ArtInsertForm;
 import co.bootjava.palette.art.command.ViewCntPlus;
+import co.bootjava.palette.board.command.BoardBan;
 import co.bootjava.palette.board.command.BoardDelete;
+import co.bootjava.palette.board.command.BoardDetailList;
 import co.bootjava.palette.board.command.BoardJoin;
 import co.bootjava.palette.board.command.BoardJoinForm;
 import co.bootjava.palette.board.command.BoardList;
 import co.bootjava.palette.board.command.BoardMain;
 import co.bootjava.palette.board.command.BoardSelect;
+import co.bootjava.palette.board.command.BoardSelectSession;
 import co.bootjava.palette.board.command.BoardUpdate;
 import co.bootjava.palette.board.command.BoardUpdateForm;
+import co.bootjava.palette.board.command.MyBoardList;
 import co.bootjava.palette.cart.command.AddCart;
 import co.bootjava.palette.cart.command.AddCartSome;
 import co.bootjava.palette.cart.command.AddCartTwo;
@@ -74,7 +80,7 @@ import co.bootjava.palette.product.command.UpDelProduct;
 import co.bootjava.palette.product.command.UpDelProductForm;
 import co.bootjava.palette.product.command.productSort;
 import co.bootjava.palette.product.commandr.SearchProductBtn;
-import co.bootjava.palette.product.vo.ProductVO;
+import co.bootjava.palette.reply.command.ReplyDelete;
 import co.bootjava.palette.reply.command.ReplyJoin;
 
 @WebServlet("*.do")
@@ -112,17 +118,25 @@ public class FrontController extends HttpServlet {
 		map.put("/artInsertForm.do", new ArtInsertForm()); //내 작품 추가 화면
 		map.put("/artInsert.do", new ArtInsert()); //내 작품 추가
 		map.put("/viewCntPlus.do", new ViewCntPlus()); //작품 조회수 추가
+		map.put("/artDelete.do", new ArtDelete()); //내 작품 삭제
+		map.put("/manageSite.do", new ManageSite()); //관리자 페이지
+		map.put("/accountDelete.do", new AccountDelete()); //계정삭제
 		
 		//게시판(이재원)
-		map.put("/boardList.do", new BoardList());
-		map.put("/boardJoin.do", new BoardJoin());
-		map.put("/boardMain.do", new BoardMain());// 게시판 메인화면
-		map.put("/boardJoinForm.do", new BoardJoinForm());// 게시판 등록화면.
-		map.put("/boardSelect.do", new BoardSelect());
-		map.put("/boardUpdateForm.do", new BoardUpdateForm());
-		map.put("/boardUpdate.do", new BoardUpdate());
-		map.put("/boardDelete.do", new BoardDelete());
-		map.put("/replyJoin.do", new ReplyJoin());
+		map.put("/boardList.do", new BoardList()); //게시물 목록기능
+		map.put("/boardMain.do", new BoardMain()); // 게시판 메인화면
+		map.put("/boardJoinForm.do", new BoardJoinForm()); // 게시판 등록화면.
+		map.put("/boardSelect.do", new BoardSelect()); //게시물 한건조회하는 기능.
+		map.put("/boardJoin.do", new BoardJoin()); //게시물 등록기능.
+		map.put("/boardUpdateForm.do", new BoardUpdateForm()); //게시물 수정화면이동.
+		map.put("/boardUpdate.do", new BoardUpdate()); //게시물 수정기능.
+		map.put("/boardDelete.do", new BoardDelete()); //게시물 삭제기능.
+		map.put("/replyJoin.do", new ReplyJoin()); //댓글작성기능.
+		map.put("/boardDetailList.do", new BoardDetailList()); //검색리스트보여주는기능.
+		map.put("/boardSelectSession.do", new BoardSelectSession()); //댓글작성시 데이터손실방지 세션에 저장.
+		map.put("/myBoardList.do", new MyBoardList()); //나의게시물목록기능.
+		map.put("/boardBan.do", new BoardBan()); //신고기능.
+		map.put("/replyDelete.do", new ReplyDelete());
 		
 		//전시회(정호경)
 		map.put("/exhibitList.do", new ExhibitList()); // 전시 전체 목록
@@ -177,7 +191,7 @@ public class FrontController extends HttpServlet {
 
 		String viewPage = command.exec(request, response);// 명령을 수행하고 결과를 돌려받음.
 		//전체상품리스트불러옴
-		List<ProductVO> list = (List<ProductVO>) request.getAttribute("list");
+
 		//viewResolve 파트
 		if(!viewPage.endsWith(".do")&&viewPage!=null) {
 			//ajax 처리		

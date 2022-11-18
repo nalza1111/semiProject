@@ -1,7 +1,6 @@
 package co.bootjava.palette.exhibit.command;
 
 import java.io.IOException;
-import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,7 +11,6 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import co.bootjava.palette.common.Command;
 import co.bootjava.palette.exhibit.service.ExhibitService;
 import co.bootjava.palette.exhibit.service.impl.ExhibitServiceImpl;
-import co.bootjava.palette.exhibit.vo.ExhibitImagesVO;
 import co.bootjava.palette.exhibit.vo.ExhibitVO;
 
 public class ContentUpdate implements Command{

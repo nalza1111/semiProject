@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper	namespace="co.bootjava.palette.cart.mapper.UserOrderDetailMapper">
+	<select id="userOrderDetailSelectList" resultType="co.bootjava.palette.cart.vo.UserOrderDetailVO">
+		SELECT C.PRODUCT_NUMBER, P.PRODUCT_NAME,
+		 C.PRODUCT_COUNT, C.PRODUCT_PRICE, P.IMAGE, #{id} AS ID 
+		 FROM CART C, PRODUCT P
+		 WHERE C.PRODUCT_NUMBER=P.PRODUCT_NUMBER AND C.ID = #{id}  AND C.PRODUCT_COUNT != 0
+		 <if test="productNumber != ''"> AND C.PRODUCT_NUMBER = #{productNumber}</if>
+	</select>
+	
+	<insert id="userOrderDetailInsert">
+	</insert>
+	
+	<delete id="userOrderDetailDelete">
+	</delete>
+	
+	<update id="userOrderDetailUpdatePlus">
+	</update>
+	
+	<update id="userOrderDetailUpdateMinus">
+	</update>
+	
+	<select id="selectId" resultType="co.bootjava.palette.account.vo.AccountVO">
+		SELECT * FROM ACCOUNT WHERE ID = #{id}
+	</select>
+</mapper>

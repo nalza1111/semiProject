@@ -13,9 +13,6 @@ import javax.mail.internet.MimeUtility;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.sun.mail.smtp.SMTPAddressFailedException;
-import com.sun.mail.smtp.SMTPSendFailedException;
-
 import co.bootjava.palette.account.mapper.AccountMapper;
 import co.bootjava.palette.account.service.AccountService;
 import co.bootjava.palette.account.vo.AccountVO;
@@ -42,7 +39,8 @@ public class AccountServiceImpl implements AccountService {
 	public AccountVO accountLogin(String id, String password) {
 		return map.accountLogin(id, password);
 	}
-
+	
+	//이메일값 찾기
 	@Override
 	public AccountVO emailFind(String id) {
 		return map.emailFind(id);
@@ -109,19 +107,38 @@ public class AccountServiceImpl implements AccountService {
 		}
 	}
 
+	//계정 리스트
 	@Override
 	public List<AccountVO> accountList() {
 		return map.accountList();
 	}
-
+	//계정 선택
 	@Override
 	public AccountVO AccountSelected(String id) {
 		return map.accountSelected(id);
 	}
-
+	//계정 메인출력
 	@Override
 	public List<AccountVO> mainAccountList() {
 		return map.mainAccountList();
 	}
+	//팔로워 증가
+	@Override
+	public int updateAccountFollower(AccountVO vo) {
+		return map.updateAccountFollower(vo);
+	}
+	//관리자 페이지 계정출력
+	@Override
+	public List<AccountVO> accountListM() {
+		return map.accountListM();
+	}
+
+	@Override
+	public int accountDelete(String id) {
+
+		return map.accountDelete(id);
+	}
+
+	
 
 }

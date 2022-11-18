@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>삭제 확인</title>
 <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
 			<!--
 			CSS
@@ -19,16 +19,18 @@
 			<link rel="stylesheet" href="css/jhkcss/main.css">
 </head>
 <body>
-	<br><br>
-	<img src="image//error.png" style="width:100px;height:100px;">
-	<br><br>
-	<h1>정말 삭제하시겠습니까?</h1>
-	<div class="button-group-area mt-40" style="padding-left:360px;">
-		<form id="frm" action="deleteContent.do" method="post">
-			<button type="submit" class="genric-btn danger circle">삭제</button>
-			<button type="button" id="backBtn" class="genric-btn default circle" onclick="location.href='exhibitList.do'">취소</button>
-			<input type="hidden" name="exhibitNum" value="${exhibit.exhibitNum }">
-		</form>
+	<div align="center">
+		<br><br>
+		<img src="image//error.png" style="width:100px;height:100px;">
+		<br><br>
+		<h1>정말 삭제하시겠습니까?</h1>
+		<div class="button-group-area mt-40" style="display:inline-block;align:center;width: 270px;">
+			<form id="frm" action="deleteContent.do" method="post">
+				<button type="submit" class="genric-btn danger circle">삭제</button>
+				<button type="button" id="backBtn" class="genric-btn default circle" onclick="location.href='exhibitList.do'">취소</button>
+				<input type="hidden" name="exhibitNum" value="${exhibit.exhibitNum }">
+			</form>
+		</div>
 	</div>
 </body>
 </html>

@@ -26,7 +26,6 @@ li {
 }
 
 </style>
-
 <link
 	href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700"
 	rel="stylesheet">
@@ -47,8 +46,10 @@ li {
 		<!-- 배너 -->
 		<!-- start banner Area -->
 		<section class="banner-area relative" id="home">
-			<div class="overlay overlay-bg"></div>
-			<div class="container">
+			<div class="overlay overlay-bg" style="background : url(image//art2.jpg);">
+				<div class="overlay overlay-bg"></div>
+			</div>
+			<div class="container" >
 				<div class="row d-flex align-items-center justify-content-center">
 					<div class="about-content col-lg-12">
 						<h1 class="text-white">PALETTE</h1>

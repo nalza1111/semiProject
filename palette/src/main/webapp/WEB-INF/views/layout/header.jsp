@@ -9,13 +9,16 @@
 <link rel="stylesheet" href="css/styles.css?ver=1">
 </head>
 <body>
-	<nav id="topMenu" style="z-index:99999;">
+	<nav id="topMenu" style="padding-left:40px;">
 		<ul id="leftUl">
 			<li id="logo"><a class="menuLink" href="main.do"></a></li>
 			<li class="navHover"><a class="menuLink" href="feedList.do"><span>작가</span></a></li>
 			<li class="navHover"><a class="menuLink" href="exhibitList.do"><span>전시회</span></a></li>
 			<li class="navHover"><a class="menuLink" href="product.do"><span>샵으로</span></a></li>
-			<li class="navHover"><a class="menuLink" href="boardList.do"><span>게시판</span></a></li>
+			<li class="navHover"><a class="menuLink" href="boardList.do?page=1"><span>게시판</span></a></li>
+			<c:if test="${role eq 'admin' }">
+				<li class="navHover"><a class="menuLink" href="manageSite.do"><span>사이트관리</span></a></li>
+			</c:if>
 		</ul>
 		<ul id="rightUl">
 			<c:if test="${empty id }">

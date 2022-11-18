@@ -1,8 +1,6 @@
 package co.bootjava.palette.art.command;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,7 +9,6 @@ import javax.servlet.http.HttpSession;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import co.bootjava.palette.account.vo.AccountVO;
 import co.bootjava.palette.art.service.ArtService;
 import co.bootjava.palette.art.service.impl.ArtServiceImpl;
 import co.bootjava.palette.art.vo.ArtVO;
@@ -31,7 +28,6 @@ public class ArtInsert implements Command {
 		try {
 			MultipartRequest mr = new MultipartRequest(request, saveDir, maxSize, encod, new DefaultFileRenamePolicy());
 			String ofile = mr.getOriginalFileName("artImage");
-			List<AccountVO> sfile = new ArrayList<>();
 			String id = (String) session.getAttribute("id");
 			vo.setArtId(id);
 			vo.setArtTitle(mr.getParameter("artTitle"));

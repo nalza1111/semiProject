@@ -9,6 +9,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>Palette</title>
 	<link rel="icon" href="image/img/favicon.png">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/hjjcss/bootstrap.min.css">
@@ -155,7 +156,7 @@
 									<p><span>loading... </span> Prodict Found</p>
 								</div>
 								<div class="single_product_menu d-flex">
-									<h5>short by : </h5>
+									<h5>sort by : </h5>
 									<select  onchange="fncList()" id="select-option-sort">
 										<option data-display="Select">Select</option>
 										<option value="search">조회순</option>
@@ -366,7 +367,7 @@
 			let imgLink = good.querySelector('.product-detail-photo');
 			imgLink.setAttribute('href', 'productDetail.do?productNumber=' + item.productNumber);
 			//이미지
-			good.querySelector('.product-img').src = '/palette/image/product/' + item.image;
+			good.querySelector('.product-img').src = item.image;
 			//링크
 			
 			let link = good.querySelector('.product-detail');

@@ -5,7 +5,7 @@ import java.util.List;
 import co.bootjava.palette.reply.vo.ReplyVO;
 
 public interface ReplyMapper {
-	List<ReplyVO> replySelectList();	
+	List<ReplyVO> replySelectList(ReplyVO vo);	
 	ReplyVO replySelect(ReplyVO vo);
 	int replyInsert(ReplyVO vo);
 	int replyDelete(ReplyVO vo);

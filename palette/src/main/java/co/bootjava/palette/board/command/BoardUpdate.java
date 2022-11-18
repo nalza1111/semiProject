@@ -16,10 +16,11 @@ public class BoardUpdate implements Command {
 		// 게시물 수정 기능
 		HttpSession session=request.getSession();
 		BoardVO vo = new BoardVO();
-		BoardService dao = new BoardServiceImpl();
+		BoardService dao = new BoardServiceImpl();	
+		vo.setBoardNumber(Integer.parseInt(session.getAttribute("number").toString()));
 		vo.setBoardTitle(request.getParameter("title"));
 		vo.setBoardContent(request.getParameter("content"));
-		vo.setUserId((String)session.getAttribute("id"));
+		vo.setBoardWriter((String)session.getAttribute("name"));
 		int n = dao.boardUpdate(vo);
 		System.out.println(n);
 		String message = "입력이 실패 했습니다.";
@@ -27,8 +28,7 @@ public class BoardUpdate implements Command {
 			message = "정상적 처리가 이루어 졌습니다.";
 		}
 		request.setAttribute("message", message);
-
+		session.removeAttribute("number");
 		return "board/boardLogin.tiles";
 	}
-
 }

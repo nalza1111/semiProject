@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import co.bootjava.palette.account.mapper.AccountMapper;
 import co.bootjava.palette.art.mapper.ArtMapper;
 import co.bootjava.palette.art.service.ArtService;
 import co.bootjava.palette.art.vo.ArtVO;
@@ -33,6 +32,11 @@ public class ArtServiceImpl implements ArtService {
 	public void viewCntPlus(ArtVO vo) {
 		map.viewCntPlus(vo);
 		
+	}
+
+	@Override
+	public int ArtDelete(int artNum) {
+		return map.ArtDelete(artNum);
 	}
 
 

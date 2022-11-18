@@ -12,5 +12,4 @@ public class BoardMain implements Command {
 		// 게시판 메인화면으로 가는 곳.
 		return "board/boardMain.tiles";
 	}
-
 }

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.bootjava.palette.order.mapper.OrderMapper">
+
+	<insert id="orderInsert">
+		INSERT INTO ORDER_COMPLETE VALUES(null, #{productNumber}, #{productCount}, #{productPrice}, #{id}, 1)
+	</insert>
+	
+	<update id="orderUpdate">
+		UPDATE ORDER_COMPLETE SET ORDER_NUMBER=#{orderNumber}, PAY_DO = 0 WHERE ID=#{id} AND PAY_DO = 1
+	</update>
+	
+	<delete id="orderDelete">
+		DELETE FROM ORDER_COMPLETE WHERE ID=#{id} AND ORDER_NUMBER IS NULL
+	</delete>
+	
+	<select id="selectOrderOne" resultType="co.bootjava.palette.order.vo.OrderVO">
+		SELECT * FROM ORDER_COMPLETE WHERE  ORDER_NUMBER = #{orderNumber}
+	</select>
+	
+</mapper>

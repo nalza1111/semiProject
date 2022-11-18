@@ -50,7 +50,6 @@ public class OrderDetail implements Command {
 			System.out.println(product.toString());
 			ProductService dao3 = new ProductServiceImpl();
 			product = dao3.productSelect(product);
-			System.out.println(product.toString());
 			orderProductList.add(product);
 		}
 		List<Object> FinalList = new ArrayList<>();

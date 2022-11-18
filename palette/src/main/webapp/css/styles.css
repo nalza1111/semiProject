@@ -7,12 +7,16 @@ body {
 	padding: 0;
 }
 
+ul {
+	padding: 0;
+}
+
 #footerTile {
 	transform: translateY(0%);
 	width: 100%;
 	background-color: black;
 	padding: 30px;
-	color: white;
+	color: white!important;
 }
 
 *, *:after, *:before {
@@ -288,7 +292,9 @@ select::-ms-expand {
 	text-decoration: none;
 	color: #aaaaaa;
 }
-
+#loginBox #logo{
+	padding:40px!important;
+}
 #loginBox #logo a {
 	display: block;
 	width: 500px;
@@ -373,9 +379,11 @@ select::-ms-expand {
 
 .main_section01 {
 	background: url("../image/login_logo.png") center no-repeat;
-	background-size: inherit;
-	background-color: black;
+	background-size: 768px 262px;
+	background-color: #000000;
 	width: 100%;
+	height: 900px;
+    overflow: hidden;
 }
 
 .main_section01 .section_title {
@@ -419,16 +427,16 @@ select::-ms-expand {
 .main_section02 #mainArtUl li {
 	float: left;
 	width: 400px;
-	margin:0 40px;
-	margin-bottom:60px;
-	height:350px;
+	margin: 0 40px;
+	margin-bottom: 60px;
+	height: 350px;
 	overflow: hidden;
 	position: relative;
 	box-shadow: 5px 5px 5px 0 rgb(0 0 0/ 30%);
 	border: 1px solid #888;
-	display: flex;  
+	display: flex;
 	flex-wrap: wrap;
-	cursor:pointer;
+	cursor: pointer;
 }
 
 .main_section02 #mainArtUl img {
@@ -446,15 +454,14 @@ select::-ms-expand {
 	bottom: 0;
 	background: rgba(0, 0, 0, 0.8);
 	width: 100%;
-	height:100%;
+	height: 100%;
 	padding-top: 50px;
 	box-sizing: border-box;
 	opacity: 0;
 	transition: opacity 0.35s ease-in-out;
 }
 
-
-.main_section02 #mainArtUl li:hover #hoverArtText{
+.main_section02 #mainArtUl li:hover #hoverArtText {
 	opacity: 1;
 }
 
@@ -496,32 +503,30 @@ select::-ms-expand {
 	border: 1px solid #b0b0b0;
 	padding: 20px;
 	transition: background 0.35s ease-in-out;
-	cursor:pointer;
+	cursor: pointer;
 }
 
 .main_section03 #mainAccountUl img {
 	width: 100%;
 	height: 400px;
-	
 }
 
 .main_section03 #mainAccountUl p {
 	text-shadow: none;
 	transition: color 0.35s ease-in-out;
-	font-size:17px;
+	font-size: 17px;
 	font-weight: bold;
 }
 
-.main_section03 #mainAccountUl #accountItem:hover{
-	opacity:1;
+.main_section03 #mainAccountUl #accountItem:hover {
+	opacity: 1;
 	background-color: black;
-	color:white;
 }
 
 
 .main_section04 {
 	width: 1920px;
-	height: 900px;
+	height: 500px;
 	background-size: cover;
 	text-shadow: 1px 1px 1px rgb(0 0 0/ 50%);
 }
@@ -545,24 +550,29 @@ select::-ms-expand {
 }
 
 .main_section05 {
-	background: url("https://www.art1.com/images/main/main_hash_bg.jpg")
+	background: url("../image/easel.jpg")
 		center no-repeat;
-	width: 1920px;
-	height: 980px;
+	width: 1657px;
+	height: 1000px;
 	background-size: cover;
 	text-shadow: 1px 1px 1px rgb(0 0 0/ 50%);
+	opacity: 0.85;
 }
 
 .main_section05 .section_title {
 	padding-top: 70px;
-	padding-bottom: 50px;
 	padding-right: 400px;
+
 }
 
 .main_section05 .title2 {
 	font-size: 35px;
 	font-weight: 700;
 	line-height: 1.3;
+	margin-top: 90px;
+	margin-left: 80px;
+	transform:rotate(-1.5deg);
+	color: #333;
 }
 
 .main_section05 .title1 {
@@ -573,26 +583,17 @@ select::-ms-expand {
 	font-weight: 400;
 }
 
-.main_section06 {
-	/* background: url("../image/main_back(1).jpg") center no-repeat; */
-	background-size: cover;
-}
-
-.main_section07 {
-	/* background: url("../image/main_back(1).jpg") center no-repeat; */
-	background-size: cover;
-}
 
 /* !!! header 영역입니다 하단 고정해주세요 !!! */
 #topMenu {
-	z-index: 1;
+	z-index: 99999;
 	position: fixed;
-	top: 0%;
-	height: 50px;
+	top: 0%; height : 50px;
 	width: 100%;
 	color: #333;
 	background-color: #fff;
 	border: 1px solid #cfcfcf;
+	height: 50px;
 }
 
 #topMenu #leftUl li {

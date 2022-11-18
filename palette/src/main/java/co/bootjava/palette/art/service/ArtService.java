@@ -14,5 +14,7 @@ public interface ArtService {
 
 	void viewCntPlus(ArtVO vo);
 
+	int ArtDelete(int artNum); // 내 작품 삭제
+
 
 }

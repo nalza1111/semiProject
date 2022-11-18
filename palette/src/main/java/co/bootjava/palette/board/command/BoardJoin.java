@@ -13,7 +13,7 @@ public class BoardJoin implements Command {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		// 글등록
+		// 게시물 등록
 		BoardService dao=new BoardServiceImpl();
 		BoardVO vo=new BoardVO();
 		HttpSession session=request.getSession();

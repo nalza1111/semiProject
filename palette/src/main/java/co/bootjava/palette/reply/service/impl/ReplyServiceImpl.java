@@ -27,9 +27,9 @@ public class ReplyServiceImpl implements ReplyService{
 	}
 
 	@Override
-	public List<ReplyVO> replySelectList() {
+	public List<ReplyVO> replySelectList(ReplyVO vo) {
 		// 댓글 목록
-		return map.replySelectList();
+		return map.replySelectList(vo);
 	}
 
 	@Override

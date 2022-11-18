@@ -14,6 +14,10 @@ public interface AccountService {
 	List<AccountVO> accountList();
 	AccountVO AccountSelected(String id);
 	List<AccountVO> mainAccountList();
+	int updateAccountFollower(AccountVO vo);
+	List<AccountVO> accountListM();
+	int accountDelete(String id);
+
 
 
 	

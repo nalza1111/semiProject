@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.bootjava.palette.product.mapper.ProductMapper">
+	
+	<select id="productSelectList" resultType="co.bootjava.palette.product.vo.ProductVO">
+		SELECT PRODUCT_NUMBER, CATEGORY_CODE, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_DESC, PRODUCT_STOCK, PRODUCT_HITS, TO_CHAR(PRODUCT_DATE, 'YYYY-MM-DD') AS PRODUCT_DATE, IMAGE FROM PRODUCT 
+	</select>
+		
+	<select id="productSelect" resultType="co.bootjava.palette.product.vo.ProductVO">
+		SELECT PRODUCT_NUMBER, CATEGORY_CODE, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_DESC, PRODUCT_STOCK, PRODUCT_HITS, TO_CHAR(PRODUCT_DATE, 'YYYY-MM-DD') AS PRODUCT_DATE, IMAGE FROM PRODUCT 
+		WHERE PRODUCT_NUMBER = #{productNumber} 
+	</select>
+	
+	<insert id="productInsert">
+		INSERT INTO PRODUCT
+		VALUES(TEST_SEQ.NEXTVAL, #{categoryCode}, #{productName}, #{productPrice},
+		 #{productDesc}, 0, 0, SYSDATE, #{image})
+	</insert>
+	
+	<delete id="productDelete">
+		DELETE PRODUCT WHERE PRODUCT_NUMBER = #{productNumber}
+	</delete>
+	
+	<update id="productUpdate">
+		UPDATE PRODUCT SET
+			                      CATEGORY_CODE=#{categoryCode},
+			                      PRODUCT_NAME=#{productName},
+			                      PRODUCT_PRICE=#{productPrice},
+			                      PRODUCT_DESC=#{productDesc}
+        <if test="image != null"> ,IMAGE=#{image} WHERE PRODUCT_NUMBER=#{productNumber} </if>
+        <if test="image == null"> WHERE PRODUCT_NUMBER=#{productNumber} </if>
+	</update>
+	
+	<update id="productUpdateHit">
+		UPDATE PRODUCT SET PRODUCT_HITS = PRODUCT_HITS+1 WHERE PRODUCT_NUMBER=#{productNumber}
+	</update>
+	
+	<select id="productSelectSortList" resultType="co.bootjava.palette.product.vo.ProductVO">
+		SELECT PRODUCT_NUMBER, CATEGORY_CODE, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_DESC, PRODUCT_STOCK, PRODUCT_HITS, TO_CHAR(PRODUCT_DATE, 'YYYY-MM-DD') AS PRODUCT_DATE, IMAGE FROM PRODUCT  
+		<choose>
+			<when test="n == 4"> ORDER BY PRODUCT_PRICE ASC </when>
+			<when test="n == 41">ORDER BY PRODUCT_PRICE DESC</when>
+			<when test="n == 7"> ORDER BY PRODUCT_HITS DESC</when>
+			<when test="n == 8"> ORDER BY PRODUCT_DATE DESC</when>
+			<when test="n == 81"> ORDER BY PRODUCT_DATE ASC</when>
+		</choose>
+	</select>
+	
+	<select id="productSelectSearchList" resultType="co.bootjava.palette.product.vo.ProductVO">
+		SELECT PRODUCT_NUMBER, CATEGORY_CODE, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_DESC, PRODUCT_STOCK, PRODUCT_HITS, TO_CHAR(PRODUCT_DATE, 'YYYY-MM-DD') AS PRODUCT_DATE, IMAGE FROM PRODUCT  WHERE LOWER(PRODUCT_NAME) LIKE '%'||#{productName}||'%'
+		<if test="categoryCode == 'all'"> AND 1 = 1</if>
+		<if test="categoryCode != 'all'"> AND CATEGORY_CODE=#{categoryCode}</if>
+	</select>
+	
+</mapper>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.bootjava.palette.exhibit.mapper.ExhibitMapper">
+	<!-- 전체 목록 출력 -->
+	<select id="exhibitSelectList" resultType="co.bootjava.palette.exhibit.vo.ExhibitVO"> <!-- select는 돌려줄 받을 값(resultType) 적어야함 -->
+		SELECT * FROM  EXHIBIT ORDER BY START_DATE DESC
+	</select>
+	<!-- 현재 전시 중인 전시만 목록 출력 -->
+	<select id="exhibitSelect" resultType="co.bootjava.palette.exhibit.vo.ExhibitVO">
+		SELECT * FROM EXHIBIT
+		WHERE SYSDATE BETWEEN START_DATE AND (END_DATE + 1)
+	</select>
+	<!-- 전시번호가 같으면 목록 출력(상세페이지 이동할때 사용) -->
+	<select id="exhibitNumSelect" resultType="co.bootjava.palette.exhibit.vo.ExhibitVO">
+		SELECT * FROM EXHIBIT
+		WHERE EXHIBIT_NUM = #{exhibitNum}
+	</select>
+	<!-- 관리자 전용. 전시 정보 등록 -->
+	<insert id="exhibitInsert" parameterType="co.bootjava.palette.exhibit.vo.ExhibitVO"> <!-- #{}안의 값은 vo 이름과같게 -->
+		INSERT INTO EXHIBIT
+		VALUES(exhibit_seq.nextval, #{exhibitName}, #{startDate}, #{endDate}, #{exhibitSchool}, #{exhibitMajor}, #{image}, #{content})
+	</insert>
+	<!-- 관리자 전용. 전시 정보 수정 -->
+	<update id="exhibitUpdate" parameterType="co.bootjava.palette.exhibit.vo.ExhibitVO">
+		UPDATE EXHIBIT
+		SET EXHIBIT_NAME = #{exhibitName},
+			START_DATE = #{startDate},
+			END_DATE = #{endDate},
+			EXHIBIT_SCHOOL = #{exhibitSchool},
+			EXHIBIT_MAJOR = #{exhibitMajor},
+			IMAGE = #{image},
+			CONTENT = #{content}
+		WHERE EXHIBIT_NUM = #{exhibitNum}
+	</update>
+	<!-- 관리자 전용. 전시 정보 삭제 -->
+	<delete id="exhibitDelete" parameterType="co.bootjava.palette.exhibit.vo.ExhibitVO">
+		DELETE FROM EXHIBIT WHERE EXHIBIT_NUM = #{exhibitNum}
+	</delete>
+	
+	<!-- 시퀀스 값 찾아오기 -->
+	<select id="exhibitNum" resultType="int">
+		SELECT LAST_NUMBER FROM USER_SEQUENCES
+		WHERE SEQUENCE_NAME = 'EXHIBIT_SEQ'
+	</select>
+	<!-- 이미지 테이블에 값 넣기 -->
+	<insert id="exhibitImageInsert" parameterType="co.bootjava.palette.exhibit.vo.ExhibitImagesVO">
+		INSERT INTO EXHIBIT_IMAGES
+		VALUES(#{exhibitNum},#{originImage},#{fileImage},image_seq.nextval)
+	</insert>
+	<!-- 해당 번호의 이미지 가져오기 -->
+	<select id="exhibitNumImageSelect" 
+		parameterType="int"
+		resultType="co.bootjava.palette.exhibit.vo.ExhibitImagesVO">
+		SELECT * FROM EXHIBIT_IMAGES
+		WHERE EXHIBIT_NUM = #{exhibitNum}
+	</select>
+</mapper>

@@ -3,17 +3,30 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
+
 <head>
+<!-- Mobile Specific Meta -->
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- Favicon-->
+<link rel="shortcut icon" href="img/fav.png">
+<!-- Author Meta -->
+<meta name="author" content="codepixer">
+<!-- Meta Description -->
+<meta name="description" content="">
+<!-- Meta Keyword -->
+<meta name="keywords" content="">
+<!-- meta character set -->
+
 <meta charset="UTF-8">
 <title>feedList</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
-	href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap"
+	href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&family=Jua&display=swap"
 	rel="stylesheet">
-
 <style>
-* {
+#fontAll {
 	font-family: 'East Sea Dokdo', cursive;
 }
 
@@ -30,10 +43,6 @@ summary {
 	height: 100px;
 }
 
-li {
-	font-size: 23px;
-}
-
 .myFeed a:link, .myFeed a:visited {
 	background-color: rgb(228, 225, 225);
 	color: black;
@@ -41,10 +50,18 @@ li {
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
+	border-radius:18px;
+	border:0.5px solid grey;
 }
 
 .myFeed a:hover, .myFeed a:active {
 	background-color: rgb(175, 209, 247);
+}
+
+.artist-body {
+	align-items: center;
+	width: 80%;
+	position:relative;
 }
 
 .artist text {
@@ -53,103 +70,111 @@ li {
 
 .artist {
 	cursor: pointer;
-	border-radius: 160px;
+	border-radius: 20px;
 	border: 1px solid gray;
 	font-weight: 100px;
 }
 
-details {
-	margin-bottom: 10px;
+
+.artist-card {
+	margin: 30px 33px;
+	float: left;
+	width: 314px;
+	border-radius: 20px;
+	border: #808080 solid 1px;
+	box-shadow: 2px 2px 2px #888;
+	padding-top: 20px;
+	transition: background 0.35s ease-in-out;
+	color:#343434;
 }
 
-details summary {
-	padding: 0 10px;
-	background: #000;
-	color: #fff;
-	height: 35px;
-	line-height: 35px;
-	font-weight: bold;
-	cursor: pointer;
+.artist-card:hover {
+	opacity: 1;
+	background-color: #777;
+	color: white;
 }
 
-details summary::marker {
-	font-size: 0;
+.artist-body-footer {
+	clear: both;
 }
 
-details ul {
-	width: 1000px;
-	border: 1px solid #aaa;
-	list-style: none;
-	padding: 10px;
+.myFeed {
+	position: fixed;
+	top: 10%;
+	right: 4%;
 }
 
-details ul li a {
-	display: block;
-	padding: 5px 10px;
+.dsc li, .dsc li p {
+	font-family: 'Jua', sans-serif;
 }
 
-details ul li a:hover {
-	background: #333;
-	color: #fff;
-}
-
-details .txt {
-	border: 1px solid #999;
-	padding: 5px 10px;
-	text-align: center;
-}
 </style>
+<link
+	href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700"
+	rel="stylesheet">
+<!--
+			CSS
+			============================================= -->
+<link rel="stylesheet" href="css/jhkcss/linearicons.css">
+<link rel="stylesheet" href="css/jhkcss/font-awesome.min.css">
+<link rel="stylesheet" href="css/jhkcss/bootstrap.css">
+<link rel="stylesheet" href="css/jhkcss/magnific-popup.css">
+<link rel="stylesheet" href="css/jhkcss/nice-select.css">
+<link rel="stylesheet" href="css/jhkcss/animate.min.css">
+<link rel="stylesheet" href="css/jhkcss/owl.carousel.css">
+<link rel="stylesheet" href="css/jhkcss/main.css">
 
 </head>
+
 <body>
-
-	<div align="right">
-		<span class="myFeed"><a href="myFeed.do">내 피드가기</a></span>
-	</div>
-
-	<div align="center">
-		<details>
-			<summary>컨템포러리 아티스트</summary>
-			<div>
-				<ul>
-					<li>palette는 현대 대학생 예술가들이 판매하는 독점적인 예술 작품을 선보입니다. 현대 예술가들의 원본
-						작품, 한정판 및 미술 판화를 구입하십시오. palette는 현대 예술가들이 간단하고 직관적으로 자신의 작품을 전시하고
-						판매할 수 있도록 만들어졌습니다.</li>
-					<li>현대 미술은 20세기 후반 또는 21세기 초반에 만들어진 오늘날의 대중적인 예술 형식입니다.</li>
-					<li>컨템포러리(contemporary)라는 것은 최근 몇 년 동안 이루어진 모든 작업을 의미하며, 이는
-						컨템포러리 아트의 영향을 받은 것으로 분류될 수 있습니다.</li>
-					<li>현대 미술은 다른 어떤 예술 범주보다 추상적인 작업으로 구성됩니다.</li>
-					<li>이 범주의 예술가는 색상, 모양, 질감 및 테마를 사용하여 공간, 시간 및 인간 자체만큼 광대한 주제에
-						생명을 불어넣습니다.</li>
-					<li>디지털 시대에 현대 예술가들은 인터넷 덕분에 아이디어의 교환과 글로벌 미학에 참여할 수 있는 더 큰
-						기회를 갖게 되었습니다.</li>
-				</ul>
+	<div id="fontAll">
+		<!-- 배너 -->
+		<!-- start banner Area -->
+		<section class="banner-area relative" id="home">
+			<div class="overlay overlay-bg"
+				style="background: url(image//feedBackground.jpg); background-repeat: no-repeat; background-size: cover;">
+				
 			</div>
-		</details>
-	</div>
+			<div class="container" align="center">
+				<div class="row d-flex align-items-center justify-content-center">
+					<div class="about-content col-lg-12">
+							<h1 class="text-white">Contemporary Artist</h1>
 
+					</div>
+				</div>
+			</div>
+		</section>
 
-
-
-
-	<c:forEach items="${account}" var="a">
-		<div onclick="showList(this)" id="${a.id}">
-			<img class="artist" src="${a.image}" width="400" height="400"
-				alt="..." /> <br> ${a.name} 작가
-			<hr>
+		<div align="right" style="z-index: 5">
+			<span class="myFeed"><a href="myFeed.do">My Feed</a></span>
 		</div>
-	</c:forEach>
 
+		<div class="artist-body">
+			<c:forEach items="${account}" var="a">
+				<div onclick="showList(this)" id="${a.id}" class="artist-card">
+					<img class="artist" src="${a.image}" width="280" height="280" /> <br>
+					<span style="font-size: 40px;line-height:1em;">Artist ${a.name}</span> <br> <span
+						style="font-size: 35px;"><i class="fa-solid fa-user-group"></i>
+						${a.follower}</span>
 
-	<script>
-function showList(tagId) {
-	//작가 상세보기
-	console.log(tagId.id);
-	let id = tagId.id;
-	let url= "feedSelect.do";
-	location.href= url+"?id=" + id; 
-	}
-	
-</script>
+				</div>
+			</c:forEach>
+		</div>
+		<div class="artist-body-footer"></div>
+
+		<script src="https://kit.fontawesome.com/d3060d9c8b.js"
+			crossorigin="anonymous"></script>
+
+		<script>
+			function showList(tagId) {
+				//작가 상세보기
+				console.log(tagId.id);
+				let id = tagId.id;
+				let url = "feedSelect.do";
+				location.href = url + "?id=" + id;
+			}
+		</script>
+	</div>
 </body>
+
 </html>

@@ -1,8 +1,6 @@
 package co.bootjava.palette.account.command;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,7 +12,6 @@ import co.bootjava.palette.account.service.AccountService;
 import co.bootjava.palette.account.service.impl.AccountServiceImpl;
 import co.bootjava.palette.account.vo.AccountVO;
 import co.bootjava.palette.common.Command;
-import co.bootjava.palette.exhibit.vo.ExhibitVO;
 
 public class AccountJoin implements Command {
 
@@ -30,7 +27,6 @@ public class AccountJoin implements Command {
 		try {
 			MultipartRequest mr = new MultipartRequest(request, saveDir, maxSize, encod, new DefaultFileRenamePolicy());
 			String ofile = mr.getOriginalFileName("image");
-			List<AccountVO> sfile = new ArrayList<>();
 
 			vo.setId(mr.getParameter("id"));
 			vo.setPassword(mr.getParameter("password"));
